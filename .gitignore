@@ -1,0 +1,14 @@
+# This repository stores methodology text, not client data or generated artifacts.
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+*.log
+*.tmp
+__pycache__/
+.pytest_cache/
+node_modules/
+dist/
+build/
+.cache/
