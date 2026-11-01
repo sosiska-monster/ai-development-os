@@ -23,6 +23,12 @@ Agree on the product's **Product Assurance Profile** in the Blueprint / PROJECT 
 
 Product assurance can change when a demo becomes a live service; **re-evaluate quality gates, acceptable debt and operational readiness before real exposure**. A production service can still execute a reversible label edit in FAST; a prototype touching real credentials may require CONTROLLED. Neither axis substitutes for approval, contractual constraints or concrete safety controls.
 
+## Model and effort availability profile
+
+At setup, determine the **actual UI and available model/effort controls** for ChatGPT Web and Codex Desktop/Work/CLI in the user's account; do not infer them from a model name or universal docs. Record only when useful: supported Default/auto routing, available manual levels, persistence of manual selection, budget/allowance constraints, tool-access compatibility and who can change a setting. Prefer native Default/auto selection for normal work if it behaves well; otherwise recommend a manual choice **before** a meaningful task. Project instructions and AGENTS.md cannot grant themselves permission to modify a model picker.
+
+Evaluate on representative tasks: quick fix, standard implementation and hard investigation. Track verified outcome, human repair, completion time and any actual usage data; use UNKNOWN when not observable. Establish no fixed provider/model lock-in. Never sacrifice privacy or verification to save tokens.
+
 ## Mechanical controls rather than promises
 
 **For each proposed control, specify:** threat, enforcement point, exact configuration or command appropriate to installed Codex/project version, test stimulus, observed outcome, and fallback. Do not assume a rule, permission profile, network denial, hook, CI or worktree exists or operates solely because documentation mentions it.
