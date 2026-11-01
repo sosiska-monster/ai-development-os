@@ -7,6 +7,19 @@ Do not invent a detailed Blueprint for a three-line fix. Use for a product/new a
 - Confirmed requirements IDs / remaining AMBIGUOUS or BLOCKED questions
 - MVP, critical Given/When/Then acceptance behaviors
 
+## Product Assurance Profile — required decisions, minimal text
+
+The product's **quality/assurance target** is independent of the current task's FAST / STANDARD / CONTROLLED mode. Agree on a lightweight profile before choosing how much architecture, testing and operational setup is needed.
+
+- **Intended use and lifespan:** disposable exploration, demo, internal utility, MVP, enduring customer-facing service, or higher-consequence system.
+- **Provisional assurance level:** PROTOTYPE / MVP / PRODUCTION / CRITICAL (labels are starting points, not automatic guarantees). State the *reason and explicit user approval*, and revisit when the product's audience or deployment changes.
+- **Consequences and constraints:** users, real vs synthetic data, security/privacy, regulatory or contractual obligations, reliability/recovery targets, performance, support team, budget/deadline, migration and deployment environment.
+- **Definition of Done:** minimum meaningful functional, automated/manual verification, security, maintainability, observability, deployment and recovery expectations. State which are intentionally out of scope and what triggers reevaluation.
+- **Debt boundary:** temporary shortcuts allowed only where the consequences are acceptable; mark removal conditions. Production and sensitive data controls are **never waived simply because the project is called a prototype**.
+- **Evidence:** project-specific checks and observed readiness, not a generic declaration of "production quality."
+
+This profile informs the architecture and project environment; it does **not** require a new permanent file. For a small product, keep it as a short section in PROJECT/Blueprint.
+
 ## Architecture proposal
 - Recommended stack/versions (verified vs assumed)
 - Main modules/data flow/trust boundaries
