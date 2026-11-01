@@ -19,6 +19,9 @@ Do not auto-reset, checkout, clean or stash user work after failures.
 ## Approved quality baseline
 Read the product's approved Product Assurance Profile in PROJECT/Blueprint/Environment Profile if present. Its Definition of Done determines normal maintainability, tests, operations and recovery expectations; FAST/STANDARD/CONTROLLED still govern each task's change risk independently. Do not overbuild a disposable demo or waive relevant safety and baseline verification for a production product. If audience, real data or deployment changes, flag that the assurance profile needs review before expanding exposure.
 
+## Model / reasoning effort
+Choose task-appropriate effort using the model/picker capabilities **actually available** in this session. Prefer native Default/auto selection if verified; otherwise give a short recommendation for a human change only when a harder model or effort is justified. AGENTS.md does not itself control the UI. Escalate reasoning for hard diagnosis or architecture after checking context; de-escalate for bounded implementation. Keep safety and required verification independent of model choice. Do not introduce extra agents/providers for routine work.
+
 ## Verification
 Fast: <project-specific working command, or record NOT AVAILABLE during setup>.
 Full: <risk-specific command if available>.
