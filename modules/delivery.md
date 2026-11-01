@@ -19,6 +19,12 @@ There is **no hard file-count threshold**. A one-line auth change can be CONTROL
 - At any mode, use extra checks if a specific invariant demands them. Trigger does not automatically mandate a new meeting/document.
 - For serial small edits, send a concise batch summary to ChatGPT periodically or before a dependent architectural decision; no unnecessary human clipboard loop on every button.
 
+## Two independent dimensions: product assurance and task risk
+
+Every task inherits the product's **approved assurance baseline** (documented in the Blueprint/PROJECT/Environment Profile), while FAST/STANDARD/CONTROLLED determines how carefully **this particular change** is handled. A FAST change in production still uses the baseline safety and quality checks applicable to the affected behavior; a prototype must use CONTROLLED when a task becomes sensitive, destructive or irreversible. Do not auto-promote every production task to CONTROLLED or turn every prototype task into FAST.
+
+When a prototype becomes an externally used product, or a demo starts processing real data, reassess the project's assurance profile, tests, deployment and recovery readiness **before the increased exposure**. Such transitions are a product decision requiring appropriate user signoff; they are not a new mode or a fixed file-count threshold.
+
 ## Task contract
 
 Use objective GOAL, current relevant context, IN/OUT OF SCOPE, optionally EXPECTED_DIFF_PATHS, acceptance criteria, verification, stop/escalation triggers and Git/memory policy. The path set may be **provisional** when the codebase is unknown; Codex must report discovery and request expansion for materially risky new areas. Legitimate tests/lockfiles can be approved additions, never silently exempt.
