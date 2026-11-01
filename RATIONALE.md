@@ -146,3 +146,14 @@
 **Decision:** CONTROLLED mode for irreversible/data/production work, staging rehearsal, recoverable backups and separate human operator approval; Git does not undo external effects.
 **Rejected:** treating a down migration or reset as automatically safe.
 **Test:** T14.
+
+## RAD-016 — Product assurance and task risk are different axes (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS DRAFT GUIDANCE, PILOT NOT RUN.
+**Observation:** current task-level risk routing cannot distinguish a disposable demo from a long-lived customer-facing service with different quality, lifetime and operational obligations.
+**Decision:** define a lightweight **Product Assurance Profile** in Blueprint / PROJECT / Environment Profile (intended audience, expected lifetime, exposure/data, failure impact, support and recovery expectations, time/budget and proportionate Definition of Done). Use PROTOTYPE / MVP / PRODUCTION / CRITICAL as revisable example levels, not rigid technical stacks. Keep dynamic FAST / STANDARD / CONTROLLED routing independent and risk-triggered. Require explicit user approval of the target quality bar and revisit it before a prototype is exposed to real production conditions.
+**Why:** avoid both overengineering throwaway demos and underengineering long-lived services. Quality means fit-for-purpose verified behavior, not maximum code, files, bureaucracy or infrastructure.
+**Rejected:** universally production-grade architecture, automatic classification from the word "prototype", making all production edits CONTROLLED, treating prototype status as a waiver for security/data obligations.
+**Cost/risks:** another concept might add process burden; keep profile to a few lines and default to project documents already needed.
+**Tests:** T18–T20; NOT RUN.
+**Revisit when:** observed pilot outcomes show unnecessary checks, neglected baseline controls, or confusing quality-tier language.
