@@ -16,6 +16,9 @@ Use FAST for safe reversible local tasks, STANDARD for ordinary changes, CONTROL
 Re-evaluate if scope, dependencies, checks or risk change. Stop expanding scope or touching risky systems, preserve worktree and request approval for material escalation; do not grant yourself permissions.
 Do not auto-reset, checkout, clean or stash user work after failures.
 
+## Approved quality baseline
+Read the product's approved Product Assurance Profile in PROJECT/Blueprint/Environment Profile if present. Its Definition of Done determines normal maintainability, tests, operations and recovery expectations; FAST/STANDARD/CONTROLLED still govern each task's change risk independently. Do not overbuild a disposable demo or waive relevant safety and baseline verification for a production product. If audience, real data or deployment changes, flag that the assurance profile needs review before expanding exposure.
+
 ## Verification
 Fast: <project-specific working command, or record NOT AVAILABLE during setup>.
 Full: <risk-specific command if available>.
