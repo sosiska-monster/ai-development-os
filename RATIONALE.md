@@ -157,3 +157,14 @@
 **Cost/risks:** another concept might add process burden; keep profile to a few lines and default to project documents already needed.
 **Tests:** T18–T20; NOT RUN.
 **Revisit when:** observed pilot outcomes show unnecessary checks, neglected baseline controls, or confusing quality-tier language.
+
+## RAD-017 — Model selection and reasoning effort are adaptive execution controls (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS GUIDANCE, NATIVE UI SWITCHING NOT CONTROLLED BY MARKDOWN; PILOT NOT RUN.
+**Context:** a different model or reasoning effort may improve a difficult decision, but using maximum effort for every small task wastes latency/allowance. Product assurance and task risk do not measure cognitive difficulty.
+**Decision:** choose available model and effort by actual reasoning demand, context/tool compatibility, observed quality, budget and latency. Prefer native Default/auto routing if provided and verified, otherwise give minimal actionable **manual recommendations**; raise capability/effort for genuinely difficult analysis, lower it for bounded implementation. Never assert that CORE/AGENTS changed a model picker. Ensure approvals, verification, confidentiality and product assurance stay unchanged when switching.
+**Rejected:** hard-coding a vendor/model into a permanent policy, mapping FAST to low and CONTROLLED to max unconditionally, blindly retrying high effort, adding a costly multi-agent orchestration layer before pilot evidence.
+**Costs/risks:** misleading claims of automatic controls; switching may lose context or support different tools, and expensive effort does not guarantee correctness. Establish actual settings/permissions and measure verified outcomes and rework.
+**Tests:** T21–T25, NOT RUN.
+**Revisit when:** new native model-routing controls become available, available models change, or measured quality/latency demonstrates a different default.
+
