@@ -10,6 +10,7 @@ IN SCOPE / OUT OF SCOPE: <specific areas and prohibitions>
 EXPECTED_DIFF_PATHS: <exact paths/globs when reasonably known; PROVISIONAL otherwise>
 ACCEPTANCE: <objective behavior, tests or invariant>
 DEPENDENCIES / CONTRACT: <what is pre-approved; new deps need approval per Environment Profile>
+MODEL / EFFORT: <OPTIONAL — verified current setting and requested adjustment if a specific hard problem warrants it; never assume the prompt can switch the UI>
 VERIFY: <project check + task-specific check; baseline status if known>
 GIT / PRE-EXISTING CHANGES: <approved branch/checkpoint; preserve user edits>
 MEMORY: <update only verified facts; propose unverified records>
