@@ -95,3 +95,54 @@
 **Доказательство или ссылка на проверку:** …
 **Пересмотреть, если:** …
 ```
+
+## RAD-009 — Dynamic modes without fixed file-count routing (0.2.0-draft)
+
+**Status:** IMPLEMENTED IN DRAFT, PILOT NOT RUN.
+**Decision:** FAST / STANDARD / CONTROLLED selected and re-evaluated per task using effect, risk, reversibility, uncertainty and newly found facts. Escalation stops new risky scope and seeks authority; de-escalation is permitted after risk removal, without dropping necessary checks.
+**Why:** serial micro-edits must not require a manual ChatGPT shuttle, while a single-line migration/security change must not be classified as cheap by file count.
+**Rejected:** fixed two-file gate; every task through the complete OS.
+**Test:** T03–T05.
+
+## RAD-010 — CORE in ChatGPT Project instructions; GitHub is modular source
+
+**Status:** IMPLEMENTED IN DRAFT, DELIVERY NOT VERIFIED.
+**Decision:** critical CORE is permanently provided in Project instructions (or concise faithful version when UI limit requires); GitHub modules are retrieved on demand with honest actual-read/ref disclosures.
+**Why:** a link/connector is not deterministic full-file instruction transport.
+**Rejected:** remote-only mandatory CORE; blocking a harmless task solely for missing optional module.
+**Test:** T01–T02, T17. Revisit if verified direct immutable module retrieval becomes reliable.
+
+## RAD-011 — Independent evidence and scope checks
+
+**Status:** IMPLEMENTED AS CONTRACT, enforcement per product remains unverified.
+**Decision:** Lite/Full reports, actual committed + staged/unstaged + untracked diff paths against scoped task, verified test/CI/reviewer artifacts. Report alone is not independent proof.
+**Rejected:** treating a plausible Codex summary, a post-commit empty diff or a bare path whitelist as correctness.
+**Test:** T08–T09. Revisit with documented platform-native independent review.
+
+## RAD-012 — Requirements authority and persistent ledger
+
+**Status:** IMPLEMENTED AS TEMPLATE, PILOT NOT RUN.
+**Decision:** confirmed client behaviors live in a requirements ledger when materially needed; approval provenance distinct from implementation verification and developer technical decisions; preserve SUPERSEDED history.
+**Rejected:** using chat memory/Decision.md as the sole specification.
+**Test:** T06, T15.
+
+## RAD-013 — Risk-calibrated harness, not universal shell policies
+
+**Status:** IMPLEMENTED AS PROJECT SETUP PROTOCOL, NOT YET VERIFIED.
+**Decision:** each real product's Codex environment must test actual controls (permissions, verify, CI, secrets, Git). Never assume hooks/rules/sandbox work based solely on documentation.
+**Rejected:** universal untested Git command allowlists; untrusted magic deny rules and forced automated rollback after two failures.
+**Test:** T07, T10–T11, T14.
+
+## RAD-014 — Memory remains specialized but can be small
+
+**Status:** IMPLEMENTED IN DRAFT; reevaluate after pilot.
+**Decision:** retain distinct semantics of Bugs/Gotchas/Decisions and portable WordStyle preferences while permitting small project merges and requiring explicit PROPOSED/STALE/REVISIT_WHEN lifecycle.
+**Rejected:** stuffing the entire history into AGENTS.md; auto-expiring user-approved decisions without review.
+**Test:** T12–T13, T15.
+
+## RAD-015 — Reject unreviewed production side effects
+
+**Status:** IMPLEMENTED AS POLICY, NOT A TESTED PERMISSION BARRIER.
+**Decision:** CONTROLLED mode for irreversible/data/production work, staging rehearsal, recoverable backups and separate human operator approval; Git does not undo external effects.
+**Rejected:** treating a down migration or reset as automatically safe.
+**Test:** T14.
