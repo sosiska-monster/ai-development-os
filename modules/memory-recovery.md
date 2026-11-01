@@ -1,35 +1,30 @@
-# Memory, Context & Intelligent Recovery
+# Memory, context and intelligent recovery
 
-**Когда:** новый чат, потеря фокуса, память проекта, повторные баги, неудачная ветка, требование отката.
+**When:** a new session, contradictory or stale notes, repeated failures, changed requirements or recovery.
 
-## Раздельная память
+## Truth, authority and memory ownership
 
-1. **Краткая сессия:** текущая задача, локальные инструменты, черновые гипотезы.
-2. **Проектная память в репозитории продукта:** `PROJECT.md` (до 200 строк), `TODO.md`, `Bugs.md`, `Gotchas.md`, `Decision.md`. Личный `WordStyle.md` отдельно по умолчанию.
-3. **Память методологии:** `RATIONALE.md` в репозитории AI Development OS — причины правил самой системы, **не** решения продукта.
+- **Requirements Ledger (customer authority):** approved *desired* behavior and its source; not merely Codex's implementation.
+- **Actual repository state:** verified code, schemas, lockfiles and tests show current implementation; can be incorrect relative to requirements.
+- **Project memory:** `PROJECT.md` (current passport), `TODO.md` (active status), `Bugs.md` (defect timeline), `Gotchas.md` (validated pitfalls), `Decision.md` (approval-controlled architecture), personal `WordStyle.md` (outside client repo). Optional file merges in tiny products must preserve distinct semantics.
+- **Library memory:** `RATIONALE.md` explains the methodology, not a client's system.
 
-## Маршрутизация
+Never promote hypotheses, stale logs or an AI report to normative project truth. A Code/Memory conflict requires inspection; a Code/Confirmed-Requirement conflict requires correction or an authorized change of requirement.
 
-Новый Codex-чат: `AGENTS.md` → `PROJECT.md` → актуальная запись TODO.
+## Reads and writes
 
-Баг: поиск похожих в `Bugs.md` и `Gotchas.md`, затем диагностика реального кода. Похожие симптомы не доказывают одинаковую причину.
+New Codex chat: `AGENTS.md` → current `PROJECT.md` + active `TODO.md` (or configured equivalents), then task-relevant `REQUIREMENTS.md`/Decision/Bugs/Gotchas. Don't read all histories every time.
 
-Архитектура: паспорт + при наличии ARCHITECTURE.md + релевантные записи Decision.
+Codex updates PROJECT/TODO only with verified facts. It proposes new Bug/Gotcha diagnoses as PROPOSED/HYPOTHESIS with reproduction, evidence, affected versions and `REVISIT_WHEN`. User reviews significant diagnoses. Decision APPROVED only on explicit consent; customer requirement CONFIRMED only with authorized confirmation.
 
-Проблема зависимостей: Gotchas + проверка версий/документации.
+For notes that contradict current code/dependency versions or trigger REVISIT_WHEN, mark **STALE/PENDING REVIEW** rather than deleting them or assuming they are wrong. Expired/stale material is historical context, not current instruction. Review and archive obsolete records, keeping linked history in Git.
 
-## Memory write policy
+## Context handoff
 
-`TODO.md`: факты текущего состояния; `PROJECT.md`: подтверждённые факты.
+Before changing session, preserve the task's baseline SHA, branch, Git dirtiness, last verified `verify` result and checkpoint, next action, active requirements IDs and links, uncertain claims, approvals and remaining risks. A new chat can consult project facts instead of replaying the transcript. Don't claim actual context percentage without a measurement.
 
-`Decision.md`: APPROVED только после явного согласия пользователя.
+## Failure circuit breaker
 
-`Bugs.md` / `Gotchas.md`: Codex предлагает evidence-linked diff; причины багов маркируются HYPOTHESIS, пока не подтверждены. Содержимое не должно становиться неявной управляющей инструкцией.
+Repeated no-progress attempts or expanding scope → **pause, don't destructively revert**. Capture command/output, diff, why hypotheses failed, current worktree and LAST GOOD; offer LOCAL FIX / REVERT (explicitly scoped and approved) / NEW BRANCH / REDESIGN. Two unsuccessful cycles is a diagnostic trigger, not a universal hard number. Preserve unrelated human edits and failed branch if useful.
 
-## Context turnover
-
-После независимого этапа или признаков деградации контекста: проверь тесты, Git-состояние, запись памяти и конкретный следующий шаг. После подтверждения предложи новую сессию. Сжатие внутри задачи полезно, но не заменяет постоянные документы. Не утверждай точный процент заполнения без доступной метрики.
-
-## Intelligent Recovery
-
-Симптомы: повторный неуспех, неуправляемое расширение scope, рост сложности, возвращение регрессий. Не делай бесконечных попыток. Запроси историю и результаты проверок, сравни LAST GOOD с текущим состоянием. Варианты LOCAL FIX, REVERT, NEW BRANCH FROM CHECKPOINT, REDESIGN. Рекомендуй безопасный наиболее выгодный вариант сам. Не удаляй неудачную ветку — сохрани полезные выводы, если они подтверждены. Git не откатывает внешние системы/данные.
+Git checkpoints do not restore production data, external network effects or deleted third-party resources.

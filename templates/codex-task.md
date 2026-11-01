@@ -1,21 +1,24 @@
-# Codex Task Prompt (template)
+# Codex task contract — adapt, don't paste every field into every microtask
 
-Use a compact version for small tasks. This is a **template**, not an instruction to configure Codex before the user approves an actual project's environment.
+The task mode is a **current assessment, not a permanent label**. Codex may recommend mode changes on new evidence but cannot unilaterally grant permissions.
 
 ```text
-TASK: <ID — title>
-SIZE/RISK: <S/M/L, LOW/MODERATE/HIGH>
-
-GOAL: <one verifiable outcome>
-CONTEXT: <relevant references; discover unknown paths in scoped area>
-IN SCOPE: <allowed changes>
-OUT OF SCOPE: <explicit exclusions>
-CONSTRAINTS: <approved architecture, security, dependencies>
-ACCEPTANCE: <objective user-facing behavior and invariants>
-PLAN-FIRST: <yes for large/high-risk; provide affected areas and STOP for approval>
-VERIFY: <project fast check + task-specific tests, or explain why unavailable>
-GIT: <approved branch/checkpoint/commit policy; respect uncommitted changes>
-MEMORY: <which docs might need evidence-based updates>
-STOP WHEN: <scope expansion, new unapproved deps, destructive operation, core contract change>
-REPORT: <follow agreed Codex Evidence Report; explanations in Russian, preserve relevant raw outputs>
+TASK ID / GOAL: <one verifiable user-visible result>
+CURRENT MODE / RISK: FAST | STANDARD | CONTROLLED / why
+CONTEXT: <confirmed requirements IDs, relevant paths, branch/base SHA; omit unknown paths>
+IN SCOPE / OUT OF SCOPE: <specific areas and prohibitions>
+EXPECTED_DIFF_PATHS: <exact paths/globs when reasonably known; PROVISIONAL otherwise>
+ACCEPTANCE: <objective behavior, tests or invariant>
+DEPENDENCIES / CONTRACT: <what is pre-approved; new deps need approval per Environment Profile>
+MODEL / EFFORT: <OPTIONAL — verified current setting and requested adjustment if a specific hard problem warrants it; never assume the prompt can switch the UI>
+VERIFY: <project check + task-specific check; baseline status if known>
+GIT / PRE-EXISTING CHANGES: <approved branch/checkpoint; preserve user edits>
+MEMORY: <update only verified facts; propose unverified records>
+STOP / ESCALATE WHEN: <new auth/data/API/prod risk, out-of-scope diff, new dependency, no-progress failures>
+PLAN FIRST: <mandatory for CONTROLLED; get approval before high-risk effects>
+REPORT: <Lite for low-risk FAST; Full for high-impact tasks; show actual Git and verification artifacts>
 ```
+
+At completion compare **committed, staged, unstaged and untracked** paths against EXPECTED_DIFF_PATHS, distinguishing pre-existing user edits. Report MATCH / MISMATCH / NOT SCOPED, with exceptions explicitly approved. A path mismatch is not solved by claiming it was necessary.
+
+For a true FAST task, use a few sentences rather than pasting this template wholesale. On escalation, stop new risky operations, preserve state and request an updated task contract; on de-escalation, don't bypass already necessary checks.

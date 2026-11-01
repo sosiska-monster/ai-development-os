@@ -22,3 +22,12 @@
 ## Правило качества
 
 Если добавление нового модуля экономит меньше работы, чем его сопровождение, предпочти расширение существующего или удаление ненужной процедуры.
+
+## Dynamic routing and evidence maintenance — 0.2.0-draft
+
+- Test both directions of mode changes: innocuous FAST → CONTROLLED on discovery, and CONTROLLED → lower mode when hazard is genuinely resolved. Do not use number-of-files as the risk model.
+- Run `TEST_CASES.md` using actual disposable repos and fresh sessions; do not convert NOT RUN to PASS without captured evidence.
+- Check changed wording for contradicting CORE, MANIFEST, modules, template AGENTS, scope, requirement authority and product-specific permission boundaries.
+- For any proposed new technical barrier, distinguish PLANNED, IMPLEMENTED and VERIFIED against actual Codex interface/installed settings. Never promise a GitHub template can enforce sandbox behavior automatically.
+- Review exact PR diff, unchanged relevant behavior, secret hygiene and release/rollback implications before merging. Prefer a single fix over a new framework.
+- When updating library version, preserve old commit SHA, track downstream project instruction compatibility, and require conscious adoption. Record substantive decisions in RATIONALE, not every minor editorial edit.
