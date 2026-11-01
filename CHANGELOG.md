@@ -9,6 +9,7 @@
 - Project-specific harness verification, baseline `verify`, safe brownfield recon, irreversible operations and production boundaries.
 - Stale memory lifecycle and anti-poisoning rules; no destructive auto-revert on repeated failures.
 - Expanded reproducible methodology test scenarios and rationale. All live tests **NOT RUN**.
+- Product Assurance Profile: adapt architecture, Definition of Done and verification to prototype/MVP/production/critical consequences, independently of dynamic FAST/STANDARD/CONTROLLED task risk; unrun scenarios T18–T20.
 - PR-only draft; no stable `v0.2.0` tag and no claim of guaranteed technical enforcement before product bootstrap.
 
 ## 0.1.0 — Initial library baseline (2026-10-31)
