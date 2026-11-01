@@ -10,6 +10,10 @@ Use for a new specification, substantial requirement ambiguity or change request
 - Ask the few questions that affect critical user journeys, acceptance, architecture, security, deadlines and cost. Offer reversible assumptions for nonblocking unknowns.
 - Use Given/When/Then, examples or typed contracts only when they make behavior verifiable. Never mandate a schema tool merely because a methodology recommends one.
 
+## Determine the intended quality bar before overengineering
+
+Ask what the product is **for**, how long it must live, who will actually use it, whether data are real/sensitive, what failures cost, what maintenance and recovery are expected, and the deadline/budget. Propose a lightweight Product Assurance Profile (PROTOTYPE / MVP / PRODUCTION / CRITICAL as adaptable labels), its Definition of Done and important deliberate exclusions. Obtain the user's approval; don't silently treat a quick demo as a production platform or a production promise as permission for needless enterprise complexity. Baseline safety and contractual obligations remain even for throwaway experiments. Revisit the profile if the product's real audience, data or deployment changes.
+
 ## Persistent requirement ledger
 
 For nontrivial product work create or adapt `docs/ai/REQUIREMENTS.md` (template `templates/requirements-ledger.md`), anchored to the client's original text/source and linked to current tasks and tests.
