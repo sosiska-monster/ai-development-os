@@ -12,6 +12,17 @@ Document project-specific: language/versions and deployment; Codex Desktop/CLI/C
 
 A profile is **READY FOR BOOTSTRAP** when requirements/architecture sufficient and intended setup approved; it is **VERIFIED FOR FEATURE WORK** only after Codex actually establishes the baseline checks and validates the intended controls (or records explicit justified exceptions). For a greenfield repo, setup may create the first check before any feature; don't pretend it already passed.
 
+## Product assurance is a separate axis from task mode
+
+Agree on the product's **Product Assurance Profile** in the Blueprint / PROJECT passport before selecting the verification and maintenance baseline. PROTOTYPE / MVP / PRODUCTION / CRITICAL are illustrative levels of intended lifetime, audience and consequence, **not** automatic architecture prescriptions. Confirm the real operational context (users, environment, data, privacy, failure impact, recovery and support capacity).
+
+- **PROTOTYPE:** favor learning, simple code and fast checks; record disposable components and shortcuts. Do not use live sensitive data or grant production access casually.
+- **MVP:** key user journeys must work, with maintainable structure and appropriate regression checks; defer unneeded scale machinery.
+- **PRODUCTION:** establish fit-for-purpose regression/security checks, diagnostics, deployment discipline, data handling and recovery based on actual service expectations.
+- **CRITICAL:** identify concrete high-consequence failures and stronger independent review, operational procedures, auditability and restore evidence, as required by actual risks.
+
+Product assurance can change when a demo becomes a live service; **re-evaluate quality gates, acceptable debt and operational readiness before real exposure**. A production service can still execute a reversible label edit in FAST; a prototype touching real credentials may require CONTROLLED. Neither axis substitutes for approval, contractual constraints or concrete safety controls.
+
 ## Mechanical controls rather than promises
 
 **For each proposed control, specify:** threat, enforcement point, exact configuration or command appropriate to installed Codex/project version, test stimulus, observed outcome, and fallback. Do not assume a rule, permission profile, network denial, hook, CI or worktree exists or operates solely because documentation mentions it.
