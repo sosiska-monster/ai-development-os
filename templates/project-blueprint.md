@@ -27,6 +27,14 @@ This profile informs the architecture and project environment; it does **not** r
 - Simpler alternative, trade-off and revisit condition
 - Explicitly excluded components, services, tools or features
 
+## Adaptive model / reasoning policy (only when useful)
+
+- Available ChatGPT and Codex model/effort options, native Default/auto behavior, usage limitations: VERIFIED / UNKNOWN.
+- Initial choice: use a suitable efficient option; reserve higher capability/effort for materially difficult reasoning, not every task in a production project.
+- Escalation: failed *verified* outcomes or genuinely novel complexity after improving context/prompt and splitting work; de-escalate after the hard part.
+- Change actor: native router if observed, otherwise **user's model picker**; project instructions do not switch the interface.
+- Compare results using verified quality, rework and actual time/usage if available. No unsupported provider claims or secret sharing.
+
 ## Codex Environment Profile
 - Codex Desktop/CLI/Cloud actual setup and permission model
 - Project `AGENTS.md` + memory/requirements routing
