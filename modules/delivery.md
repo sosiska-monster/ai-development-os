@@ -25,6 +25,20 @@ Every task inherits the product's **approved assurance baseline** (documented in
 
 When a prototype becomes an externally used product, or a demo starts processing real data, reassess the project's assurance profile, tests, deployment and recovery readiness **before the increased exposure**. Such transitions are a product decision requiring appropriate user signoff; they are not a new mode or a fixed file-count threshold.
 
+## Adaptive model + reasoning effort (independent of task mode)
+
+**Policy, not an imagined controller:** route by actual reasoning difficulty, required tools/context, available models, budget and empirical success; retain the product's assurance baseline and FAST/STANDARD/CONTROLLED safety gates separately.
+
+- **Routine / narrow / verified recipe:** available efficient model and low/standard effort; do not spend high effort on renaming, straightforward edits, repetitive extraction or formatting.
+- **Ordinary feature / mixed context / unfamiliar code:** balanced model + medium effort; increase only if ambiguity or the observed quality calls for it.
+- **Architecture alternatives / hard root-cause debugging / conflicting requirements / subtle data or security invariants:** higher-capability available model and high effort for the **reasoning-heavy phase**, then return to a lighter setting for clear execution or routine follow-up.
+- **Escalate on evidence, not prestige:** missing decisive facts, repeated *different* failed hypotheses, difficult cross-module dependencies or demonstrably inadequate output. First check clarity, actual repo access, task breakdown and tests. Never simply re-run the same failing task at maximum effort indefinitely.
+- **De-escalate:** once a plan and acceptance are clear, choose cheaper/faster supported settings for bounded work. Compare cost/time **per verified success**, including rework; higher effort alone is no guarantee of correctness.
+- **Platform truth:** In Work/Codex, use a native **Default** selector when available and satisfactory, or select an available model + reasoning level explicitly. A manual Codex selection may persist; do not claim markdown instructions changed it. In ChatGPT Web use available picker/auto behavior, or *recommend* a manual adjustment where supported. Settings differ by account/version. No task may rely on an unverified model switch.
+- **Minimal communication:** recommend a switch only when it matters: `RECOMMEND: <UI/model/effort actually available or UNKNOWN> — <specific reason>`. Do not force the user to set a knob at every step, leak sensitive context to another provider, or install an orchestration layer solely to implement this policy.
+
+This is execution resource routing, **not** authorization. A low-effort model in a CONTROLLED task must still satisfy strict review/testing/approvals; if capability is insufficient, pause instead of relaxing controls.
+
 ## Task contract
 
 Use objective GOAL, current relevant context, IN/OUT OF SCOPE, optionally EXPECTED_DIFF_PATHS, acceptance criteria, verification, stop/escalation triggers and Git/memory policy. The path set may be **provisional** when the codebase is unknown; Codex must report discovery and request expansion for materially risky new areas. Legitimate tests/lockfiles can be approved additions, never silently exempt.
