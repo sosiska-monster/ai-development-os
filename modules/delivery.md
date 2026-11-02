@@ -43,6 +43,20 @@ This is execution resource routing, **not** authorization. A low-effort model in
 
 Use objective GOAL, current relevant context, IN/OUT OF SCOPE, optionally EXPECTED_DIFF_PATHS, acceptance criteria, verification, stop/escalation triggers and Git/memory policy. The path set may be **provisional** when the codebase is unknown; Codex must report discovery and request expansion for materially risky new areas. Legitimate tests/lockfiles can be approved additions, never silently exempt.
 
+## Between-task hygiene — remove waste without deleting user work
+
+After a verified task or a **small batch of FAST edits**, at a natural Git/checkpoint boundary, do a **light, scope-aware hygiene sweep**, proportional to the Product Assurance Profile and current risk. The purpose is to keep the codebase from accumulating avoidable complexity — **not** to optimize net line count or add a mandatory cleanup ceremony to every microtask.
+
+1. **Inspect, don't guess:** use actual diff/status and relevant references/tests to identify task-introduced unused imports/variables/helpers, duplicate logic, temporary debug statements, obsolete comments/TODOs, stale documentation or known disposable generated artifacts. A file's age, size or unfamiliarity alone does not make it garbage.
+2. **Classify before acting:**
+   - **LOCAL SAFE:** clearly redundant items introduced in the **approved task scope**; remove/simplify while preserving behavior and before final verification/checkpoint. Run relevant verify and review the resulting diff. A task already at a clean checkpoint may skip changes.
+   - **REVIEW:** deletion across scope boundaries, potentially used code, dependency/lockfile changes, public APIs, tests/fixtures or broad refactoring. **Propose** a separately scoped task with rationale and appropriate FAST/STANDARD/CONTROLLED risk mode; never silently expand the previous task.
+   - **PROTECTED/UNKNOWN:** pre-existing user changes, untracked files of uncertain ownership, secrets, real data, migration history, backups, audit logs, deployment/CI configs and unknown artifacts. **Do not auto-delete**; request explicit authorization and safe, evidence-backed handling when removal is truly needed.
+3. **Validate:** compare worktree to task baseline, including committed/staged/unstaged/untracked changes and pre-existing edits. Check behavior/tests, scope and any loss of observability or recoverability. Do not delete necessary diagnostics or weaken tests to make a project look tidy.
+4. **Report briefly:** `HYGIENE: CLEAN | REMOVED <what + why + verified check> | DEFERRED <candidate + reason>`. Batch/report only meaningful findings, not an extra giant log. If cleanup creates more work than it saves, stop and leave a small candidate list rather than refactoring blindly.
+
+Never use `git clean -fd`, `git reset --hard`, recursive deletion or blanket cache/artifact deletion as an automatic housekeeping action. Git ignores and generated folders require project-specific verification; do not touch unrelated files simply because Codex did not create them. An unneeded abstraction may be **replaced or removed** instead of wrapped in another abstraction.
+
 ## Scope check — actual repository evidence
 
 For each task use a base SHA and inspect:
