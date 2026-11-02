@@ -170,3 +170,14 @@
 **Tests:** T21–T25, NOT RUN.
 **Revisit when:** new native model-routing controls become available, available models change, or measured quality/latency demonstrates a different default.
 
+## RAD-018 — Scope-aware housekeeping between tasks (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS DRAFT POLICY; PILOT NOT RUN.  
+**Observation:** Codex can accumulate avoidable duplicate helpers, dead code, debugging statements and stale task-specific text across successive tasks, while the user sees primarily additions rather than simplifications. This is a reported usability concern, not proof that all code growth is waste.
+**Decision:** at a natural verified task checkpoint or after a small batch of FAST tasks, perform a **light Hygiene Sweep** of task-introduced waste. Safely simplify/remove only clearly redundant material *within already approved scope*; re-run relevant checks and inspect actual diff. Propose cross-scope, ambiguous or potentially destructive cleanup as a separate reviewed task. Skip when there is nothing useful to remove.
+**Why:** encourage simplicity and maintenance without confusing file deletion or negative line deltas with engineering quality. Keep scope boundaries, user ownership and independent evidence intact.
+**Rejected:** unconditional cleanup after every microtask, automatic repository-wide refactoring, deleting untracked/dirty files, `git clean/reset`, blanket cache removal and mandatory line-count reduction.
+**Cost/risks:** mistaken dead-code classification can break behavior or destroy user work; minimize impact by grounding in references/tests, respecting task scope, and escalating uncertainty.
+**Tests:** T26–T29 (NOT RUN).
+**Revisit when:** the pilot finds high overhead, missed debris, or unsafe cleanup suggestions.
+
