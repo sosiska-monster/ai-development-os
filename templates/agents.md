@@ -32,6 +32,10 @@ Record task base SHA and respect existing dirty changes. Review committed, stage
 No history rewrite, destructive reset/clean, push, --no-verify or production changes without explicit permission. Verified local checkpoints only when appropriate.
 New dependencies must be real and compatible; get approval under the project Environment Profile.
 
+## Hygiene at natural checkpoints
+After a verified task or a small batch of trivial edits, briefly inspect the actual task diff for introduced dead/duplicate code, unused imports, temporary debugging and stale task-specific comments/docs. Remove **only clearly safe items within authorized scope**, re-run relevant checks and include them in the scope diff. Don't equate growing files with progress. Do not force a separate cleanup task after every small edit.
+For ambiguous usage, dependencies/lockfiles, tests, migrations, logs, backups, production state or anything outside scope, **propose** cleanup rather than silently doing it. Protect existing dirty/untracked user work; never auto-run git clean/reset or bulk deletion for tidiness. Report CLEAN / REMOVED / DEFERRED in one line if relevant.
+
 ## Memory
 Read Bugs/Gotchas when diagnosing related issues, but validate with current code and versions. Propose diagnosis as HYPOTHESIS/PROPOSED with evidence, do not canonize guesses.
 Update PROJECT/TODO with verified facts. Decision APPROVED and customer requirement CONFIRMED only with explicit proper approval; mark invalidated entries STALE/SUPERSEDED after review.
