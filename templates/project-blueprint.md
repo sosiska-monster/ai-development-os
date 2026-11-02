@@ -20,6 +20,8 @@ The product's **quality/assurance target** is independent of the current task's 
 
 This profile informs the architecture and project environment; it does **not** require a new permanent file. For a small product, keep it as a short section in PROJECT/Blueprint.
 
+**Simplicity-first design:** start with the existing architecture or the smallest understandable deployable design that satisfies confirmed requirements and the approved assurance profile. Explicitly name the components **not introduced** and the concrete conditions that would justify adding them. Avoid speculative microservices, queues, extra layers, dependencies or enterprise infrastructure. Reuse/modify/remove before adding abstractions; simplicity never waives necessary security, data integrity or verification.
+
 ## Architecture proposal
 - Recommended stack/versions (verified vs assumed)
 - Main modules/data flow/trust boundaries
