@@ -36,6 +36,13 @@ BLOCKERS / STOP REASON / NEXT ACTION:
 
 Do not rely on bare `git diff --stat` after a commit: it can be empty. Also inspect staged, unstaged and untracked files; distinguish unrelated pre-existing user edits. Quote only necessary log excerpts and remove tokens/credentials.
 
+## Hygiene checkpoint (optional concise line)
+
+At natural task/batch completion, optionally include:
+`HYGIENE: CLEAN | REMOVED <specific task-scoped waste; why; verification> | DEFERRED <candidate; approval/scope needed>`.
+
+Treat untracked files and unrelated pre-existing changes as protected, not waste to delete. Do not count code removal or line-count reduction as success without preserved required behavior and actual checks. A hygiene change is part of the real diff and scope review, **not** an unreported side edit.
+
 ## Reviewer contract
 
 - ChatGPT does not replace reviewing actual diff or tests with a plausible report.
