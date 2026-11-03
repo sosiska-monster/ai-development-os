@@ -22,6 +22,8 @@ This profile informs the architecture and project environment; it does **not** r
 
 **Simplicity-first design:** start with the existing architecture or the smallest understandable deployable design that satisfies confirmed requirements and the approved assurance profile. Explicitly name the components **not introduced** and the concrete conditions that would justify adding them. Avoid speculative microservices, queues, extra layers, dependencies or enterprise infrastructure. Reuse/modify/remove before adding abstractions; simplicity never waives necessary security, data integrity or verification.
 
+**Composable MVP path (when relevant):** prefer proven ready-made modules/services to custom-built subsystems for early demand validation. List only major external dependencies and constraints, the smallest real-user launch checks (data, security, deployment/recovery), and the observed signal that would justify replacing or strengthening each component. Evolve one bounded module at a time; do not build speculative plugin architecture.
+
 ## Architecture proposal
 - Recommended stack/versions (verified vs assumed)
 - Main modules/data flow/trust boundaries
