@@ -160,6 +160,8 @@
 **Tests:** T18–T20; NOT RUN.
 **Revisit when:** observed pilot outcomes show unnecessary checks, neglected baseline controls, or confusing quality-tier language.
 
+**Уточнение RAD-016 — composable MVP (2026-11-03):** если задача — проверить продукт на рынке, система предлагает собрать минимальный работающий вариант из подходящих готовых решений, запустить для реальных пользователей только после соразмерных фактическому риску проверок, а затем улучшать/заменять лишь те модули, проблемы которых подтверждены спросом, ограничениями или сбоями. Это **не** оправдывает игнорирование безопасности при обработке реальных данных и **не** требует заранее строить универсальную заменяемость всех компонентов. Цель — меньше собственного кода и преждевременного переписывания.
+
 ## RAD-017 — Model selection and reasoning effort are adaptive execution controls (0.2.0-draft)
 
 **Status:** IMPLEMENTED AS GUIDANCE, NATIVE UI SWITCHING NOT CONTROLLED BY MARKDOWN; PILOT NOT RUN.
