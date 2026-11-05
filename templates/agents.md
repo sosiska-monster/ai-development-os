@@ -28,7 +28,7 @@ Full: <risk-specific command if available>.
 Use project baseline and task-specific checks; report real exit codes. Do not weaken tests, assertions, lint, typing or quality gates just to make a red check green. Explain and obtain proper approval for legitimate test/config changes.
 
 ## Scope / Git
-Record task base SHA and respect existing dirty changes. Review committed, staged, unstaged and untracked changed paths vs approved scope and report mismatches.
+Record task base SHA and respect existing dirty changes. A task's WRITE ALLOWLIST controls actual edits; access to read a file does not permit writing it. If essential edits need extra paths (including tests, deps, memory, AGENTS), STOP and request explicit scope expansion first. No silent exceptions for project housekeeping. Review committed, staged, unstaged and untracked paths vs approved scope and report mismatches. These instructions are not an OS-enforced write barrier.
 No history rewrite, destructive reset/clean, push, --no-verify or production changes without explicit permission. Verified local checkpoints only when appropriate.
 New dependencies must be real and compatible; get approval under the project Environment Profile.
 
