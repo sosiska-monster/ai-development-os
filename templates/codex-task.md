@@ -3,11 +3,13 @@
 The task mode is a **current assessment, not a permanent label**. Codex may recommend mode changes on new evidence but cannot unilaterally grant permissions.
 
 ```text
-TASK ID / GOAL: <one verifiable user-visible result>
+TASK ID / GOAL: <ONE atomic, verifiable result; no second task in the same prompt>
 CURRENT MODE / RISK: FAST | STANDARD | CONTROLLED / why
 CONTEXT: <confirmed requirements IDs, relevant paths, branch/base SHA; omit unknown paths>
-IN SCOPE / OUT OF SCOPE: <specific areas and prohibitions>
-EXPECTED_DIFF_PATHS: <exact paths/globs when reasonably known; PROVISIONAL otherwise>
+READ CONTEXT: <paths allowed to inspect for understanding; reading does not grant write permission>
+WRITE ALLOWLIST: <exact files or narrow globs where edits are authorized; NONE for read-only recon>
+DO NOT MODIFY: <all other paths including config, deps, tests, memory, AGENTS unless explicitly allowlisted>
+EXPECTED_DIFF_PATHS: <same write allowlist; PROVISIONAL only for read-only recon; approve extra paths before editing>
 ACCEPTANCE: <objective behavior, tests or invariant>
 DEPENDENCIES / CONTRACT: <what is pre-approved; new deps need approval per Environment Profile>
 MODEL / EFFORT: <OPTIONAL — verified current setting and requested adjustment if a specific hard problem warrants it; never assume the prompt can switch the UI>
@@ -18,6 +20,8 @@ STOP / ESCALATE WHEN: <new auth/data/API/prod risk, out-of-scope diff, new depen
 PLAN FIRST: <mandatory for CONTROLLED; get approval before high-risk effects>
 REPORT: <Lite for low-risk FAST; Full for high-impact tasks; show actual Git and verification artifacts>
 ```
+
+Never interpret 'necessary for the task' as authorization to write outside WRITE ALLOWLIST. If additional files, tests, dependency/lockfile edits, memory updates or new directories are needed, **STOP and ask for an updated ChatGPT Web task/user approval before modifying them**. If required paths are unknown, perform a separate read-only reconnaissance task first. The write allowlist is a behavioral contract, NOT an OS-enforced filesystem permission; use verified isolation/sandbox and human diff review for stronger controls.
 
 At completion compare **committed, staged, unstaged and untracked** paths against EXPECTED_DIFF_PATHS, distinguishing pre-existing user edits. Report MATCH / MISMATCH / NOT SCOPED, with exceptions explicitly approved. A path mismatch is not solved by claiming it was necessary.
 
