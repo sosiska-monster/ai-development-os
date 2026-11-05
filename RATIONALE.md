@@ -183,3 +183,14 @@
 **Tests:** T26–T29 (NOT RUN).
 **Revisit when:** the pilot finds high overhead, missed debris, or unsafe cleanup suggestions.
 
+## RAD-019 — One authorized task, concise report, human gate and context rotation (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS DRAFT INSTRUCTIONS; REAL CODEX PILOT NOT RUN.
+**Observation:** user wants full control over which task Codex performs next and wants to prevent long tool-log and failed-attempt context from contaminating subsequent tasks.
+**Decision:** default to exactly **one authorized outcome** with necessary internal implementation steps, verified change evidence, short Russian status and **STOP pending the next explicit user instruction**. At natural boundaries update only durable verified facts in existing PROJECT/TODO as necessary; suggest a **user-opened new Codex chat** for an independent next task if the current thread is noisy. For continuation of the SAME unfinished task, prefer supported native compaction rather than forced restart. No new per-task handoff files, Skills or context routers.
+**Why:** retain human control and context relevance without overloading small tasks with giant evidence reports. A chat reset is not a filesystem cleanup, and a textual instruction does not control the Codex app's chat UI.
+**Rejected:** automatically processing the full roadmap, unattended Goal continuation across tasks, requiring a fresh thread every turn, automatic history deletion / `.codex` cleanup, inventing context-percent thresholds, and treating compaction/fork as equivalent to a clean new thread.
+**Trade-offs:** frequent new chats may require rediscovery of project facts; preserve concise verified project state, risk gates and Git history. Context compaction and new-thread UI support depend on the actual Codex surface.
+**Tests:** T30–T33 (NOT RUN).
+**Revisit when:** task-boundary behavior fails in Codex or context resets create more overhead than they avoid.
+
