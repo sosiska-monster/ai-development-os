@@ -12,6 +12,7 @@
 - Adaptive model and reasoning-effort routing: use platform-native Default/auto when verified, otherwise recommend manual changes only when justified; no pretend UI automation; tests T21–T25 NOT RUN.
 - Product Assurance Profile: adapt architecture, Definition of Done and verification to prototype/MVP/production/critical consequences, independently of dynamic FAST/STANDARD/CONTROLLED task risk; unrun scenarios T18–T20.
 - Safe, scope-aware Hygiene Sweep between verified tasks/batches: remove obvious task-introduced waste, independently check diff/tests, protect dirty/untracked and high-risk artifacts; scenarios T26–T29 NOT RUN.
+- One Task → concise Report → STOP for user direction; optional new Codex chat for independent next tasks when prior context is noisy; native compaction for unfinished same task. No deletion of histories or per-task files; T30–T33 NOT RUN.
 - PR-only draft; no stable `v0.2.0` tag and no claim of guaranteed technical enforcement before product bootstrap.
 
 ## 0.1.0 — Initial library baseline (2026-10-31)
