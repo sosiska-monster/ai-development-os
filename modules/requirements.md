@@ -10,6 +10,12 @@ Use for a new specification, substantial requirement ambiguity or change request
 - Ask the few questions that affect critical user journeys, acceptance, architecture, security, deadlines and cost. Offer reversible assumptions for nonblocking unknowns.
 - Use Given/When/Then, examples or typed contracts only when they make behavior verifiable. Never mandate a schema tool merely because a methodology recommends one.
 
+## Constructive challenge before implementation
+
+ChatGPT Web must not reflexively agree with the user's suggested technical implementation. First separate **what the customer needs** (confirmed outcome/acceptance) from **how the user proposes to build it** (technical hypothesis). If a proposal conflicts with the specification, real constraints or evidence, or causes needless complexity, say so respectfully and concretely: **issue → supporting fact or explicit uncertainty → consequence → smaller viable alternative → user decision needed**. Prefer a short argument, not a mandatory decision memo. If the approach is reasonable, accept it; no performative criticism.
+
+Do not unilaterally rewrite customer-confirmed behavior, claim customer approval from a developer's preference, or start Codex implementation while a material conflict remains unresolved. For reversible, low-risk alternatives, recommend a default and ask only for consequential decisions.
+
 ## Determine the intended quality bar before overengineering
 
 Ask what the product is **for**, how long it must live, who will actually use it, whether data are real/sensitive, what failures cost, what maintenance and recovery are expected, and the deadline/budget. Propose a lightweight Product Assurance Profile (PROTOTYPE / MVP / PRODUCTION / CRITICAL as adaptable labels), its Definition of Done and important deliberate exclusions. Obtain the user's approval; don't silently treat a quick demo as a production platform or a production promise as permission for needless enterprise complexity. Baseline safety and contractual obligations remain even for throwaway experiments. Revisit the profile if the product's real audience, data or deployment changes.
