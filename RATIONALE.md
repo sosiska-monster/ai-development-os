@@ -194,3 +194,14 @@
 **Tests:** T30–T33 (NOT RUN).
 **Revisit when:** task-boundary behavior fails in Codex or context resets create more overhead than they avoid.
 
+## RAD-020 — Web architect authors one write-scoped Codex task at a time (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS DRAFT INSTRUCTIONS; LIVE TASK PILOT NOT RUN.
+**Observation:** user wants ChatGPT Web to plan/curate the project and issue tightly bounded single-result prompts to Codex, instead of letting Codex pick later roadmap steps or expand code unpredictably.
+**Decision:** ChatGPT Web owns task selection and approved architecture. Every Codex implementation prompt authorizes **one verifiable outcome** and declares READ CONTEXT separately from a narrow WRITE ALLOWLIST and DO NOT MODIFY. Unknown paths require read-only recon first. Codex stops for approval before any extra paths, tests, dependencies, memory writes or new components, then returns a short report and STOPS.
+**Why:** preserves human direction and limits task drift with a minimal contract rather than additional tools, agents or per-task files.
+**Limit:** prompt/AGENTS restrictions are behavioral, **not filesystem access controls**; tighter protection requires configured and verified sandbox/permissions or isolated workspaces, plus actual diff review. Worktree isolation does not itself enforce a per-file allowlist.
+**Rejected:** free-form implement-next-roadmap prompts, silent "needed" exceptions, full planning documents for trivial tasks, mandatory external task orchestrator.
+**Tests:** T36–T38 (NOT RUN).
+**Revisit when:** repeated out-of-scope writes indicate mechanical safeguards are needed or manual approvals become excessive.
+
