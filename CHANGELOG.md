@@ -14,6 +14,7 @@
 - Safe, scope-aware Hygiene Sweep between verified tasks/batches: remove obvious task-introduced waste, independently check diff/tests, protect dirty/untracked and high-risk artifacts; scenarios T26–T29 NOT RUN.
 - One Task → concise Report with explicit NEW CHAT: YES/NO + reason → STOP for user direction; after DONE suggest a fresh Codex chat for next independent task by default; native compaction for unfinished same task. No forced UI reset, deletion of histories or per-task files; T30–T35 NOT RUN.
 - ChatGPT Web is task dispatcher: one verifiable result per Codex prompt, separate READ CONTEXT and WRITE ALLOWLIST, STOP on expansion and actual diff review. T36–T38 NOT RUN.
+- ChatGPT Web decomposes the approved MVP into small dependency-aware, reviewable vertical tasks; challenges conflicting/needlessly complex implementation proposals with a grounded simpler alternative. Single approved Codex task remains enforced; T39–T42 NOT RUN.
 - PR-only draft; no stable `v0.2.0` tag and no claim of guaranteed technical enforcement before product bootstrap.
 
 ## 0.1.0 — Initial library baseline (2026-10-31)
