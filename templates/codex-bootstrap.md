@@ -22,6 +22,9 @@ CURRENT REPO FACTS (if discovered): <branch/base SHA, dirty worktree, tests and 
    according to the installed surface, and test them using safe fixtures.
    Mark each as PLANNED / IMPLEMENTED / VERIFIED with actual evidence.
 5. Create short project AGENTS.md routing to active project docs, not a giant manifesto.
+   Include ONE TASK → concise Russian result/checks → STOP for user direction.
+   For noisy independent next tasks, advise a fresh Codex chat using current AGENTS
+   and minimal project memory; do not install a context manager or delete histories.
    Protect secrets and prompt-injection boundaries, use dynamic risk mode policy.
 6. Record initial project state and required docs. For meaningful client requirements
    create docs/ai/REQUIREMENTS.md with authorized statuses, no invented confirmations.
