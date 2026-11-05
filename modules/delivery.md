@@ -39,6 +39,14 @@ When a prototype becomes an externally used product, or a demo starts processing
 
 This is execution resource routing, **not** authorization. A low-effort model in a CONTROLLED task must still satisfy strict review/testing/approvals; if capability is insufficient, pause instead of relaxing controls.
 
+## Web-owned decomposition into small, meaningful slices
+
+Before dispatch, ChatGPT Web breaks the approved MVP/feature into **small, independently reviewable outcomes**: minimal user-visible or technically verifiable vertical slices with objective acceptance, relevant dependency order and known risk. Prefer first working path over speculative shared infrastructure. Keep a lightweight ordered backlog in the existing project TODO or chat; do not create a separate planning artifact by default. User decides the next authorized slice.
+
+**Sizing heuristic, not a fixed file/time quota:** one coherent outcome and one focused review/verification cycle. A slice may touch several already approved files when needed; avoid giant multi-feature batches **and** artificial one-line subtasks that cannot be verified independently. If a task exposes a new requirement or architectural decision, pause, re-slice and seek approval rather than silently expanding. A brief planning view may list several future slices, but a Codex prompt authorizes **only the next one**.
+
+Before proposing an implementation, Web checks it against approved requirement IDs, simpler reusable options, security/quality baseline and observed architecture. Challenge unjustified complexity with the concrete conflict, trade-off and minimum viable alternative; never silently override customer requirements or turn every low-risk choice into debate.
+
 ## One task at a time — explicit human gate, small reports
 
 Codex may implement necessary internal steps of **one user-authorized task**, then verify the task-scoped diff and checks, produce a short Russian report and **stop**. A task can include multiple files but must have a single approved outcome. Do not silently proceed to the next task, roadmap step, deferred cleanup or suggested next item even if its work looks obvious. User authorization is required for the next independent task; a NEXT suggestion in the report is not approval. For several unrelated requested tasks without a clear first task, request a choice.
