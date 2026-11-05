@@ -2,6 +2,10 @@
 
 Report in Russian; don't invent tests, commands, Git outputs or repository state. **Codex-generated evidence is not independent verification** until reviewed against real files/diff/CI or a trusted external capture. Never include secrets or raw env dumps.
 
+## User-facing summary at every task boundary
+
+Prefer a **short Russian 5–6-line answer**: DONE/PARTIAL/BLOCKED; what changed and why; main paths; actual check + exit or NOT RUN; risks; suggested next task and **STOP for explicit user authorization**. Keep the underlying Lite/Full evidence accessible for review, but do not paste extensive logs into the main response unless needed for a risk decision. A proposed NEXT is not permission to begin it; blocked work remains intact. No separate report file per small task.
+
 ## Lite (FAST/LOW; concise)
 
 ```text
