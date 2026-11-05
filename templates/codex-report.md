@@ -4,7 +4,7 @@ Report in Russian; don't invent tests, commands, Git outputs or repository state
 
 ## User-facing summary at every task boundary
 
-Prefer a **short Russian 5–6-line answer**: DONE/PARTIAL/BLOCKED; what changed and why; main paths; actual check + exit or NOT RUN; risks; suggested next task and **STOP for explicit user authorization**. Keep the underlying Lite/Full evidence accessible for review, but do not paste extensive logs into the main response unless needed for a risk decision. A proposed NEXT is not permission to begin it; blocked work remains intact. No separate report file per small task.
+Prefer a **short Russian 6-line answer**: DONE/PARTIAL/BLOCKED; what changed and why; main paths; actual check + exit or NOT RUN; risks; **NEW CHAT: YES/NO (reason)**; next task only as a suggestion and **STOP for explicit user authorization**. If DONE, default to **NEW CHAT: YES — "Задача завершена. Перед следующей независимой задачей открой новый чат Codex"**. For PARTIAL/BLOCKED say whether to continue the same thread or switch with a minimal verified handoff. Never claim to have opened or reset a chat. Keep the underlying Lite/Full evidence accessible for review, but do not paste extensive logs into the main response unless needed for a risk decision. A proposed NEXT is not permission to begin it; blocked work remains intact. No separate report file per small task.
 
 ## Lite (FAST/LOW; concise)
 
