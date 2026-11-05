@@ -205,3 +205,14 @@
 **Tests:** T36–T38 (NOT RUN).
 **Revisit when:** repeated out-of-scope writes indicate mechanical safeguards are needed or manual approvals become excessive.
 
+## RAD-021 — Web decomposition and evidence-based challenge (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS DRAFT GUIDANCE; LIVE PILOT NOT RUN.
+**Observation:** user wants the Web architect to own MVP breakdown into small, light tasks and to disagree constructively when a suggested implementation contradicts confirmed specifications or creates unnecessary complexity.
+**Decision:** Web maintains a lightweight dependency-aware roadmap but dispatches exactly one independently reviewable, verifiable vertical slice per Codex prompt, using an explicitly limited write scope and a human approval gate. Slices must be small enough for focused diff/check review, not mechanically one file or one line. Web distinguishes **customer-approved desired behavior** from **developer-proposed implementation**; when the latter conflicts with requirements, environment, evidence, or KISS/YAGNI, it explains a concrete mismatch/uncertainty, consequence, simpler alternative and decision needed. It does not manufacture objections or silently override customer authority.
+**Why:** prevent large uncontrolled implementation batches, needless architecture and sycophantic technical approvals without creating a heavy task-management system.
+**Rejected:** giant roadmap prompts sent directly to Codex, compulsory multi-agent planning, one-file quotas, endless argument or changing client-confirmed requirements unilaterally.
+**Costs/risks:** too-fine decomposition can increase handoff overhead; apply one coherent result and clear acceptance, combining necessary steps within that task. Technical disagreement must be evidence-based and proportional to impact.
+**Tests:** T39–T42 (NOT RUN).
+**Revisit when:** the pilot shows unnecessary gatekeeping, fragmented work or unchecked expansion.
+
