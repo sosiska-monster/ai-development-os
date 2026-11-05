@@ -39,6 +39,14 @@ When a prototype becomes an externally used product, or a demo starts processing
 
 This is execution resource routing, **not** authorization. A low-effort model in a CONTROLLED task must still satisfy strict review/testing/approvals; if capability is insufficient, pause instead of relaxing controls.
 
+## One task at a time — explicit human gate, small reports
+
+Codex may implement necessary internal steps of **one user-authorized task**, then verify the task-scoped diff and checks, produce a short Russian report and **stop**. A task can include multiple files but must have a single approved outcome. Do not silently proceed to the next task, roadmap step, deferred cleanup or suggested next item even if its work looks obvious. User authorization is required for the next independent task; a NEXT suggestion in the report is not approval. For several unrelated requested tasks without a clear first task, request a choice.
+
+Default report at this boundary: `DONE | PARTIAL | BLOCKED; WHAT/WHY; CHANGED PATHS; VERIFY(command, exit or NOT RUN); RISKS; NEXT suggestion + question`. Reuse Lite/Full evidence as appropriate; do not duplicate giant reports or omit risk-required evidence. If BLOCKED or a task becomes risky, stop only expanding beyond the approved scope and preserve current worktree without destructive cleanup.
+
+**Context management at task boundaries:** after verified results and necessary updates to existing PROJECT/TODO/requirements, prefer the user starting a **new Codex chat for an independent next task** when the prior thread has become noisy. Re-read project sources, not the old transcript. For continuation of the **same unfinished complex task**, consider native compaction where supported and preserving approved decisions; it is not a full reset. Do not claim that AGENTS/CORE can close threads or clear the model's state. No new context-manager Skill, permanent handoff file per task, automatic deletion of `.codex`, caches, Git history, logs, project files or user data. Disable/avoid auto-continuing multi-task Goal workflows unless explicitly requested by user.
+
 ## Task contract
 
 Use objective GOAL, current relevant context, IN/OUT OF SCOPE, optionally EXPECTED_DIFF_PATHS, acceptance criteria, verification, stop/escalation triggers and Git/memory policy. The path set may be **provisional** when the codebase is unknown; Codex must report discovery and request expansion for materially risky new areas. Legitimate tests/lockfiles can be approved additions, never silently exempt.
