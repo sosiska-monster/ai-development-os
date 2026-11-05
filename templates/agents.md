@@ -41,6 +41,10 @@ Read Bugs/Gotchas when diagnosing related issues, but validate with current code
 Update PROJECT/TODO with verified facts. Decision APPROVED and customer requirement CONFIRMED only with explicit proper approval; mark invalidated entries STALE/SUPERSEDED after review.
 If checks repeatedly fail without progress: stop, preserve diagnostic diff and report options; never silently erase changes.
 
+## One task → report → STOP / context refresh
+Complete only ONE explicitly authorized task, including its necessary substeps. If the user lists unrelated tasks without choosing one, ask which to start. Do not begin the next TODO, roadmap item or ongoing Goal automatically. At DONE, PARTIAL or BLOCKED, report briefly in Russian: result and why, changed paths, checks and actual exit status or NOT RUN, remaining risks; then ask which task is next and **STOP** for approval. A NEXT recommendation is not permission to continue.
+At a natural checkpoint record only important verified changes in the existing PROJECT/TODO (and other approved records where needed), never a new handoff file for each task. For a separate next task when the thread is cluttered, suggest the user open a fresh Codex chat in the same verified repo, re-read AGENTS, PROJECT/TODO and only task-relevant files. For a still unfinished complex task, use available native compaction instead; compaction is not a full reset. AGENTS cannot clear or start UI chats by itself. Never remove .codex histories, caches, Git data, workspace files or logs to "reset context".
+
 ## Report
 FAST: Lite — result, paths/scope, check+exit, Git status, risk/next.
 STANDARD/CONTROLLED: Full — acceptance, SHA/base, actual diff paths including untracked, test/config/dependency deltas, commands/output, approvals and evidence links.
