@@ -10,6 +10,7 @@ WHAT / WHY: <1–2 sentences>
 PATHS: <main changes and scope>
 CHECKS: <actual command + exit code or NOT RUN>
 RISKS / BLOCKERS: <NONE or concrete fact>
+NEW CHAT: YES / NO — <clear reason; YES by default after DONE for a separate next task>
 NEXT: <suggest one next task; ask user; STOP>
 ```
 
