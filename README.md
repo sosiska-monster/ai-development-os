@@ -2,6 +2,8 @@
 
 Version: **0.2.0-draft (unreleased, not pilot-validated)**. This repository is the *methodology*, not any customer's application.
 
+**Русская инструкция для пользователя:** [USER_GUIDE.md](USER_GUIDE.md) — весь маршрут **ТЗ → MVP → Codex → проверки → staging → production**, выбор уровня ChatGPT/Codex и готовые сообщения. Это руководство для человека: не добавляйте его целиком в Project Instructions и не загружайте на каждую задачу.
+
 ## Workflow
 
 ChatGPT Web is the analyst/architect, Codex Desktop executes and tests inside each real product repository, and the user approves significant decisions. The process is **dynamic**: FAST for safe local changes, STANDARD for ordinary implementation, CONTROLLED for architecture, sensitive data, production, security or other high risks. It must **switch during a task** when facts change; see `modules/delivery.md`.
