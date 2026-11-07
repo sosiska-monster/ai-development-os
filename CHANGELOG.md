@@ -2,6 +2,7 @@
 
 ## 0.2.0-draft — UNRELEASED / NOT PILOT-VALIDATED (2026-11-01)
 
+- Added an optional Russian `USER_GUIDE.md`: end-to-end requirements → MVP → implementation → testing → staging → hosting/production workflow; adaptive ChatGPT/Codex model routing and practical daily prompts. Documentation only; no production access, executed pilot or release claim.
 - Dynamic two-way FAST / STANDARD / CONTROLLED task routing, risk-triggered escalation/de-escalation and low-risk direct Codex workflow.
 - ChatGPT Project CORE as durable entry point; verified-on-demand GitHub module loading and explicit unknown-version behavior.
 - Separate persistent requirements ledger template; change-request handling and authority distinction.
