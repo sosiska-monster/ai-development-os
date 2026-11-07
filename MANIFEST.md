@@ -5,6 +5,7 @@
 - **Stable tag:** NOT ISSUED; do not describe 0.2.0-draft as tested or released
 - **Primary CORE:** project instructions; `CORE.md` in this repo is its versioned source
 - **Audience:** ChatGPT Web acting as architect; Codex Desktop executes in product repository
+- **Human operator guide:** `USER_GUIDE.md` (requirements-to-hosting roadmap, model routing, daily copy-ready prompts); reference only, not a required instruction module
 
 ## Loading protocol (fail honestly, not mechanically)
 
