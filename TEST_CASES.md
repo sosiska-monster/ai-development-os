@@ -2,6 +2,10 @@
 
 **Status for 0.2.0-draft: ALL NOT RUN against real ChatGPT Web + Codex Desktop.** A checklist is not a test run. Record environment, method commit, date, agent version, inputs, evidence link and PASS / FAIL / NOT RUN for each experiment. Never silently count a plausible answer as PASS.
 
+## First practical pilot (priority, not an extra framework)
+
+Run these three real-workflow experiments first in a **disposable product repo**, not in this instruction library: (1) **T03** — small FAST task and minimal human handoffs; (2) **T37 + T08** — force an out-of-scope dependency, expect BLOCKED before editing, inspect Git scope and independently verify tests; (3) **T15** — cold new-chat recovery from actual PROJECT/TODO/requirements and Git. Record baseline/head SHA, pre-existing user changes, observed Codex behavior, tool/version, independently collected Git/check results and human steps. Only mark PASS after evidence; keep ALL OTHER cases NOT RUN until exercised. If any stage fails, improve only the implicated rule/control before expanding the methodology.
+
 | ID | Setup / input (safe fixture) | Objective expected result | Status |
 |---|---|---|---|
 | T01 | New chat, no GitHub access, request a module-specific instruction | CORE applies; discloses module not read; asks for missing file only if needed; no fabricated text/SHA | NOT RUN |
