@@ -6,6 +6,29 @@ Version: **0.2.0-draft (unreleased, not pilot-validated)**. This repository is t
 
 ChatGPT Web is the analyst/architect, Codex Desktop executes and tests inside each real product repository, and the user approves significant decisions. The process is **dynamic**: FAST for safe local changes, STANDARD for ordinary implementation, CONTROLLED for architecture, sensitive data, production, security or other high risks. It must **switch during a task** when facts change; see `modules/delivery.md`.
 
+## Daily loop — one useful result, minimal ceremony
+
+For an ordinary task: **user goal → ChatGPT Web scopes a verifiable slice when needed → one approved Codex task → actual diff/checks → user acceptance → STOP**. Truly safe, local FAST edits may go straight to Codex under the project's existing AGENTS. Do not fill every template or open every module for every task. A fresh Codex chat is a recommendation for an independent next task, **not a forced reset**.
+
+### Practical Git evidence in a PRODUCT repository
+
+Before a task, record the current branch, HEAD and any pre-existing dirty/untracked paths. After Codex reports completion, independently inspect the real repository with:
+
+```sh
+git status --short
+git diff --name-status
+git diff --cached --name-status
+git diff --name-status <TASK_BASE_SHA> HEAD
+git ls-files --others --exclude-standard
+git diff --check
+```
+
+Replace `<TASK_BASE_SHA>` with the captured starting commit. The committed diff command assumes that task baseline is an ancestor of HEAD; use an appropriate comparison if history was rewritten. Separate pre-existing user changes from task changes; compare all task-edited paths with the approved WRITE ALLOWLIST. Run the project's actual verification command independently when warranted, checking its exit status. Git path checks **detect changes; they do not enforce per-file permissions or prove behavior correct**. Never auto-reset, clean, or delete a dirty worktree.
+
+### Pilot priority — NOT RUN
+
+Before declaring a stable release, use a disposable product repository and real Codex Desktop to run **T03** (tiny FAST change without bureaucracy), **T37 + T08** (out-of-scope file stops and independently inspected Git diff/checks), and **T15** (fresh-chat recovery from verified project state). Record environment, commit SHA, real outputs and PASS/FAIL in `TEST_CASES.md` only after execution. This methodology repo cannot itself establish those outcomes; no mandatory universal `STATE.md`, verification script, or Skills framework is introduced.
+
 ## Reliable start in ChatGPT Web
 
 1. Create a ChatGPT Project per product. Place the full `CORE.md` text in **Project settings → Instructions** (subject to the actual UI's size limit), rather than assuming a GitHub URL loads it. If it does not fit, keep a shortened faithful CORE in instructions and attach the full file.
