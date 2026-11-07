@@ -1,31 +1,100 @@
-# Delivery — Vertical Slices, Evidence & Review
+# Delivery — dynamic routing, vertical slices and evidence
 
-**Когда:** подготовка задания Codex, проверка результата, багфикс, выпуск функции.
+**When:** implementing or reviewing work. Read with the task's risk and actual project state, not as a ritual.
 
-## Task sizing
+## Select an initial mode, then re-route continuously
 
-S/LOW: короткое задание → реализация → адресная проверка.
-M/MODERATE: лёгкая спецификация + список затрагиваемых областей.
-L/HIGH: архитектурный план и границы → явное согласование → небольшие вертикальные срезы.
+| Mode | Entry indicators | Required minimum |
+|---|---|---|
+| **FAST** | Small, reversible, well-understood local change; no material contract, data, security, dependency or architectural effect; working verification already exists | Codex can execute directly; scoped diff, targeted check, Lite report and Git checkpoint when justified |
+| **STANDARD** | Ordinary user-visible feature, moderate bug or moderate uncertainty | Short acceptance-based task, focused verification, changed-path review, Full report when warranted |
+| **CONTROLLED** | Migration/deletion, production, security/auth, confidential data, payments, public API, high-cost or irreversible impact, large ambiguity, architectural change | Plan-first + user approval, risk/rollback plan, independent diff and relevant tests, Full report, no silent production action |
 
-**Vertical slice:** критерий — проверяемое пользовательское поведение, а не число созданных файлов. Diff должен быть обозримым за один осмысленный подход.
+There is **no hard file-count threshold**. A one-line auth change can be CONTROLLED; a ten-file mechanical rename may be STANDARD. Choose the cheapest mode that still covers actual risk.
+
+**Dynamic transition protocol:**
+- Evaluate on task intake **and at every new fact**: unexpectedly changed files, critical contract, new dependency, failed checks without progress, data exposure, user changes scope.
+- FAST → STANDARD/CONTROLLED or STANDARD → CONTROLLED: **stop scope-expanding work**, preserve current uncommitted state, report trigger, impact and options; obtain approval when permissions, risks or product contract change. A tool/AI may recommend escalation, not grant itself new authority.
+- CONTROLLED → STANDARD/FAST or STANDARD → FAST: possible after the risk is resolved and scope is verified safe. Keep any risk-driven check already required; do not retroactively erase evidence or permission decisions.
+- At any mode, use extra checks if a specific invariant demands them. Trigger does not automatically mandate a new meeting/document.
+- For serial small edits, send a concise batch summary to ChatGPT periodically or before a dependent architectural decision; no unnecessary human clipboard loop on every button.
+
+## Two independent dimensions: product assurance and task risk
+
+Every task inherits the product's **approved assurance baseline** (documented in the Blueprint/PROJECT/Environment Profile), while FAST/STANDARD/CONTROLLED determines how carefully **this particular change** is handled. A FAST change in production still uses the baseline safety and quality checks applicable to the affected behavior; a prototype must use CONTROLLED when a task becomes sensitive, destructive or irreversible. Do not auto-promote every production task to CONTROLLED or turn every prototype task into FAST.
+
+When a prototype becomes an externally used product, or a demo starts processing real data, reassess the project's assurance profile, tests, deployment and recovery readiness **before the increased exposure**. Such transitions are a product decision requiring appropriate user signoff; they are not a new mode or a fixed file-count threshold.
+
+## Adaptive model + reasoning effort (independent of task mode)
+
+**Policy, not an imagined controller:** route by actual reasoning difficulty, required tools/context, available models, budget and empirical success; retain the product's assurance baseline and FAST/STANDARD/CONTROLLED safety gates separately.
+
+- **Routine / narrow / verified recipe:** available efficient model and low/standard effort; do not spend high effort on renaming, straightforward edits, repetitive extraction or formatting.
+- **Ordinary feature / mixed context / unfamiliar code:** balanced model + medium effort; increase only if ambiguity or the observed quality calls for it.
+- **Architecture alternatives / hard root-cause debugging / conflicting requirements / subtle data or security invariants:** higher-capability available model and high effort for the **reasoning-heavy phase**, then return to a lighter setting for clear execution or routine follow-up.
+- **Escalate on evidence, not prestige:** missing decisive facts, repeated *different* failed hypotheses, difficult cross-module dependencies or demonstrably inadequate output. First check clarity, actual repo access, task breakdown and tests. Never simply re-run the same failing task at maximum effort indefinitely.
+- **De-escalate:** once a plan and acceptance are clear, choose cheaper/faster supported settings for bounded work. Compare cost/time **per verified success**, including rework; higher effort alone is no guarantee of correctness.
+- **Platform truth:** In Work/Codex, use a native **Default** selector when available and satisfactory, or select an available model + reasoning level explicitly. A manual Codex selection may persist; do not claim markdown instructions changed it. In ChatGPT Web use available picker/auto behavior, or *recommend* a manual adjustment where supported. Settings differ by account/version. No task may rely on an unverified model switch.
+- **Minimal communication:** recommend a switch only when it matters: `RECOMMEND: <UI/model/effort actually available or UNKNOWN> — <specific reason>`. Do not force the user to set a knob at every step, leak sensitive context to another provider, or install an orchestration layer solely to implement this policy.
+
+This is execution resource routing, **not** authorization. A low-effort model in a CONTROLLED task must still satisfy strict review/testing/approvals; if capability is insufficient, pause instead of relaxing controls.
+
+## Web-owned decomposition into small, meaningful slices
+
+Before dispatch, ChatGPT Web breaks the approved MVP/feature into **small, independently reviewable outcomes**: minimal user-visible or technically verifiable vertical slices with objective acceptance, relevant dependency order and known risk. Prefer first working path over speculative shared infrastructure. Keep a lightweight ordered backlog in the existing project TODO or chat; do not create a separate planning artifact by default. User decides the next authorized slice.
+
+**Sizing heuristic, not a fixed file/time quota:** one coherent outcome and one focused review/verification cycle. A slice may touch several already approved files when needed; avoid giant multi-feature batches **and** artificial one-line subtasks that cannot be verified independently. If a task exposes a new requirement or architectural decision, pause, re-slice and seek approval rather than silently expanding. A brief planning view may list several future slices, but a Codex prompt authorizes **only the next one**.
+
+Before proposing an implementation, Web checks it against approved requirement IDs, simpler reusable options, security/quality baseline and observed architecture. Challenge unjustified complexity with the concrete conflict, trade-off and minimum viable alternative; never silently override customer requirements or turn every low-risk choice into debate.
+
+## One task at a time — explicit human gate, small reports
+
+Codex may implement necessary internal steps of **one user-authorized task**, then verify the task-scoped diff and checks, produce a short Russian report and **stop**. A task can include multiple files but must have a single approved outcome. Do not silently proceed to the next task, roadmap step, deferred cleanup or suggested next item even if its work looks obvious. User authorization is required for the next independent task; a NEXT suggestion in the report is not approval. For several unrelated requested tasks without a clear first task, request a choice.
+
+Default report at this boundary: `DONE | PARTIAL | BLOCKED; WHAT/WHY; CHANGED PATHS; VERIFY(command, exit or NOT RUN); RISKS; NEXT suggestion + question`. Reuse Lite/Full evidence as appropriate; do not duplicate giant reports or omit risk-required evidence. If BLOCKED or a task becomes risky, stop only expanding beyond the approved scope and preserve current worktree without destructive cleanup.
+
+**Context management at task boundaries:** after verified results and necessary updates to existing PROJECT/TODO/requirements, prefer the user starting a **new Codex chat for an independent next task** when the prior thread has become noisy. Re-read project sources, not the old transcript. For continuation of the **same unfinished complex task**, consider native compaction where supported and preserving approved decisions; it is not a full reset. Do not claim that AGENTS/CORE can close threads or clear the model's state. No new context-manager Skill, permanent handoff file per task, automatic deletion of `.codex`, caches, Git history, logs, project files or user data. Disable/avoid auto-continuing multi-task Goal workflows unless explicitly requested by user.
 
 ## Task contract
 
-GOAL, контекст, scope/out of scope, ограничения, критерии приёмки, проверки, stop conditions, Git/memory expectations. Не повторяй весь AGENTS.md. Если реальные пути неизвестны, Codex должен обнаружить их в релевантной области.
+ChatGPT Web authors **exactly ONE actionable Codex prompt for ONE verifiable outcome** after agreeing on its scope; the rest of the roadmap stays with ChatGPT Web/user. Include objective GOAL, necessary read context, **narrow WRITE ALLOWLIST**, DO NOT MODIFY, acceptance criteria, verification, stop/escalation triggers and Git/memory policy. For a known low-risk change, make this a short copy-ready task, not a full form. If paths are unknown, first issue a separate **read-only reconnaissance** task. Files read for context are not automatically writable. The write path set must be concrete before implementation; if codebase structure is unknown, Codex must discover relevant paths read-only and report them before any writes. Codex must **STOP before** creating/modifying any non-allowlisted file, including tests, configs, dependencies, project memory and extra architecture; ChatGPT Web/user must issue a revised authorized contract. Do not let a seemingly useful cleanup become another task. Prompt-level scope is a soft restriction; for stronger protection, use verified workspace isolation, permissions and independent review of real diff. A separate Git worktree isolates branch changes but is not a per-file access-control system. Legitimate tests/lockfiles can be approved additions, never silently exempt.
 
-## Test integrity
+## Between-task hygiene — remove waste without deleting user work
 
-Проверки выводятся из требований. Для критических инвариантов по риску используй test-first. Раскрывай все изменения тестов/линтеров/типизации; изменения ожидаемого поведения требуют подтверждения требований. Не допускай хардкода под тест и `skip`/`xfail` ради успеха.
+After a verified task or a **small batch of FAST edits**, at a natural Git/checkpoint boundary, do a **light, scope-aware hygiene sweep**, proportional to the Product Assurance Profile and current risk. The purpose is to keep the codebase from accumulating avoidable complexity — **not** to optimize net line count or add a mandatory cleanup ceremony to every microtask.
 
-## Evidence Report
+1. **Inspect, don't guess:** use actual diff/status and relevant references/tests to identify task-introduced unused imports/variables/helpers, duplicate logic, temporary debug statements, obsolete comments/TODOs, stale documentation or known disposable generated artifacts. A file's age, size or unfamiliarity alone does not make it garbage.
+2. **Classify before acting:**
+   - **LOCAL SAFE:** clearly redundant items introduced in the **approved task scope**; remove/simplify while preserving behavior and before final verification/checkpoint. Run relevant verify and review the resulting diff. A task already at a clean checkpoint may skip changes.
+   - **REVIEW:** deletion across scope boundaries, potentially used code, dependency/lockfile changes, public APIs, tests/fixtures or broad refactoring. **Propose** a separately scoped task with rationale and appropriate FAST/STANDARD/CONTROLLED risk mode; never silently expand the previous task.
+   - **PROTECTED/UNKNOWN:** pre-existing user changes, untracked files of uncertain ownership, secrets, real data, migration history, backups, audit logs, deployment/CI configs and unknown artifacts. **Do not auto-delete**; request explicit authorization and safe, evidence-backed handling when removal is truly needed.
+3. **Validate:** compare worktree to task baseline, including committed/staged/unstaged/untracked changes and pre-existing edits. Check behavior/tests, scope and any loss of observability or recoverability. Do not delete necessary diagnostics or weaken tests to make a project look tidy.
+4. **Report briefly:** `HYGIENE: CLEAN | REMOVED <what + why + verified check> | DEFERRED <candidate + reason>`. Batch/report only meaningful findings, not an extra giant log. If cleanup creates more work than it saves, stop and leave a small candidate list rather than refactoring blindly.
 
-Не принимай «всё работает» без доказательств. Нужны критерии приёмки, Git branch, status, статистика изменения от базовой точки, новые файлы и зависимости, команда/exit code/релевантный дословный лог каждой проверки, изменения тестовых конфигов, память, коммиты и следующий шаг.
+Never use `git clean -fd`, `git reset --hard`, recursive deletion or blanket cache/artifact deletion as an automatic housekeeping action. Git ignores and generated folders require project-specific verification; do not touch unrelated files simply because Codex did not create them. An unneeded abstraction may be **replaced or removed** instead of wrapped in another abstraction.
 
-**Важно:** после commit `git diff --stat` может быть пустым. Тогда использовать сравнение с базовым SHA или `git show --stat`.
+## Scope check — actual repository evidence
 
-Не требуй гигантских логов — только релевантные фрагменты и полный артефакт при необходимости. Маскируй секреты.
+For each task use a base SHA and inspect:
+- committed changes vs base (e.g. `git diff --name-status BASE..HEAD` for an ordinary linear task; choose correct merge-base semantics for PRs),
+- staged/unstaged changes (`git diff --name-status`, `git diff --cached --name-status`),
+- untracked files (`git ls-files --others --exclude-standard`),
+- dirty pre-existing changes **separately**, so they are not falsely attributed to Codex.
 
-## Review outcomes
+Compare *all* effective task paths with approved scope. If outside scope, report MISMATCH, explain and seek approval; **never mark ACCEPT just because tests pass**. Path checks don't prove behavior, test integrity or freedom from secret leakage.
 
-ACCEPT / FIX / REWORK / INSUFFICIENT EVIDENCE. При рисковых файлах запроси полный точечный diff. Повторные исправления без прогресса → перейти к `memory-recovery.md`.
+## Integrity and verification
+
+- Test behavior from approved requirements; use risk-based test-first for critical invariants. Do not replace failing tests with skips, removed assertions, mocks or type/lint suppression to fake green results.
+- Test changes can be legitimate when requirements change; disclose exact diff and approval/evidence. Scan configuration, dependency and lockfile modifications, too.
+- A stable, fast project `verify` should exist **before ordinary feature work when practical**; for an empty repo the first environment setup may establish it. Record baseline SHA and baseline results; `verify-full` by risk.
+- Repeat failures without progress → pause, diagnose and escalate; never automatically erase the worktree or run destructive restore.
+- For product behavior review, prefer independently retrieved GitHub diff, CI results or user-inspected Codex diff. Command output authored by Codex alone is **not independent proof**.
+
+## Reports and decisions
+
+FAST/LOW uses the Lite evidence format. STANDARD generally Full if meaningful; CONTROLLED always Full with targeted diff, tests, and approval status. See `templates/codex-report.md`.
+
+ChatGPT verdict: **ACCEPT / FIX / REWORK / INSUFFICIENT EVIDENCE**. If real artifacts are unavailable, do not assert verified success. A vertical slice is valuable user behavior, not volume of files.
+
+Git checkpoint: logical verified commits, preserving unrelated/uncommitted work; no silent push, force, reset, cleaning or production operations. Use branch/worktree when it improves isolation, not as a universal ritual.
