@@ -28,7 +28,7 @@ This profile informs the architecture and project environment; it does **not** r
 
 Keep only the named Web/Codex chats actually used or explicitly planned:
 `EXACT CHAT NAME | ChatGPT Web / Codex Desktop | responsibility/boundary | PROPOSED / ACTIVE / PAUSED / ARCHIVED | approved Git branch/worktree or N/A | last verified checkpoint`.
-ChatGPT Web routes every handoff to the **exact registered/proposed chat name** and can propose a new chat with starter context; it must not claim to create the chat or remember unshared other chats. A failed experiment is ARCHIVED, not merged into main. Store this map in existing PROJECT.md; no separate registry file required.
+ChatGPT Web routes every handoff to the **exact registered/proposed chat name** and can propose a new chat with starter context; it must not claim to create the chat or remember unshared other chats. A failed experiment is ARCHIVED, not merged into main. Store this map in existing PROJECT.md or its maintained ChatGPT Project source; do not change main merely to track a running experiment. No separate registry file required.
 
 ## Architecture proposal
 - Recommended stack/versions (verified vs assumed)
