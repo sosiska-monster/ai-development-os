@@ -47,6 +47,19 @@ Before dispatch, ChatGPT Web breaks the approved MVP/feature into **small, indep
 
 Before proposing an implementation, Web checks it against approved requirement IDs, simpler reusable options, security/quality baseline and observed architecture. Challenge unjustified complexity with the concrete conflict, trade-off and minimum viable alternative; never silently override customer requirements or turn every low-risk choice into debate.
 
+## Evidence-led experiment selection (Web chooses, human authorizes)
+
+At a **natural checkpoint** (failed check, repeated rework, context loss, expensive handoffs, slow build/deploy, measurable product bottleneck), Web proactively decides whether an experiment would improve the **product or the development workflow**. It should not wait for the user to name a tool or propose an experiment. **Do not interrupt delivery** for speculative optimization or manufacture a problem to justify new infrastructure.
+
+1. **Observe:** identify a specific bottleneck backed by a real report, diff, timing, user feedback or other observable signal. Separate verified facts from hypotheses. If no trustworthy baseline exists, choose a minimal read-only measurement first.
+2. **Generate options:** briefly consider up to 3 plausible directions, **including no change / simpler built-in alternative**. Examples: reduce Codex task scope, improve acceptance checks, tune model effort, simplify project memory, or *only if warranted* trial an external memory tool.
+3. **Prioritize:** compare likely user/product benefit, evidence/confidence, experiment cost/complexity, reversibility, privacy/security risk and impact on the agreed roadmap. Prefer the **cheapest falsifiable, safe experiment** with meaningful expected payoff. Do not invent quantitative scores; explain the trade-off and why the winner beats doing nothing.
+4. **Specify one experiment:** hypothesis, baseline/control, a bounded changed variable, objective metric, minimal sample or timebox, PASS/FAIL/INCONCLUSIVE threshold, expected cost/risk and rollback/removal path. For unmeasurable claims, first improve measurement, not architecture. Avoid optimizing for a proxy that damages user requirements.
+5. **Approval and execution:** Web **independently selects and recommends** the next experiment; only the user authorizes new Codex work, tool installation, paid services, external data transfer or production effects. Codex receives **one** write-scoped task and STOP, with required evidence. Read-only analysis within an already approved task is not a second autonomous task.
+6. **Learn:** compare observed result with baseline; mark PASS / FAIL / INCONCLUSIVE / NOT RUN, record only verified facts in existing project TODO/Decision or methodology TEST_CASES/RATIONALE when relevant. Adopt only if the benefit is demonstrated and safety/requirements are preserved; otherwise remove/revert through approved scoped actions. Do not repeatedly retry an unsuccessful hypothesis without new evidence.
+
+**Compact output at a checkpoint:** `IMPROVEMENT: NONE | MEASURE | EXPERIMENT`; if EXPERIMENT: `signal → best direction → chosen test → baseline/metric → success/stop criteria → cost/risk → approval needed`. No new agent, skill, tracking database or mandatory experiment file. Lack of observed benefit is a valid reason to do nothing.
+
 ## One task at a time — explicit human gate, small reports
 
 Codex may implement necessary internal steps of **one user-authorized task**, then verify the task-scoped diff and checks, produce a short Russian report and **stop**. A task can include multiple files but must have a single approved outcome. Do not silently proceed to the next task, roadmap step, deferred cleanup or suggested next item even if its work looks obvious. User authorization is required for the next independent task; a NEXT suggestion in the report is not approval. For several unrelated requested tasks without a clear first task, request a choice.
