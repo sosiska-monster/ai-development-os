@@ -24,6 +24,12 @@ This profile informs the architecture and project environment; it does **not** r
 
 **Composable MVP path (when relevant):** prefer proven ready-made modules/services to custom-built subsystems for early demand validation. List only major external dependencies and constraints, the smallest real-user launch checks (data, security, deployment/recovery), and the observed signal that would justify replacing or strengthening each component. Evolve one bounded module at a time; do not build speculative plugin architecture.
 
+## Chat Register (short optional section in the PRODUCT PROJECT.md)
+
+Keep only the named Web/Codex chats actually used or explicitly planned:
+`EXACT CHAT NAME | ChatGPT Web / Codex Desktop | responsibility/boundary | PROPOSED / ACTIVE / PAUSED / ARCHIVED | approved Git branch/worktree or N/A | last verified checkpoint`.
+ChatGPT Web routes every handoff to the **exact registered/proposed chat name** and can propose a new chat with starter context; it must not claim to create the chat or remember unshared other chats. A failed experiment is ARCHIVED, not merged into main. Store this map in existing PROJECT.md; no separate registry file required.
+
 ## Architecture proposal
 - Recommended stack/versions (verified vs assumed)
 - Main modules/data flow/trust boundaries
