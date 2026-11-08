@@ -8,6 +8,10 @@ Version: **0.2.0-draft (unreleased, not pilot-validated)**. This repository is t
 
 ChatGPT Web is the analyst/architect, Codex Desktop executes and tests inside each real product repository, and the user approves significant decisions. The process is **dynamic**: FAST for safe local changes, STANDARD for ordinary implementation, CONTROLLED for architecture, sensitive data, production, security or other high risks. It must **switch during a task** when facts change; see `modules/delivery.md`.
 
+## Named Web chats and isolated experiments
+
+ChatGPT Web routes every prompt to the **exact named** ChatGPT Web or Codex Desktop chat (not just "new/current") and maintains a short history of chat responsibilities/status in the product's existing PROJECT.md or up-to-date ChatGPT Project source. A write-capable model experiment uses an **approved separate branch/worktree or disposable repo**, never `main`. After a failed trial, archive the experiment and resume in the named development chat; do not automatically merge, reset, delete branches, uninstall models or disturb user work. See `modules/delivery.md` and [USER_GUIDE.md](USER_GUIDE.md). These are untested rules, not verified sandbox enforcement.
+
 ## Daily loop — one useful result, minimal ceremony
 
 For an ordinary task: **user goal → ChatGPT Web scopes a verifiable slice when needed → one approved Codex task → actual diff/checks → user acceptance → STOP**. Truly safe, local FAST edits may go straight to Codex under the project's existing AGENTS. Do not fill every template or open every module for every task. A fresh Codex chat is a recommendation for an independent next task, **not a forced reset**.
