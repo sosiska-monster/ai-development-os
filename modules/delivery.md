@@ -62,7 +62,7 @@ At a **natural checkpoint** (failed check, repeated rework, context loss, expens
 
 ## Exact chat routing and isolation for experiments
 
-**ChatGPT Web is the dispatcher of chats.** At each meaningful handoff, read the **Chat Register** in the product's existing `PROJECT.md` (or agreed equivalent). The register contains only real or proposed chat names, responsibility/purpose, ACTIVE / PAUSED / ARCHIVED status, target ChatGPT/Codex surface, applicable Git branch/worktree and last verified task/checkpoint. Do **not** confuse a chat's name with a Git branch: each is a different entity. Do not duplicate full conversation transcripts or create a new register file by default.
+**ChatGPT Web is the dispatcher of chats.** At each meaningful handoff, read the **Chat Register** in the product's existing `PROJECT.md` **or a current, explicitly maintained ChatGPT Project source** (with optional later synchronization to product docs). The register contains only real or proposed chat names, responsibility/purpose, ACTIVE / PAUSED / ARCHIVED status, target ChatGPT/Codex surface, applicable Git branch/worktree and last verified task/checkpoint. Do **not** confuse a chat's name with a Git branch: each is a different entity. Do not duplicate full conversation transcripts or create a new register file by default.
 
 Before handing off **any prompt**, Web provides:
 - `DESTINATION: ChatGPT Web | Codex Desktop`
