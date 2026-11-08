@@ -2,6 +2,7 @@
 
 ## 0.2.0-draft — UNRELEASED / NOT PILOT-VALIDATED (2026-11-01)
 
+- Explicit Web chat routing by exact, confirmed/proposed names (not YES/NO or generic current/new), plus a durable minimal chat register in product PROJECT or ChatGPT Project sources. Experimental model trials require approved isolated Git worktree/branch when they have side effects, verified Codex preflight, no mainline merge on failure, and approved safe cleanup. T47–T52 NOT RUN.
 - Web-led experiment selection: proactively identify evidence-backed bottlenecks, compare no change/alternatives by expected value, risk and effort, and recommend one measurable pilot with baseline, success criterion and stop rule. Execution remains separately approved; no auto-install or claim of tested results. Scenarios T43–T46 NOT RUN.
 - ChatGPT Web now recommends an explicit chat name, current stage, stay/new-chat decision, and Codex prompt destination; when proposing a new chat it supplies a verified-context starter prompt. No claim of automatic chat/UI switching; no extra mandatory chat-per-task ritual.
 - Added an optional Russian `USER_GUIDE.md`: end-to-end requirements → MVP → implementation → testing → staging → hosting/production workflow; adaptive ChatGPT/Codex model routing and practical daily prompts. Documentation only; no production access, executed pilot or release claim.
