@@ -27,6 +27,10 @@ Fast: <project-specific working command, or record NOT AVAILABLE during setup>.
 Full: <risk-specific command if available>.
 Use project baseline and task-specific checks; report real exit codes. Do not weaken tests, assertions, lint, typing or quality gates just to make a red check green. Explain and obtain proper approval for legitimate test/config changes.
 
+## Experiments vs mainline
+
+An experiment that writes, installs dependencies/models or changes configuration must use an explicitly approved **isolated experiment workspace**, preferably a separate Git worktree + `experiment/<slug>` branch, not `main`. Verify actual cwd, branch and dirty state **before** any side-effecting step; when the required isolation is absent, report BLOCKED and ask for a separately approved setup. Do not assume a branch isolates global installations, services, caches or external data. Failed experiments are never silently merged or cleaned; promotion and removal require separate user approval and review. Chat names are guidance, not proof of Git state.
+
 ## Scope / Git
 Record task base SHA and respect existing dirty changes. A task's WRITE ALLOWLIST controls actual edits; access to read a file does not permit writing it. If essential edits need extra paths (including tests, deps, memory, AGENTS), STOP and request explicit scope expansion first. No silent exceptions for project housekeeping. Review committed, staged, unstaged and untracked paths vs approved scope and report mismatches. These instructions are not an OS-enforced write barrier.
 No history rewrite, destructive reset/clean, push, --no-verify or production changes without explicit permission. Verified local checkpoints only when appropriate.
