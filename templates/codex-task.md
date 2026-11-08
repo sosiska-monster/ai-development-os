@@ -4,6 +4,8 @@ The task mode is a **current assessment, not a permanent label**. Codex may reco
 
 ```text
 TASK ID / GOAL: <ONE atomic, verifiable result; no second task in the same prompt>
+DESTINATION CHAT: <exact Codex Desktop chat name registered by ChatGPT Web; label as proposed until user confirms it>
+WORKSPACE / BRANCH: <verified product repo, intended Git branch and worktree; for an experimental write task require isolated experiment/<slug>, never main>
 CURRENT MODE / RISK: FAST | STANDARD | CONTROLLED / why
 CONTEXT: <confirmed requirements IDs, relevant paths, branch/base SHA; omit unknown paths>
 READ CONTEXT: <paths allowed to inspect for understanding; reading does not grant write permission>
@@ -20,6 +22,8 @@ STOP / ESCALATE WHEN: <new auth/data/API/prod risk, out-of-scope diff, new depen
 PLAN FIRST: <mandatory for CONTROLLED; get approval before high-risk effects>
 REPORT: <Lite for low-risk FAST; Full for high-impact tasks; show actual Git and verification artifacts>
 ```
+
+For an **experiment with side effects**, before any writes/installations verify actual working directory, branch, HEAD and dirty state. If not in the approved isolated `experiment/<slug>` worktree/repo, STOP as BLOCKED. Never switch into or modify `main` to run a trial, auto-merge, push, globally install/uninstall models or delete failed trial data without separately approved scoped instructions. A successful trial needs a later explicit integration task; a failed one stays isolated, with safe cleanup proposed rather than executed automatically.
 
 Never interpret 'necessary for the task' as authorization to write outside WRITE ALLOWLIST. If additional files, tests, dependency/lockfile edits, memory updates or new directories are needed, **STOP and ask for an updated ChatGPT Web task/user approval before modifying them**. If required paths are unknown, perform a separate read-only reconnaissance task first. The write allowlist is a behavioral contract, NOT an OS-enforced filesystem permission; use verified isolation/sandbox and human diff review for stronger controls.
 
