@@ -216,3 +216,13 @@
 **Tests:** T39–T42 (NOT RUN).
 **Revisit when:** the pilot shows unnecessary gatekeeping, fragmented work or unchecked expansion.
 
+## RAD-022 — Web proactively chooses the next useful experiment (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS GUIDANCE; REAL CODEX/WEB PILOT NOT RUN.
+**Observation:** the methodology should independently notice when an approach (including memory, model routing or task process) could be improved, rather than merely accepting new tool suggestions or waiting for the user to specify which experiment to try.
+**Decision:** at natural checkpoints, Web inspects actual evidence, generates a few plausible options including no change, prioritizes likely benefit against confidence, cost, risk, privacy and reversibility, and selects **one falsifiable experiment** with baseline, metric, threshold and stopping rule. If evidence is missing, choose measurement; if no meaningful bottleneck exists, do nothing. Product delivery remains primary. Codex only runs a separately authorized, scoped one-task experiment and stops. No automatic external API uploads or infrastructure installs.
+**Why:** enables intelligent continuous improvement **without** introducing an autonomous experiment orchestrator, accumulating speculative tooling or overriding human control.
+**Rejected:** installing Honcho or any fashionable tool without measured need; fabricated performance scores; trials on customer secrets; automatic multi-task loops; mandatory experiment registry.
+**Tests:** T43–T46, NOT RUN.
+**Revisit when:** measured pilots show poor experiment prioritization, excessive suggestion noise, missed high-value improvements or unreasonable approval overhead.
+
