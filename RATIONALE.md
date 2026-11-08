@@ -226,3 +226,14 @@
 **Tests:** T43–T46, NOT RUN.
 **Revisit when:** measured pilots show poor experiment prioritization, excessive suggestion noise, missed high-value improvements or unreasonable approval overhead.
 
+## RAD-023 — Named Web chat ownership and sandboxed experiments (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS GUIDANCE; LIVE CHAT/CODEX ISOLATION TEST NOT RUN.
+**Observation:** a Web task dispatcher saying only "new/current chat" or YES/NO leaves the human unsure where to paste a prompt. Worse, a disposable model experiment could accidentally mutate the mainline product branch or global environment.
+**Decision:** Web explicitly routes each prompt to a named, user-confirmed ChatGPT Web or Codex Desktop chat with its responsibility and actual branch/worktree; proposals remain PROPOSED until created. Record a concise Chat Register in the product's existing PROJECT.md or maintained ChatGPT Project source, accessible to future Web chats; it stores names, purpose, status and verified Git context, **not** complete transcripts. For write-capable experiments, require a separately approved disposable worktree/branch or isolated repo, plus dependency/data isolation where necessary. Codex must check actual cwd/branch/dirty state and stop on mainline mismatch before side effects. Failed trials are archived without mainline merge; promote or clean up only with explicit scoped approval and actual diff/data checks.
+**Why:** human can route tasks reliably, recover cross-chat ownership without fictitious memory, and experiment safely without contaminating the working product.
+**Rejected:** hard-coded YES/NO instead of destination, assuming Web can create or enumerate other chats, using Git branch naming as proof of sandbox, automatic global uninstall, forced branch deletion/clean/reset, or new project-management infrastructure.
+**Limit:** a Git worktree does not isolate external services, global installs or sensitive data, and model prompts do not enforce filesystem access; each boundary needs operational verification.
+**Tests:** T47–T52; NOT RUN.
+**Revisit when:** a real pilot demonstrates registry maintenance costs more than it saves or isolation/route behavior fails.
+
