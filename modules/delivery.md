@@ -60,6 +60,27 @@ At a **natural checkpoint** (failed check, repeated rework, context loss, expens
 
 **Compact output at a checkpoint:** `IMPROVEMENT: NONE | MEASURE | EXPERIMENT`; if EXPERIMENT: `signal → best direction → chosen test → baseline/metric → success/stop criteria → cost/risk → approval needed`. No new agent, skill, tracking database or mandatory experiment file. Lack of observed benefit is a valid reason to do nothing.
 
+## Exact chat routing and isolation for experiments
+
+**ChatGPT Web is the dispatcher of chats.** At each meaningful handoff, read the **Chat Register** in the product's existing `PROJECT.md` (or agreed equivalent). The register contains only real or proposed chat names, responsibility/purpose, ACTIVE / PAUSED / ARCHIVED status, target ChatGPT/Codex surface, applicable Git branch/worktree and last verified task/checkpoint. Do **not** confuse a chat's name with a Git branch: each is a different entity. Do not duplicate full conversation transcripts or create a new register file by default.
+
+Before handing off **any prompt**, Web provides:
+- `DESTINATION: ChatGPT Web | Codex Desktop`
+- `CHAT: «exact, registered name»` (never merely YES/NO, "current chat" or "new chat")
+- `ACTION: CONTINUE | CREATE`. When CREATE, supply a proposed unique name and a short starter with verified context; mark PROPOSED until the user actually confirms creation
+- `PROJECT REPO / BRANCH / WORKTREE: verified values or UNKNOWN`, and `TASK: one authorized result`. Never infer repo/branch from chat name; read actual Git status first
+
+At transitions Web **proposes a minimal register update**, with latest confirmed name, purpose, status and checkpoint. A connected approved write action or a separately approved scoped Codex update can persist it in the product's `PROJECT.md`; otherwise return copy-ready lines for the user to store in the ChatGPT Project sources/product file. GitHub library `CORE.md` does NOT hold individual customer chat history. Do not pretend that ChatGPT can enumerate, create, rename, track or write to all other chats automatically; if the register is unavailable or stale, ask for it or mark unknown. Avoid making a registry edit a separate Codex task for each trivial message; batch durable changes at natural checkpoints.
+
+**Experimental work is not mainline product development.** Before any experiment that may change files, install tools/models, run migration scripts, or create artifacts, require a separately authorized **disposable workspace**, preferably a Git worktree with a dedicated `experiment/<slug>` branch forked from a verified baseline (a standalone disposable test repo is also fine). Use isolated dependencies, test data, credentials and caches as appropriate; a branch/worktree **does not** isolate global installs, environment variables, external APIs or databases. A purely read-only model evaluation without local changes needs no new branch, but still gets a named experiment chat and a bounded protocol.
+
+- **Preflight:** Web names both the experiment ChatGPT chat and Codex chat, records the product repo and allowed isolated worktree/branch; Codex checks `pwd`, branch, HEAD, `git status --short` before changes. If the expected isolated workspace is missing, or Codex is on `main`/shared production workspace, **BLOCKED — no writes, installs or experiment runs with side effects** until the user explicitly approves safe setup.
+- **Boundaries:** experiment Codex prompt allowlists experiment-only paths and forbids edits/commits/merges/pushes on `main`, product AGENTS, stable dependency/lockfiles and production settings unless there is a separately approved bounded setup. Don't auto-create new branch, edit shared configuration or install a model globally solely because an experiment prompt mentions it. No live customer data by default.
+- **Outcome:** evaluate the previously defined baseline and PASS / FAIL / INCONCLUSIVE / NOT RUN. The experiment has **no permission to promote itself**. Only after measurable benefit and a separate user-approved integration task can selected changes be copied/cherry-picked into normal development with fresh tests and diff review.
+- **Failed/rejected trial:** mark experiment chat ARCHIVED with result and one-line lesson, leave `main` unchanged, then return to the exact named development chat and verified mainline branch. Propose deletion of experimental worktree/branch, temporary model/dependencies and test data **only after** checking for user edits, untracked/unpushed work and external effects, and obtaining explicit approval. Never auto `git reset --hard`, `git clean`, `git branch -D`, uninstall globally or erase user/model data.
+
+This isolation is a **separation policy verified by tools**, not a promise that chat names or soft prompt allowlists enforce filesystem permissions.
+
 ## One task at a time — explicit human gate, small reports
 
 Codex may implement necessary internal steps of **one user-authorized task**, then verify the task-scoped diff and checks, produce a short Russian report and **stop**. A task can include multiple files but must have a single approved outcome. Do not silently proceed to the next task, roadmap step, deferred cleanup or suggested next item even if its work looks obvious. User authorization is required for the next independent task; a NEXT suggestion in the report is not approval. For several unrelated requested tasks without a clear first task, request a choice.
