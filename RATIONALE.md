@@ -246,3 +246,13 @@
 **Rejected:** enforcing 80/10/10 on every dataset, demanding approval for trivial reversible coding choices, treating a green run as proof of correct sampling, rewriting checkpoints to conceal an unapproved previous run.
 **Tests:** T53–T58 (NOT RUN).
 **Revisit when:** pilots demonstrate excessive friction or unnoticed split/metric drift.
+
+## RAD-025 — Reference-first Codex → Web evidence handoff (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS DRAFT GUIDANCE; LIVE WEB/CODEX TEST NOT RUN.
+**Observation:** repeated manual transfer of assorted files from Codex Desktop into Web chat wastes time, duplicates code/logs, creates privacy risk and may imply falsely that ChatGPT can open arbitrary local files.
+**Decision:** the final short Codex report is a self-contained **index** with real result/check/exit, exact source/artifact paths, branch/base/head SHA and explicit access status. Reuse existing GitHub/CI evidence when available. Local paths and unpushed commits are NOT Web-accessible. Only if Web needs selected actual files, propose an approved product-local `.ai-handoff/<TASK_ID>/` folder (gitignored where configured); it is writable **only when allowlisted** and transferred manually to the exact named Web chat. Only small reviewed non-sensitive evidence may be intentionally committed/pushed under separately approved `docs/ai/evidence/<TASK_ID>/`. No per-task mandatory report file or auto-push, no raw datasets, weights, secrets, long raw logs or auto-deletion. Respect isolated experiment worktrees.
+**Why:** one predictable reference-based handoff saves user effort without inventing filesystem/connector transport or multiplying permanent project memory files.
+**Rejected:** copying entire project per task; mandatory HANDOFF.md per micro-task; using a local path as a clickable Web attachment; implicit GitHub push; exempting artifact copying from WRITE ALLOWLIST; silent gitignore edits, auto-cleanup.
+**Tests:** T59–T64, NOT RUN.
+**Revisit when:** real pilots show manual attachment overhead or inaccessible refs remain recurring problems, with measurable benefits for a provider-backed artifact connector.
