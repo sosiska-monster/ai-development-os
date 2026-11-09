@@ -21,6 +21,7 @@ GIT / PRE-EXISTING CHANGES: <approved branch/checkpoint; preserve user edits>
 MEMORY: <update only verified facts; propose unverified records>
 STOP / ESCALATE WHEN: <new auth/data/API/prod risk, out-of-scope diff, new dependency, no-progress failures>
 PLAN FIRST: <mandatory for CONTROLLED; get approval before high-risk effects>
+EVIDENCE HANDOFF: <exact existing source paths/ref and destination Web chat; if files genuinely needed, approved local .ai-handoff/<TASK_ID>/ or explicitly approved shared evidence path; no implicit write scope>
 REPORT: <Lite for low-risk FAST; Full for high-impact tasks; show actual Git and verification artifacts>
 ```
 
