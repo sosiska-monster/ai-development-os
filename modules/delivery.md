@@ -81,6 +81,14 @@ At transitions Web **proposes a minimal register update**, with latest confirmed
 
 This isolation is a **separation policy verified by tools**, not a promise that chat names or soft prompt allowlists enforce filesystem permissions.
 
+## Critical Decision preflight — no silent data-science defaults
+
+Before Web dispatches any task that will **split training data, train/evaluate an ML model, select metrics/thresholds, alter sensitive data semantics or make another material product choice**, it first checks approved requirements/Decisions and actual dataset constraints. If a material choice is absent, Web proposes options and obtains user authorization **before** issuing a write/training task. A narrow **read-only data audit** can run first to determine real counts and group/label distributions, without revealing private samples.
+
+Codex must not silently infer train/validation/test ratios, time/group/stratification policy, data/label weighting, success metrics or final test use from a generic coding convention. Its preflight matches `DECISION LOCK` in the Web task to the code/config/manifest and actual dataset; missing or contradictory material parameters → `BLOCKED — CRITICAL DECISION MISSING` **before split generation, training, checkpoint overwrite or export**. Codex reports the proposed alternative, not an unauthorized automatic fix. Low-risk implementation details remain delegated; avoid paperwork for every parameter. The exact decision boundaries depend on the product.
+
+For a split-changing task, verification must show **actual** train/val/test counts and ratios, no overlap/duplication or entity/time-group leakage relevant to the intended deployment, acceptable label coverage where possible, dataset identifier, deterministic seed/cutoff and correct separation of preprocessing/training from final test. Code-only review or a green training exit is insufficient. Never re-use final test results to choose the winning model. For prior training under unknown/unapproved split, preserve evidence/artifacts, mark metrics NON-COMPARABLE / NEEDS REVIEW, and propose a separate approval-scoped correction. See `modules/requirements.md`.
+
 ## One task at a time — explicit human gate, small reports
 
 Codex may implement necessary internal steps of **one user-authorized task**, then verify the task-scoped diff and checks, produce a short Russian report and **stop**. A task can include multiple files but must have a single approved outcome. Do not silently proceed to the next task, roadmap step, deferred cleanup or suggested next item even if its work looks obvious. User authorization is required for the next independent task; a NEXT suggestion in the report is not approval. For several unrelated requested tasks without a clear first task, request a choice.
