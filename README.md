@@ -12,6 +12,10 @@ ChatGPT Web is the analyst/architect, Codex Desktop executes and tests inside ea
 
 ChatGPT Web routes every prompt to the **exact named** ChatGPT Web or Codex Desktop chat (not just "new/current") and maintains a short history of chat responsibilities/status in the product's existing PROJECT.md or up-to-date ChatGPT Project source. A write-capable model experiment uses an **approved separate branch/worktree or disposable repo**, never `main`. After a failed trial, archive the experiment and resume in the named development chat; do not automatically merge, reset, delete branches, uninstall models or disturb user work. See `modules/delivery.md` and [USER_GUIDE.md](USER_GUIDE.md). These are untested rules, not verified sandbox enforcement.
 
+## Single file handoff Codex → Web
+
+Codex final response is the **evidence index**: real changed paths, tests/exit and verifiable refs, not a fresh full report file or an upload of the entire project. If the Web chat already has access to a reviewed GitHub commit/PR, cite exact paths/ref. Local Codex paths and unpushed commits are **not** readable from Web. For necessary small sanitized attachments, use a separately approved `.ai-handoff/<TASK_ID>/` directory within the product worktree (gitignored if configured) and explicitly direct the user to upload those files to the **named Web chat**. Only explicitly approved reviewed evidence belongs in shared `docs/ai/evidence/<TASK_ID>/`; no automatic push, secrets, dataset dumps, weights or model checkpoints. See `templates/codex-report.md`.
+
 ## Daily loop — one useful result, minimal ceremony
 
 For an ordinary task: **user goal → ChatGPT Web scopes a verifiable slice when needed → one approved Codex task → actual diff/checks → user acceptance → STOP**. Truly safe, local FAST edits may go straight to Codex under the project's existing AGENTS. Do not fill every template or open every module for every task. A fresh Codex chat is a recommendation for an independent next task, **not a forced reset**.
