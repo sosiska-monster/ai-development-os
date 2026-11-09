@@ -22,6 +22,10 @@ Read the product's approved Product Assurance Profile in PROJECT/Blueprint/Envir
 ## Model / reasoning effort
 Choose task-appropriate effort using the model/picker capabilities **actually available** in this session. Prefer native Default/auto selection if verified; otherwise give a short recommendation for a human change only when a harder model or effort is justified. AGENTS.md does not itself control the UI. Escalate reasoning for hard diagnosis or architecture after checking context; de-escalate for bounded implementation. Keep safety and required verification independent of model choice. Do not introduce extra agents/providers for routine work.
 
+## Critical product and ML decision gate
+
+Codex implements approved semantics; it does **not** decide unspecified consequential parameters on its own. For ML training require explicit approved train/validation/final-test proportions or counts, split strategy and grouping/time/leakage policy, dataset identity/seed, evaluation metric and intended use of the test holdout. If any material decision is missing, contradictory or impossible on actual data, STOP **before training, changing the split, exporting results or overwriting checkpoints**: `BLOCKED — CRITICAL DECISION MISSING`. Suggest a reasoned option to ChatGPT Web, never infer user approval. A separately authorized read-only data audit may report counts safely. On an approved split task, independently inspect actual partition sizes, overlap/group leakage and reproducibility; preserve old artifacts. Do not require approval for ordinary reversible code details.
+
 ## Verification
 Fast: <project-specific working command, or record NOT AVAILABLE during setup>.
 Full: <risk-specific command if available>.
