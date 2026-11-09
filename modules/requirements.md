@@ -28,6 +28,20 @@ Each entry: stable ID, requirement/acceptance, source, status, approving authori
 
 **Authority:** only authorized customer communication can establish customer CONFIRMED; the user can approve implementation decisions but must not be presented as the customer's approval. Codex can propose/record verification evidence, not upgrade a business requirement to CONFIRMED.
 
+## Critical Decision Gate — semantic choices belong to Web/user, not Codex
+
+During requirements, architecture and **before any irreversible or expensive execution**, Web identifies missing parameters that materially determine **what the product means, how it is evaluated or what data are changed**. Examples: ML training/validation/test split, class balancing or sample weights, leakage boundaries, evaluation metric and success threshold, data retention, authorization rules and public contract behavior. These are **product/methodological decisions**, not ordinary coding defaults. A safe implementation choice (variable name, formatting, localized refactor) can stay with Codex; do not seek human approval for every trivial setting.
+
+**For ML dataset partitioning, explicitly settle before the training run:**
+- What counts as an independent unit: sample/record, person, source, session, image/video family, timestamp, or other real-world group? What would constitute duplication/leakage?
+- Which strategy fits the product: shuffled/random, label-stratified, group-aware, chronological/time-based, or cross-validation? **80/10/10 is an example, not a default mandate**; document the reasoning and feasibility, especially for small/imbalanced datasets.
+- Approved **train / validation / final test** proportions or counts, expected rounded counts, dataset identity/version, random seed or deterministic temporal cutoffs. Ensure disjoint partitions; fit preprocessing/feature selection/augmentation only on training data as applicable, and keep final test data from model selection/tuning.
+- Agreed evaluation metrics, test holdout policy and acceptance threshold. Class weights and split proportions are **different decisions**; do not conflate them.
+
+**Decision flow:** Web reports `DECISION REQUIRED: <missing variable> | options/trade-offs | recommended value/strategy (PROPOSED) | user approval`. Codex receives `DECISION LOCK: <approved values + authority/source>`, with permitted variation only if expressly bounded. If a critical decision is missing, ambiguous or incompatible with actual data, Codex responds `BLOCKED — CRITICAL DECISION MISSING` **before changing the split, fitting a model, exporting results or spending a long training run**; it may do an explicitly approved read-only inventory to collect counts. A preset in a library, a guess in generated code, a previous model result or a "usual 80/10/10" suggestion is **not approval**. User may explicitly delegate a bounded choice to Web after evaluating trade-offs; record the choice.
+
+**Verification contract for a split task:** inspect actual output counts/ratios, their sum against the dataset, no train/val/test item overlap or relevant group leakage, sufficient examples per important label where feasible, reproducibility and saved split/config/version. Do not fabricate passing checks from the intended configuration. If a run used an unapproved split, mark its reported metrics as **NOT COMPARABLE / NEEDS REVIEW** until the real split and evaluation process are audited; do not silently overwrite checkpoints, data or artifacts. Repair/retrain only after a new approved scoped task.
+
 ## Dynamic routing and readiness
 
 Small low-risk correction may proceed FAST with concise acceptance. Significant new behavior or uncertainty becomes STANDARD; access-control, critical data, migration or public contract change becomes CONTROLLED with relevant approvals. No need to block architecture work for every small open question; record unresolved blockers and their consequences.
