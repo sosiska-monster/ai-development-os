@@ -12,6 +12,7 @@ READ CONTEXT: <paths allowed to inspect for understanding; reading does not gran
 WRITE ALLOWLIST: <exact files or narrow globs where edits are authorized; NONE for read-only recon>
 DO NOT MODIFY: <all other paths including config, deps, tests, memory, AGENTS unless explicitly allowlisted>
 EXPECTED_DIFF_PATHS: <same write allowlist; PROVISIONAL only for read-only recon; approve extra paths before editing>
+DECISION LOCK (when consequential): <Web/user-approved semantic choices; for ML: split ratios, strategy, units/groups, seed, metric, dataset identity; cite approval source>
 ACCEPTANCE: <objective behavior, tests or invariant>
 DEPENDENCIES / CONTRACT: <what is pre-approved; new deps need approval per Environment Profile>
 MODEL / EFFORT: <OPTIONAL — verified current setting and requested adjustment if a specific hard problem warrants it; never assume the prompt can switch the UI>
@@ -22,6 +23,8 @@ STOP / ESCALATE WHEN: <new auth/data/API/prod risk, out-of-scope diff, new depen
 PLAN FIRST: <mandatory for CONTROLLED; get approval before high-risk effects>
 REPORT: <Lite for low-risk FAST; Full for high-impact tasks; show actual Git and verification artifacts>
 ```
+
+**Critical decision stop:** If `DECISION LOCK` is missing or disagrees with actual data for a consequential choice, return `BLOCKED — CRITICAL DECISION MISSING` before split creation/training/export or other side effects. Do not select ML train/validation/test proportions, sample weights, leakage boundary, validation metric or production semantics yourself. A conventional ratio is a proposal, not approval. If allowed to implement an approved split, report actual counts/ratios, disjoint groups/records, dataset version and reproducibility; do not silently edit/decrease tests or overwrite existing artifacts.
 
 For an **experiment with side effects**, before any writes/installations verify actual working directory, branch, HEAD and dirty state. If not in the approved isolated `experiment/<slug>` worktree/repo, STOP as BLOCKED. Never switch into or modify `main` to run a trial, auto-merge, push, globally install/uninstall models or delete failed trial data without separately approved scoped instructions. A successful trial needs a later explicit integration task; a failed one stays isolated, with safe cleanup proposed rather than executed automatically.
 
