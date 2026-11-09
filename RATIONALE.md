@@ -237,3 +237,12 @@
 **Tests:** T47–T52; NOT RUN.
 **Revisit when:** a real pilot demonstrates registry maintenance costs more than it saves or isolation/route behavior fails.
 
+## RAD-024 — Critical decisions must be approved, not inferred by Codex (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS INSTRUCTION, REAL TRAINING PILOT NOT RUN.
+**Observation:** a Codex training task without an explicit data partitioning policy can silently choose a dataset split (for example, 42% train, 8% validation and the remainder test), leading to poor training capacity, inconsistent evaluation and unreviewed model assumptions. The actual user's split and reason must be verified rather than inferred from a conversational example.
+**Decision:** ChatGPT Web identifies semantic/irreversible choices before task dispatch, particularly ML split counts/ratios, unit of independence, random/group/time strategy, seed, class balancing, evaluation metric and final holdout policy. It proposes a reasoned option and obtains explicit authorized approval. The task includes DECISION LOCK with provenance. Codex stops before training/data writes when a material choice is undefined or contradicted by reality. Code-level defaults are not user consent. For approved split operations, inspect actual counts, group/record disjointness, reproducibility, dataset version and leakage. Preserve earlier training artifacts and audit suspect metrics rather than auto-retraining or deleting.
+**Why:** prevent executive discretion at implementation time from silently changing the scientific or product meaning of the task. Keep implementation autonomous within clear semantics and narrow safety boundaries.
+**Rejected:** enforcing 80/10/10 on every dataset, demanding approval for trivial reversible coding choices, treating a green run as proof of correct sampling, rewriting checkpoints to conceal an unapproved previous run.
+**Tests:** T53–T58 (NOT RUN).
+**Revisit when:** pilots demonstrate excessive friction or unnoticed split/metric drift.
