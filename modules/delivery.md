@@ -133,6 +133,14 @@ Compare *all* effective task paths with approved scope. If outside scope, report
 - Repeat failures without progress → pause, diagnose and escalate; never automatically erase the worktree or run destructive restore.
 - For product behavior review, prefer independently retrieved GitHub diff, CI results or user-inspected Codex diff. Command output authored by Codex alone is **not independent proof**.
 
+## Single evidence handoff to Web (files only when needed)
+
+**Reference-first:** Codex's final concise report is the task's handoff index. It must name exact changed source/artifact paths, task base/head SHA, actual check/exit, relevant verified GitHub commit/PR or CI link, and the exact named destination Web chat. Web first retrieves existing project files from its actually available connected source; do not duplicate an already accessible file to create a report package. No mandatory report file per task.
+
+**Shareability is explicit:** a local path is NOT Web access, and a commit that has not been pushed cannot be fetched from GitHub. Mark `GITHUB ACCESSIBLE | LOCAL UPLOAD REQUIRED | CI LINK | NOT AVAILABLE` per meaningful artifact. Never assert Web inspected a file unless actually fetched/uploaded. When Web cannot fetch needed evidence, request the specific file, not the whole repository or all logs.
+
+**Optional handoff directory, only if necessary:** use the product's pre-approved directory, otherwise propose local `.ai-handoff/<TASK_ID>/`, ignored by Git if configured, for minimal sanitized files that the user can attach to the named Web chat. Creating/copying files and editing `.gitignore` require an explicit narrow WRITE ALLOWLIST or separate bootstrap approval; the folder is not an automatic exception. If user specifically approves committing shareable evidence, use `docs/ai/evidence/<TASK_ID>/` (or agreed path) with explicit allowlist, privacy review and independently verified GitHub ref; do not push on your own. Keep datasets, checkpoints, secrets, raw large logs and model weights out of these handoffs. Experimental files remain in experiment worktrees, never move into main as a transport step. No auto-delete or cleanup of handoff artifacts.
+
 ## Reports and decisions
 
 FAST/LOW uses the Lite evidence format. STANDARD generally Full if meaningful; CONTROLLED always Full with targeted diff, tests, and approval status. See `templates/codex-report.md`.
