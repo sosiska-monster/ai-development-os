@@ -6,6 +6,19 @@ Report in Russian; don't invent tests, commands, Git outputs or repository state
 
 Prefer a **short Russian 6-line answer**: DONE/PARTIAL/BLOCKED; what changed and why; main paths; actual check + exit or NOT RUN; risks; **NEW CHAT: YES/NO (reason)**; next task only as a suggestion and **STOP for explicit user authorization**. If DONE, default to **NEW CHAT: YES — "Задача завершена. Перед следующей независимой задачей открой новый чат Codex"**. For PARTIAL/BLOCKED say whether to continue the same thread or switch with a minimal verified handoff. Never claim to have opened or reset a chat. Keep the underlying Lite/Full evidence accessible for review, but do not paste extensive logs into the main response unless needed for a risk decision. A proposed NEXT is not permission to begin it; blocked work remains intact. No separate report file per small task.
 
+## File handoff to ChatGPT Web — reference first, one designated place if needed
+
+**Default (every task):** do not generate a separate report file, copy source files, bundle huge logs or force the user to upload everything. The short final Russian report **is the index** of evidence, referring to existing source files, diffs, CI results, dataset summaries and any genuinely needed attachments by **exact relative path and branch/base/head SHA** (and a verified GitHub commit/PR link when one exists). Include a brief result, changed paths and real check+exit **inline** so the answer remains useful if Web cannot access an attachment. Distinguish `EVIDENCE: GITHUB ACCESSIBLE / LOCAL UPLOAD REQUIRED / CI LINK / NOT AVAILABLE`. A path to `C:\\...` or a local repository is **not** a Web-readable link; a committed but **not pushed** file is likewise unavailable through GitHub. Never claim access or upload without verifying it.
+
+**When Web must inspect an actual output file not already accessible through an existing shared source:**
+1. If the product's approved Environment Profile already names a handoff folder, use **that**. Otherwise propose `.ai-handoff/<TASK_ID>/` in the current **PRODUCT worktree** as the local, temporary, **gitignored by configured project policy**, single handoff destination. An explicit approved task `WRITE ALLOWLIST` must include the exact destination *before Codex creates/copies any file*; do not silently expand scope or edit `.gitignore` as an exception. Set up the folder/ignore only as a separately approved bootstrap/setup action if absent. Use collision-safe task identifiers; preserve preexisting files.
+2. Put **only minimal, safe-to-share derivatives** there: short sanitized split statistics, a bounded test excerpt, a small relevant diff/report, a screenshot specifically needed for review. Keep originals in their original locations; never relocate/overwrite training data, checkpoints or test artifacts. No secrets, personal/customer records, full datasets, model weights, unredacted logs or huge generated binaries.
+3. In the final reply list `HANDOFF FILES: <exact paths + purpose + size if useful>` and `TRANSFER: attach these files to ChatGPT Web → «exact registered chat name»` when manual upload is required. Web may inspect uploaded content only after user attaches it; paths alone never prove access.
+4. If user explicitly approves GitHub-based handoff, store only reviewed small non-sensitive evidence under `docs/ai/evidence/<TASK_ID>/` (or existing approved equivalent), **separately allowlist these files**, commit/push only with explicit authorization, and cite the verified immutable commit URL/ref. This is optional, not required for routine tasks. Never publish sensitive artifacts in the central AI Development OS methodology repo.
+5. Old handoff bundles, ignored files and evidence directories are protected user/worktree material: **no automatic cleanup**. Cleanup requires review and user authorization, especially after a failed experiment. The handoff location inherits experimental branch/worktree isolation; never put experimental outputs in mainline just to share them.
+
+Use one source of truth for each file. **Don't copy unchanged project source into a handoff folder just because Web wants to read it** if the same file is already reachable through an approved GitHub source. For a tiny FAST change, a verified Git reference and 5–6-line inline report normally suffice.
+
 ## Lite (FAST/LOW; concise)
 
 ```text
@@ -35,6 +48,7 @@ DEPENDENCIES / LOCKFILES: <verified actual versions, changes or NONE>
 SECURITY / DATA / CONTRACTS: <risk; required approvals; production not touched unless separately authorized>
 MEMORY: <verified fact updates vs PROPOSED/STALE entries awaiting review>
 EVIDENCE SOURCES: <GitHub commit/PR, Codex diff, CI job links, independently inspected artifacts; or NONE>
+HANDOFF FILES / ACCESS: <exact existing paths or NONE; GITHUB ACCESSIBLE / LOCAL UPLOAD REQUIRED / CI LINK / NOT AVAILABLE; verified destination Web chat name>
 BLOCKERS / STOP REASON / NEXT ACTION:
 ```
 
