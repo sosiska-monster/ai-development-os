@@ -30,6 +30,14 @@ Keep only the named Web/Codex chats actually used or explicitly planned:
 `EXACT CHAT NAME | ChatGPT Web / Codex Desktop | responsibility/boundary | PROPOSED / ACTIVE / PAUSED / ARCHIVED | approved Git branch/worktree or N/A | last verified checkpoint`.
 ChatGPT Web routes every handoff to the **exact registered/proposed chat name** and can propose a new chat with starter context; it must not claim to create the chat or remember unshared other chats. A failed experiment is ARCHIVED, not merged into main. Store this map in existing PROJECT.md or its maintained ChatGPT Project source; do not change main merely to track a running experiment. No separate registry file required.
 
+## Product Goal Graph (minimal single source of truth)
+
+- **ROOT G0:** customer's desired finished product + confirmed end-to-end acceptance and explicit exclusions, in existing PROJECT.md/requirements.
+- **Outcome tree:** stable parent IDs, must-have vs optional/deferred sub-results; each leaf is a bounded testable task. Preserve requirement IDs and concrete acceptance. Do not infer unknown product features.
+- **Dependency DAG:** separately record `DEPENDS_ON` edges; check cycles and distinguish technical dependencies from parent-child composition. No invented file dependencies before repository recon.
+- **Durable state:** keep task-node and edge rows in existing product TODO.md (or agreed equivalent), e.g. `ID | PARENT | REQ | ACCEPTANCE | DEPENDS_ON | STATUS | EVIDENCE`; Mermaid is a generated view only. Detail nearest few leaves, not full speculative implementation.
+- **READY / VERIFIED / ACCEPTED:** only dispatch a leaf with prerequisites/critical decisions satisfied; verify code/test evidence before accepting; root requires integrated end-to-end product check and relevant customer signoff, not merely closed leaf tasks.
+
 ## Architecture proposal
 - Recommended stack/versions (verified vs assumed)
 - Main modules/data flow/trust boundaries
