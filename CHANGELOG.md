@@ -2,6 +2,7 @@
 
 ## 0.2.0-draft — UNRELEASED / NOT PILOT-VALIDATED (2026-11-01)
 
+- Product Goal Graph: customer-accepted finished product as root, intermediate required results, small Codex-ready task leaves, separate part-of and dependency DAG edges, requirement traceability and integrated root acceptance. Stored in existing project requirements/PROJECT + TODO; T65–T68 NOT RUN.
 - Reference-first Codex → ChatGPT Web evidence handoff: final report indexes existing files/commits and test exits; optional narrow local `.ai-handoff/<TASK_ID>/` attachments or explicitly approved shared evidence. Do not imply local paths are Web-accessible or auto-upload/push data; T59–T64 NOT RUN.
 - Critical Decision Gate: Web must approve consequential ML data split/stratification/grouping, dataset version, evaluation and model semantics before Codex runs training; add DECISION LOCK, explicit BLOCKED state, actual partition/leakage verification and preservation of suspect artifacts. 80/10/10 is illustrative only; tests T53–T58 NOT RUN.
 - Explicit Web chat routing by exact, confirmed/proposed names (not YES/NO or generic current/new), plus a durable minimal chat register in product PROJECT or ChatGPT Project sources. Experimental model trials require approved isolated Git worktree/branch when they have side effects, verified Codex preflight, no mainline merge on failure, and approved safe cleanup. T47–T52 NOT RUN.
