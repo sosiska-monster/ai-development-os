@@ -4,6 +4,7 @@ The task mode is a **current assessment, not a permanent label**. Codex may reco
 
 ```text
 TASK ID / GOAL: <ONE atomic, verifiable result; no second task in the same prompt>
+GOAL GRAPH TRACE: <G0 customer outcome → parent outcome → THIS task ID; linked requirement IDs, prerequisite IDs and acceptance; omit speculative file mapping>
 DESTINATION CHAT: <exact Codex Desktop chat name registered by ChatGPT Web; label as proposed until user confirms it>
 WORKSPACE / BRANCH: <verified product repo, intended Git branch and worktree; for an experimental write task require isolated experiment/<slug>, never main>
 CURRENT MODE / RISK: FAST | STANDARD | CONTROLLED / why
