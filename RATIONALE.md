@@ -256,3 +256,13 @@
 **Rejected:** copying entire project per task; mandatory HANDOFF.md per micro-task; using a local path as a clickable Web attachment; implicit GitHub push; exempting artifact copying from WRITE ALLOWLIST; silent gitignore edits, auto-cleanup.
 **Tests:** T59–T64, NOT RUN.
 **Revisit when:** real pilots show manual attachment overhead or inaccessible refs remain recurring problems, with measurable benefits for a provider-backed artifact connector.
+
+## RAD-026 — Product Goal Graph rooted in customer-accepted result (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS GUIDANCE; LIVE WEB/CODEX PILOT NOT RUN.
+**Observation:** separate agents optimize their local task descriptions differently when there is no durable, shared representation of the desired finished product. A flat backlog doesn't establish why a task matters or whether closing all tasks yields the customer-accepted system.
+**Decision:** Web creates a customer-approved root outcome G0 with explicit end-to-end acceptance, decomposes into intermediate outcomes/atomic verifiable task leaves, and tracks **part-of** edges separately from a dependency DAG. Maintain stable IDs and requirement traceability in existing PROJECT/requirements plus TODO, not a mandatory new graph service. Prioritize only nearest READY leaves, require approved critical decisions and one scoped Codex task at a time; Codex can refine technical dependencies from actual read-only repository inspection. Verification evidence attaches to nodes; parent/root acceptance additionally requires integration/customer checks. Customer changes invalidate impacted descendants and dependencies. Speculative experiments are outside the required product tree until separately approved.
+**Why:** make Web, Codex and user work toward the same measurable end state while retaining adaptability, evidence and minimal user bureaucracy.
+**Rejected:** flat unrelated task lists as sole plan, hundreds of fully specified tasks before implementation, equating DONE leaves with accepted product, treating Mermaid screenshots as independent source of truth, automatic completion of all graph nodes or auto-merging experiment code.
+**Tests:** T65–T68, NOT RUN.
+**Revisit when:** actual pilot shows graph-maintenance overhead, poor task selection or inadequate customer acceptance traceability.
