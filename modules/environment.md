@@ -44,6 +44,17 @@ Evaluate on representative tasks: quick fix, standard implementation and hard in
 
 Keep root `AGENTS.md` short and durable; route to `PROJECT.md`, current `TODO.md`, `REQUIREMENTS.md` for confirmed behavior, `Decision.md`, `Bugs.md`, `Gotchas.md` only as relevant. A tiny project may combine compatible files when it preserves authority and status. Personal `WordStyle.md` lives outside customer repos by default.
 
+## Operational harness gate — verify real controls in each PRODUCT
+
+The methodology is not an installed permission profile, CI service or browser. During an **approved project-specific Bootstrap** select the smallest technically workable verification and protection scheme, then test it on a disposable branch/fixture:
+1. **Review boundary:** GitHub repository, remote and branch/worktree isolation; choose a user-approved push policy; verify default-branch protection/rulesets, PR/review checks and restrictions on direct writes to main if the project's GitHub account supports them. A created YAML file or requested branch rule is not proof that enforcement is active.
+2. **Agent authority:** inspect installed Codex Desktop/CLI version, actual sandbox/permission configuration and path/network access with harmless canary files/fixtures. Do not claim prompt WRITE ALLOWLIST is OS enforcement, confuse sandbox writable roots with file-specific deny rules, or assume any profile works without a failed unauthorized-write trial. Protect credentials, datasets and production systems independently of Git.
+3. **Independent checks:** reuse project-native deterministic `verify` (test/lint/type/build, critical config/scope checks as applicable) and arrange **PR CI that runs from reviewed/base configuration** where justified. Protect required checks; flag dependency/lockfile, tests, assertion/skips, workflow and critical-parameter changes. A local pre-commit hook is helpful but bypassable; CI/review is the independent layer. For non-PR projects specify what independent operator/runner actually executes the check.
+4. **Runtime observation:** for deployed user-facing projects run a relevant preview/E2E/browser/smoke scenario with no production secrets unless approved; for APIs/CLI/ML use a corresponding real output/inference check. Record actual invocation, versions, tool permissions, browser/viewport or inputs and evidence. Avoid installing heavy tools solely to satisfy a checklist.
+5. **Verification of the bridge:** before declaring Web a code reviewer, test whether **this user's current Web access** can actually fetch default-branch file, nondefault-branch file, complete PR diff and CI result. If it cannot, fall back to targeted uploaded diff/evidence plus CI; do not claim the browser connection automatically syncs.
+
+Record `CONTROL | CONFIGURATION | SAFE TEST | OBSERVED RESULT | OWNER | FALLBACK` in the existing Environment Profile; mark each `VERIFIED / NOT VERIFIED / NOT AVAILABLE`. If a safety-critical control is unavailable, narrow scope or use a safer isolated environment rather than representing an unenforced textual policy as hard security. No generic universal shell script, CI workflow, permission YAML or tool installation is mandated across unrelated stacks.
+
 ## Environment Gate C
 
 - PLANNED: scope and controls approved, ready to draft project Bootstrap on **separate user request**.
