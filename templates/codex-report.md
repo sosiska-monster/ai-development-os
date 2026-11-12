@@ -19,6 +19,23 @@ Prefer a **short Russian 6-line answer**: DONE/PARTIAL/BLOCKED; what changed and
 
 Use one source of truth for each file. **Don't copy unchanged project source into a handoff folder just because Web wants to read it** if the same file is already reachable through an approved GitHub source. For a tiny FAST change, a verified Git reference and 5–6-line inline report normally suffice.
 
+## Optional PR handoff and runtime evaluation — reference-first
+
+For a task that has an **approved GitHub publication policy**, use the existing concise final report as the PR handoff:
+```text
+PRODUCT REPO / TASK / GOAL NODE: <verified>
+BRANCH / BASE..HEAD / COMMIT SHA: <actual values>
+PR URL / STATUS: <verified URL + open/draft, or NOT CREATED>
+SCOPE: <changed paths and MATCH / MISMATCH>
+CI: <required job name + GitHub URL + observed status, or NOT RUN / INACCESSIBLE>
+RUNTIME ACCEPTANCE: <user journey / API / CLI / inference; environment; PASS/FAIL/NOT RUN/NOT APPLICABLE>
+MODEL EVAL (if applicable): <dataset and eval version; baseline and candidate; actual metrics/slices; comparable?; artifact ref>
+IN-TASK REPAIR: <short attempted fixes/checks or NONE; remaining risk>
+WEB REVIEW ACCESS: <COMPLETE / PARTIAL / NOT VERIFIED; exact reviewed refs, not an assumption>
+DESTINATION: ChatGPT Web → «<confirmed/proposed exact chat name>»
+```
+No separate report file for a trivial task. A CI badge is not evidence until the relevant job, commit SHA and status are actually inspected. A passing build alone cannot certify the UI or ML results. If Web only sees default branch or a truncated PR, label review INSUFFICIENT EVIDENCE and request minimal targeted artifacts. Never auto-push or merge main, and never publish sensitive training records or model weights. On repeated in-task failures don't conceal attempted fixes or claim success.
+
 ## Lite (FAST/LOW; concise)
 
 ```text
@@ -49,6 +66,9 @@ SECURITY / DATA / CONTRACTS: <risk; required approvals; production not touched u
 MEMORY: <verified fact updates vs PROPOSED/STALE entries awaiting review>
 EVIDENCE SOURCES: <GitHub commit/PR, Codex diff, CI job links, independently inspected artifacts; or NONE>
 HANDOFF FILES / ACCESS: <exact existing paths or NONE; GITHUB ACCESSIBLE / LOCAL UPLOAD REQUIRED / CI LINK / NOT AVAILABLE; verified destination Web chat name>
+RUNTIME ACCEPTANCE / MODEL EVAL: <actual scenario and evidence, or NOT RUN/NOT APPLICABLE>
+IN-TASK REPAIRS: <scope-safe fixes and reruns, or NONE; no silent changed success criteria>
+PR / CI / WEB ACCESS: <verified refs/status or NOT AVAILABLE>
 BLOCKERS / STOP REASON / NEXT ACTION:
 ```
 
