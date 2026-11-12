@@ -42,6 +42,13 @@ ChatGPT Web routes every handoff to the **exact registered/proposed chat name** 
 
 For a vague UI requirement, Web first proposes a small, testable design/content concept with a text wireframe or optional visual preview, recommended choice and up to two meaningful alternatives. Mark UI layout, CTA and copy `PROPOSED`; approved business facts `CONFIRMED`; unknown prices/currency/billing terms `MISSING` rather than inventing them. User approves the coherent experience before Codex implementation. Store concise approved outcome and reference under the same product goal node/requirements; don't create a new permanent design document for every screen. Codex receives approved behavior, responsive layout and acceptance criteria. Trivial/established designs can skip separate review.
 
+## Outcome-based verification and model evaluation (when relevant)
+
+- **User-observed result:** one or more approved Given/When/Then journeys per meaningful goal node; for UI preview/mobile/CTA, for APIs/CLI direct invocation, for ML actual inference on relevant holdout. List tool/runtime needed and safe environment; `NOT RUN` when inaccessible.
+- **Automated independent checks:** existing deterministic `verify`, PR CI if useful, test/config/scope integrity and real baseline; exact owner of CI/protected branch/permission controls and whether *observed*.
+- **Model Evaluation Contract (ML/LLM only):** approved dataset/task/cases version, split/group/time/seed or rubric, baseline/model/prompt/code version, metrics/thresholds and critical slices, privacy and final holdout policy; require comparable verified evidence before promotion. Record in existing project decision/config, not mandatory separate document.
+- **Feedback:** when a real failure occurs, create a minimal reproducible regression case tied to the goal node and observed environment; compare before/after verified results and manual effort. Don't mark a rule effective from text alone.
+
 ## Architecture proposal
 - Recommended stack/versions (verified vs assumed)
 - Main modules/data flow/trust boundaries
