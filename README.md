@@ -16,6 +16,17 @@ ChatGPT Web routes every prompt to the **exact named** ChatGPT Web or Codex Desk
 
 Codex final response is the **evidence index**: real changed paths, tests/exit and verifiable refs, not a fresh full report file or an upload of the entire project. If the Web chat already has access to a reviewed GitHub commit/PR, cite exact paths/ref. Local Codex paths and unpushed commits are **not** readable from Web. For necessary small sanitized attachments, use a separately approved `.ai-handoff/<TASK_ID>/` directory within the product worktree (gitignored if configured) and explicitly direct the user to upload those files to the **named Web chat**. Only explicitly approved reviewed evidence belongs in shared `docs/ai/evidence/<TASK_ID>/`; no automatic push, secrets, dataset dumps, weights or model checkpoints. See `templates/codex-report.md`.
 
+## Runtime outcomes, model evals and engineering feedback (draft, NOT PILOT-VALIDATED)
+
+New task-specific rules are documented in the existing `modules/delivery.md`, `modules/requirements.md` and `modules/environment.md`:
+- **Accept user-visible outcomes**, not a green compilation alone: browser/mobile journey when UI work warrants it, or real API/CLI/ML inference/behavior for other products. Give exact `PASS / FAIL / NOT RUN / NOT APPLICABLE` with real evidence.
+- **Allow limited safe in-task self-correction**: Codex can repair errors and rerun already authorized checks within approved WRITE ALLOWLIST, but must STOP for new critical decisions, risk, dependencies, weakened tests, new goals or failed progress.
+- **Use versioned reproducible model comparisons** for ML/LLM experiments: approved data/task set, leakage/split policy, baseline and metrics, reproducibility, critical slices and signoff before promotion.
+- **Set up actual project-specific GitHub PR/CI/permission controls** in the PRODUCT repo only with user approval and safe tests; verify branch/PR/CI readability from Web before claiming independent review. A methodology instruction cannot install GitHub branch protection or Codex sandbox enforcement.
+- **Turn failures into regression experiments** in existing `TEST_CASES.md`; don't count new wording as a passed test. Keep the context minimal; compare shortened CORE against the baseline before discarding crucial safety rules.
+
+**Activation is separate from documentation:** install and run the relevant product controls only after a scoped approved Bootstrap, then record observed results and safe fallback. No generic all-stack Playwright installation, PR automation, Honcho/multiagent runtime or GitHub production changes are implied by this methodology commit.
+
 ## Daily loop — one useful result, minimal ceremony
 
 For an ordinary task: **user goal → ChatGPT Web scopes a verifiable slice when needed → one approved Codex task → actual diff/checks → user acceptance → STOP**. Truly safe, local FAST edits may go straight to Codex under the project's existing AGENTS. Do not fill every template or open every module for every task. A fresh Codex chat is a recommendation for an independent next task, **not a forced reset**.
