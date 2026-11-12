@@ -266,3 +266,13 @@
 **Rejected:** flat unrelated task lists as sole plan, hundreds of fully specified tasks before implementation, equating DONE leaves with accepted product, treating Mermaid screenshots as independent source of truth, automatic completion of all graph nodes or auto-merging experiment code.
 **Tests:** T65–T68, NOT RUN.
 **Revisit when:** actual pilot shows graph-maintenance overhead, poor task selection or inadequate customer acceptance traceability.
+
+## RAD-027 — Web proposes a concrete product experience before Codex implements ambiguous UI (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS GUIDANCE; LIVE WEB/CODEX PILOT NOT RUN.
+**Observation:** both "build a pricing page" and a specification of three prices can leave material visual/interaction choices unresolved. Asking the user to design the page or sending a vague prompt directly to Codex causes unreviewed invention of user experience, billing semantics or business promises.
+**Decision:** Web takes initiative to draft a concrete recommended user-visible experience, optionally showing a wireframe/visual concept and meaningful variants. Separate CONFIRMED customer facts from PROPOSED layout/UX and MISSING prices/payment semantics. For materially underspecified features, the goal-graph node waits in DESIGN_REVIEW until one coherent design and behavior contract is approved; then Web authorizes one Codex task with design trace, responsive behavior and objective acceptance. Codex retains autonomy for technical implementation details; trivial changes and existing approved designs skip the extra ceremony.
+**Why:** reduce uncertainty without requiring the user to already know UI design; make pre-implementation approval meaningful and prevent Codex from silently inventing the product.
+**Rejected:** Codex guessing pricing or substantial layout, turning all proposals into CONFIRMED requirements, mandatory pixel-perfect images before trivial edits, creating a design document per UI component, requiring user to answer endless open-ended preference questions.
+**Tests:** T69–T72, NOT RUN.
+**Revisit when:** real pilots show unnecessary approval overhead or persistent mismatch between proposed UI and Codex implementation.
