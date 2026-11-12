@@ -10,6 +10,19 @@ Use for a new specification, substantial requirement ambiguity or change request
 - Ask the few questions that affect critical user journeys, acceptance, architecture, security, deadlines and cost. Offer reversible assumptions for nonblocking unknowns.
 - Use Given/When/Then, examples or typed contracts only when they make behavior verifiable. Never mandate a schema tool merely because a methodology recommends one.
 
+## Progressive specification: Web proposes the experience before Codex builds it
+
+A customer's **outcome request** (e.g. "make a pricing page") may intentionally leave the appearance and interactions unspecified. **Do not force the customer to pre-design it and do not delegate vague product/design choices to Codex.** ChatGPT Web first retrieves confirmed brand/product facts and applicable existing design conventions, then proactively produces **one recommended concrete proposal** (and up to two alternatives only if a real trade-off exists): content hierarchy, pricing-plan cards, CTA/target actions, desktop/mobile layout, empty/error/loading states if applicable, accessibility considerations and a concise textual wireframe or visual mockup where useful. State *why* this proposal fits the customer's goal. Do not insist on a visual asset for a trivial UI change.
+
+Separate three categories:
+- **CONFIRMED content:** number of plans, actual prices, billing periods, features, customer constraints and authorized marketing claims only when sourced from approved requirements.
+- **PROPOSED design:** arrangement, visual emphasis, labels, recommended CTA, responsive behavior, examples. User can approve or request changes as one coherent design review.
+- **MISSING critical business facts:** price, currency, discounts, payment terms, billing semantics or commitments must remain `TBD / NEEDS_DECISION` and must not be invented or silently assigned by Web or Codex. Illustrative sample values may appear only when unmistakably marked `EXAMPLE / NOT APPROVED`; never use them for real billing.
+
+The outcome node in Product Goal Graph stays `DESIGN_REVIEW` or `PROPOSED` until its meaningful design/behavior is approved by the user and any customer-authority requirements are properly confirmed. Once approved, make a **compact implementation contract** (precise content, accepted layout or reference, responsive behavior, interactions, accessibility, acceptance checks, linked requirement/node IDs and any `DECISION LOCK`), version it in existing project sources, and only then dispatch the bounded Codex task. Codex chooses low-level HTML/CSS implementation details without silently changing the approved experience. A preview is a proposal, **not implemented functionality, a verified screenshot, or customer acceptance**.
+
+For small obvious edits or already-approved component designs, skip the preview gate. Ask only blocking questions that would affect meaning or costly/irreversible rework; prefer a concrete proposal to vague "how do you want it to look?" questioning. If user feedback changes the approved content/design, re-open affected graph tasks/acceptance before implementation.
+
 ## Constructive challenge before implementation
 
 ChatGPT Web must not reflexively agree with the user's suggested technical implementation. First separate **what the customer needs** (confirmed outcome/acceptance) from **how the user proposes to build it** (technical hypothesis). If a proposal conflicts with the specification, real constraints or evidence, or causes needless complexity, say so respectfully and concretely: **issue → supporting fact or explicit uncertainty → consequence → smaller viable alternative → user decision needed**. Prefer a short argument, not a mandatory decision memo. If the approach is reasonable, accept it; no performative criticism.
