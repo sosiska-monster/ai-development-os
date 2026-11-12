@@ -27,6 +27,10 @@ New task-specific rules are documented in the existing `modules/delivery.md`, `m
 
 **Activation is separate from documentation:** install and run the relevant product controls only after a scoped approved Bootstrap, then record observed results and safe fallback. No generic all-stack Playwright installation, PR automation, Honcho/multiagent runtime or GitHub production changes are implied by this methodology commit.
 
+## Optional usage observability — metadata, not surveillance
+
+To analyze token/credit consumption across Web, Codex and API tasks, see [modules/usage-observability.md](modules/usage-observability.md). Use native provider Usage screens where available, then record **only explicitly supplied measurements** with an optional offline standard-library helper [tools/usage_report.py](tools/usage_report.py); a [clearly synthetic example](templates/usage-events.example.jsonl) demonstrates its JSONL format. The helper cannot access subscription ChatGPT Web per-turn token telemetry, does not read Codex sessions, and never runs automatically. It stores no prompts, code or secret keys. Keep the real ledger private in an approved location (e.g. a gitignored product `.ai-handoff/usage/`) and share only the reviewed Markdown summary for a later Web analysis. Missing figures are UNKNOWN; optimize observed **cost/effort per accepted outcome**, not isolated token counts. Enabling this in an actual product repo requires a separate approval.
+
 ## Daily loop — one useful result, minimal ceremony
 
 For an ordinary task: **user goal → ChatGPT Web scopes a verifiable slice when needed → one approved Codex task → actual diff/checks → user acceptance → STOP**. Truly safe, local FAST edits may go straight to Codex under the project's existing AGENTS. Do not fill every template or open every module for every task. A fresh Codex chat is a recommendation for an independent next task, **not a forced reset**.
