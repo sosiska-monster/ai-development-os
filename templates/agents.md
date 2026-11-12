@@ -57,6 +57,14 @@ At a natural checkpoint record only important verified changes in the existing P
 
 Final response is the **single evidence index**: concise task result, exact existing files/diff/commit refs, actual checks+exit, and any genuinely necessary upload filenames. Do not create a full report file each task or copy already shared source files. A local path or unpushed commit is not accessible to Web; say `LOCAL UPLOAD REQUIRED` or `NOT AVAILABLE`, not `GITHUB ACCESSIBLE`. If Web needs small sanitized attachments, use the approved project handoff destination (suggest `.ai-handoff/<TASK_ID>/`, gitignored if configured), **only when specifically allowlisted**. Small reviewed shareable evidence may live under separately approved `docs/ai/evidence/<TASK_ID>/`, with explicit authorization for committing/pushing. No secrets, datasets, model weights or huge logs, no out-of-scope copying or auto-cleanup. Preserve experiment isolation. Include exact named destination Web chat if provided by the task.
 
+## Bounded task autonomy and real-world acceptance
+
+Inside the currently approved task, Codex may diagnose, safely repair only allowlisted changes and rerun existing checks without a new human round-trip. **Never automatically start the next goal/task**, silently alter approved UI/ML semantics, weaken tests or change protected config/deps. Pause if repeated attempts show no progress or a new risk/permission is required. Report what was actually run, what changed and remaining failures.
+
+When applicable, verify a real customer-visible journey in safe preview/staging: desktop/mobile rendered layout, navigation/CTA, accessibility basics and actual behavior; for non-UI use API/CLI/inference. Record `RUNTIME ACCEPTANCE` as PASS/FAIL/NOT RUN/NOT APPLICABLE with evidence. For ML/LLM tasks obey approved versioned evaluation contract, baseline, split/leakage policy and metrics; preserve checkpoint artifacts, report uncertainty and never promote a candidate on self-report.
+
+GitHub commit/push is NOT automatic authority: inspect actual branch/remotes/diff and obtain named-branch publication permission; PR and CI evidence must match the task SHA and Web's proven access. Protected main/required checks must be configured and tested at the product repo; AGENTS text is not enforcement. No automatic merge. Runtime checks/CI and post-task regression cases feed verification of methodology; don't present documentation-only controls as tested.
+
 ## Report
 FAST: Lite — result, paths/scope, check+exit, Git status, risk/next.
 STANDARD/CONTROLLED: Full — acceptance, SHA/base, actual diff paths including untracked, test/config/dependency deltas, commands/output, approvals and evidence links.
