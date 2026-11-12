@@ -21,6 +21,21 @@ CURRENT REPO FACTS (if discovered): <branch/base SHA, dirty worktree, tests and 
    baseline SHA and exact result. Add applicable checks/CI/permission controls
    according to the installed surface, and test them using safe fixtures.
    Mark each as PLANNED / IMPLEMENTED / VERIFIED with actual evidence.
+4a. For user-facing products, define an actual acceptance path: preview/staging URL or
+    CLI/API/inference example, minimal runtime check, target viewports where applicable,
+    authorized browser runner or NO TOOL. Run a safe smoke test and record evidence
+    or mark NOT RUN. Do not install Playwright or any service without separate scope.
+4b. For ML/LLM products, record the user-approved Model Evaluation Contract:
+    dataset/cases version, baseline model, split/group leakage policy, seeds,
+    metric thresholds and error slices, environment reproducibility, no test tuning.
+    First compare on safe fixtures; no production model promotion.
+4c. If GitHub bridge is requested: inspect real remote/branch, propose exact
+    push/PR permissions; check protected main and CI in actual GitHub settings;
+    verify Web can access *this* repo's non-default branch and full PR diff/CI.
+    A local commit is not remote. Never auto-push, merge or expose secrets.
+4d. Test installed Codex sandbox/permissions against harmless out-of-scope canaries
+    and verify failures. Log CONFIGURED vs OBSERVED and an explicit fallback;
+    do not confuse allowed roots with file-specific denies.
 5. Create short project AGENTS.md routing to active project docs, not a giant manifesto.
    Include ONE TASK → concise Russian result/checks → STOP for user direction.
    For noisy independent next tasks, advise a fresh Codex chat using current AGENTS
