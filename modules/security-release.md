@@ -17,6 +17,12 @@
 4. For material data risk require a backup and **tested restoration path** before production execution; otherwise stop and declare risk rather than claiming safety.
 5. Keep actual execution, production access and approval separate from code-generation/testing steps. Never claim Git rollback reverses external side effects.
 
+## Defense in depth for agent edits and experimental training
+
+Project instruction allowlists/DECISION LOCK are **intent constraints**, not technical protections. For consequential products, use actually supported GitHub rulesets/required checks and approvals for critical paths/configs (e.g. evaluation protocol, data processing, security policy, migrations, CI workflow). Where available, consider CODEOWNERS with enforced review by an authorized person, but do not treat a CODEOWNERS file alone as blocking writes or merging. If access to main is unprotected, report that risk before shipping. Use least privilege and separate experiment worktrees/environments and resource quotas; remember Git branches do not isolate global packages, databases or cloud credentials.
+
+Never copy raw user datasets, model weights or secrets into review artifacts just to make them readable by Web. For model adoption, evaluate on locked comparable data and approved metrics; promote only after observed benefit, integration checks and user authorization. Protect old model/checkpoint and provide a tested rollback for high-consequence changes.
+
 ## Release readiness
 
 Verify by project risk: real acceptance criteria, tests/CI, permissions, secret handling, contracts, DB impact, package integrity, deployment/rollback mechanisms and required approvals. Produce evidence links or NOT VERIFIED, not a ceremonial `production-ready` declaration. Small internal tools need proportional checks, not enterprise ceremony.
