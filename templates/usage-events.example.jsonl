@@ -1,0 +1,2 @@
+{"id":"EXAMPLE-task-codex-001","date":"2026-11-12","scope":"task","task_id":"T-DEMO","surface":"codex","source":"ui-chat","measurement":"estimate","result":"ACCEPTED","model":"MODEL-EXAMPLE","effort":"medium","input_tokens":12500,"cached_input_tokens":4500,"output_tokens":1800,"credits":1.7,"minutes":15,"retries":1,"handoffs":1}
+{"id":"EXAMPLE-weekly-period-001","date":"2026-11-12","scope":"period","period":"EXAMPLE-week","surface":"work","source":"ui-period","measurement":"estimate","credits":22}
