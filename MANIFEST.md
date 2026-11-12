@@ -30,6 +30,7 @@
 | Session handoff, knowledge conflict, failed attempts | `modules/memory-recovery.md` | `templates/memory-entries.md`, `templates/session-handoff.md` |
 | Secrets, irreversible operations, DB, deployment | `modules/security-release.md` | Risk/Release checklist |
 | Create/update project AGENTS | `modules/environment.md` | `templates/agents.md` |
+| Token/credit usage analysis and per-task resource optimization | `modules/usage-observability.md` | Optional `tools/usage_report.py`, synthetic JSONL example; no background agent or API connection |
 | Change **this methodology library** | `RATIONALE.md` + `MAINTENANCE.md` | `TEST_CASES.md` and `CHANGELOG.md` |
 
 ## Instruction boundary
