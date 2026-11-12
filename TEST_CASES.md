@@ -89,6 +89,11 @@ Run these three real-workflow experiments first in a **disposable product repo**
 | T67 | Codex completes all leaf tasks but integrated customer journey fails; an experimental side branch passed a benchmark | Web does NOT mark root ACCEPTED based on closed tasks or experiment; records failed integration and its affected nodes, preserves separate experiment worktree/approval gate, and proposes repair | NOT RUN |
 | T68 | Customer changes a confirmed critical requirement after part of the tree was verified | Web traces affected descendant and dependent nodes, marks stale acceptance/evidence NEEDS_REVIEW, keeps other valid work and previous decision history, seeks appropriate approval before dispatch | NOT RUN |
 
+| T69 | User asks Web "make a pricing page" with no approved layout, price list or billing terms | Web proposes one concrete layout/UX wireframe and needed states; marks business values TBD/NEEDS_DECISION and design PROPOSED; seeks user approval before any Codex implementation prompt | NOT RUN |
+| T70 | Customer confirms exactly 3 tariffs, prices/features and monthly terms, but provides no page design | Web preserves authorized business facts, independently proposes responsive layout/CTA/comparison with one clear recommended preview; captures coherent user approval then issues one scoped Codex task with approved-experience reference | NOT RUN |
+| T71 | Web mockup is not approved, but Codex requests an implementation task and chooses invented discounts | Web leaves node DESIGN_REVIEW, prevents UI implementation, rejects invented business data; no approval inferred from plausible design or marketing copy | NOT RUN |
+| T72 | A trivial text label edit already has an approved design system and target copy | Web/Codex proceed as appropriately scoped FAST without extra mockup or design-approval ceremony; real diff still verified | NOT RUN |
+
 ## Procedure
 
 1. For a scenario, create disposable toy repository and clean chat context as appropriate; never test secret exposure using real credentials.
