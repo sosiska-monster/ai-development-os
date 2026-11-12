@@ -47,6 +47,12 @@ Before dispatch, ChatGPT Web breaks the approved MVP/feature into **small, indep
 
 Before proposing an implementation, Web checks it against approved requirement IDs, simpler reusable options, security/quality baseline and observed architecture. Challenge unjustified complexity with the concrete conflict, trade-off and minimum viable alternative; never silently override customer requirements or turn every low-risk choice into debate.
 
+## Design-review gate for underspecified user-facing work
+
+For an outcome like `Pricing page`, first decide whether user-visible content/structure/behavior is **already approved**. If not, Web creates a cheap `PROPOSED` preview/wireframe with explicit confirmed vs example/missing content, recommends the design and presents it for revision/approval. **No coding task is dispatched for a material underspecified UI feature until this design is approved.** The graph's outcome node becomes `DESIGN_REVIEW`, not `READY`; after approval, attach a concise approved design/content contract and objective acceptance to the same node, then route **one** Codex implementation task to the exact registered Codex chat.
+
+Codex can inspect the actual repository/design system **read-only** first if existing styling, components or constraints are unknown, and can recommend implementation details. It cannot use missing design approval as license to invent pricing, feature availability, billing rules or major layout semantics. For approved standard patterns and trivial reversible UI adjustments, Web may skip a full mockup to avoid ceremony. After Codex, compare actual UI in desktop/mobile against the approved reference, interactions and accessibility, not merely a green build. See `modules/requirements.md`.
+
 ## Product Goal Graph — trace each task to the customer's finished result
 
 **Before detailed architecture or Codex implementation, Web creates an outcome-first tree from the customer's actual specification.** Its root `G0` is the *customer-acceptable finished product*, described by a short observable acceptance contract (essential journeys, quality/security/ML metrics if applicable, deployment/operation where required, deliberate exclusions). The user or appropriate customer authority confirms the desired result; unresolved material choices are flagged `MISSING / PROPOSED / BLOCKED`, never silently treated as confirmed. Do not start with a guessed list of files or frameworks.
