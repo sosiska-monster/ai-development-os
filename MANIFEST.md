@@ -25,6 +25,8 @@
 | Architecture, high-impact design trade-off | `modules/architecture.md` | `templates/project-blueprint.md` |
 | Discover existing repo or configure Codex | `modules/environment.md` | `templates/codex-bootstrap.md` (only after approval) |
 | FAST / STANDARD / CONTROLLED implementation, review | `modules/delivery.md` | `templates/codex-task.md`, `templates/codex-report.md` |
+| ML/LLM model benchmark, data leakage or deployment decision | `modules/requirements.md` + `modules/environment.md` | Approved Model Evaluation Contract + reproducible baseline/inference |
+| GitHub PR/CI bridge, runtime smoke, bounded agent repair, methodology regression | `modules/delivery.md` + `modules/environment.md` | Existing task/report templates; record actual runner/access/PR evidence |
 | Session handoff, knowledge conflict, failed attempts | `modules/memory-recovery.md` | `templates/memory-entries.md`, `templates/session-handoff.md` |
 | Secrets, irreversible operations, DB, deployment | `modules/security-release.md` | Risk/Release checklist |
 | Create/update project AGENTS | `modules/environment.md` | `templates/agents.md` |
