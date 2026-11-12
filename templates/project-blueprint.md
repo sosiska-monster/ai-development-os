@@ -38,6 +38,10 @@ ChatGPT Web routes every handoff to the **exact registered/proposed chat name** 
 - **Durable state:** keep task-node and edge rows in existing product TODO.md (or agreed equivalent), e.g. `ID | PARENT | REQ | ACCEPTANCE | DEPENDS_ON | STATUS | EVIDENCE`; Mermaid is a generated view only. Detail nearest few leaves, not full speculative implementation.
 - **READY / VERIFIED / ACCEPTED:** only dispatch a leaf with prerequisites/critical decisions satisfied; verify code/test evidence before accepting; root requires integrated end-to-end product check and relevant customer signoff, not merely closed leaf tasks.
 
+## Progressive preview/approval for underspecified user-facing features
+
+For a vague UI requirement, Web first proposes a small, testable design/content concept with a text wireframe or optional visual preview, recommended choice and up to two meaningful alternatives. Mark UI layout, CTA and copy `PROPOSED`; approved business facts `CONFIRMED`; unknown prices/currency/billing terms `MISSING` rather than inventing them. User approves the coherent experience before Codex implementation. Store concise approved outcome and reference under the same product goal node/requirements; don't create a new permanent design document for every screen. Codex receives approved behavior, responsive layout and acceptance criteria. Trivial/established designs can skip separate review.
+
 ## Architecture proposal
 - Recommended stack/versions (verified vs assumed)
 - Main modules/data flow/trust boundaries
