@@ -55,6 +55,19 @@ During requirements, architecture and **before any irreversible or expensive exe
 
 **Verification contract for a split task:** inspect actual output counts/ratios, their sum against the dataset, no train/val/test item overlap or relevant group leakage, sufficient examples per important label where feasible, reproducibility and saved split/config/version. Do not fabricate passing checks from the intended configuration. If a run used an unapproved split, mark its reported metrics as **NOT COMPARABLE / NEEDS REVIEW** until the real split and evaluation process are audited; do not silently overwrite checkpoints, data or artifacts. Repair/retrain only after a new approved scoped task.
 
+## Model Evaluation Contract — reproducible comparison before promotion
+
+For **ML products** the previously approved Critical Decision Gate is necessary but not sufficient: Web must define a **bounded, versioned evaluation contract** before approving model selection, training or claims of improvement. Record it in the existing product PROJECT/Decision/requirements (or approved training configuration), not an obligatory new methodology file. Capture:
+- **Task and population:** actual target behavior, use context, label/source provenance, dataset ID/version and split inventory; identify privacy/license restrictions and duplicate/entity/time leakage.
+- **Protocol:** approved train/validation/final-test or time/group/cross-validation strategy, units of independence, seed(s) or deterministic cutoffs, train-only preprocessing, final holdout access policy, sample weighting/class balancing policy if consequential.
+- **Baseline:** existing production/simple baseline model and frozen comparable dataset/evaluation; never infer gains from incomparable runs. Record training environment, model/config/code SHA, major dependencies and actual cost/compute if measured.
+- **Metrics:** primary metric plus critical class/group/error-slice checks, uncertainty/variability (repeat seeds where material and feasible), latency/size/operational constraints and a pre-approved minimum useful improvement or acceptable trade-off.
+- **Evaluation controls:** avoid tuning on held-out test; separate training/tuning/selection from final verification; report actual counts, data leakage checks, per-slice outcomes and sample limitations. Include human/domain review for consequential mistakes, not just aggregate scores.
+
+For **LLM systems**, substitute a versioned set of representative tasks (normal, difficult, edge, adversarial and actual user examples where privacy permits), expected behaviors, judge/rubric source, structured grader assertions plus sample human review, repeated runs when nondeterminism matters, failure categories and cost/latency. Treat a model-judge score as evidence with known limitations; do not invent ground truth or claim a single run proves quality.
+
+**Decision flow:** `EVAL CONTRACT: PROPOSED → USER APPROVED → RUN RECORDED → VERIFIED / FAIL / INCONCLUSIVE`. Before each comparison verify reference dataset, model, code, prompt/tool versions and environmental differences; if baseline mismatches, report NOT COMPARABLE. A new candidate remains an **isolated experiment** until an authorized, separately verified integration task; don't auto-promote it or overwrite working checkpoints. Track evidence locations and return decision to Web/user. When the project is a simple non-ML CRUD app, don't impose this protocol.
+
 ## Dynamic routing and readiness
 
 Small low-risk correction may proceed FAST with concise acceptance. Significant new behavior or uncertainty becomes STANDARD; access-control, critical data, migration or public contract change becomes CONTROLLED with relevant approvals. No need to block architecture work for every small open question; record unresolved blockers and their consequences.
