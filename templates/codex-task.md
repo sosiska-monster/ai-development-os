@@ -10,14 +10,14 @@ REFACTOR JUSTIFICATION (if applicable): <confirmed issue + code/runtime evidence
 TASK ID / GOAL: <ONE atomic, verifiable result; no second task in the same prompt>
 GOAL GRAPH TRACE: <G0 customer outcome → parent outcome → THIS task ID; linked requirement IDs, prerequisite IDs and acceptance; omit speculative file mapping>
 APPROVED EXPERIENCE (when UI/UX is consequential): <approved design/wireframe/version + confirmed content, responsive behavior, interactions and user approval source; if still PROPOSED/DESIGN_REVIEW, do not implement>
-DESTINATION CHAT: <exact Codex Desktop chat name registered by ChatGPT Web; label as proposed until user confirms it>
+DESTINATION CHAT (if handing off): <existing chat; only name a distinct destination if actually known, otherwise PROPOSED>
 WORKSPACE / BRANCH: <verified product repo, intended Git branch and worktree; for an experimental write task require isolated experiment/<slug>, never main>
 CURRENT MODE / RISK: FAST | STANDARD | CONTROLLED / why
 CONTEXT: <confirmed requirements IDs, relevant paths, branch/base SHA; omit unknown paths>
-READ CONTEXT: <paths allowed to inspect for understanding; reading does not grant write permission>
-WRITE ALLOWLIST: <exact files or narrow globs where edits are authorized; NONE for read-only recon>
-DO NOT MODIFY: <all other paths including config, deps, tests, memory, AGENTS unless explicitly allowlisted>
-EXPECTED_DIFF_PATHS: <same write allowlist; PROVISIONAL only for read-only recon; approve extra paths before editing>
+READ CONTEXT: <relevant known files; Codex may inspect nearby code to establish actual feature dependencies, respecting secrets>
+APPROVED WRITE SCOPE: <FAST/STANDARD: goal and affected feature/component, including necessary implementation files and direct tests; CONTROLLED: exact paths/operations when warranted; NONE for read-only audit>
+DO NOT MODIFY: <unrelated features, critical configs/CI, dependencies/lockfiles, auth/security, data/migrations, approved product semantics; ordinary related tests are in scope for FAST/STANDARD>
+EXPECTED DIFF: <optional path hints; after task list all real changed files and verify each belongs to the approved feature/scope, including staged/unstaged/untracked>
 DECISION LOCK (when consequential): <Web/user-approved semantic choices; for ML: split ratios, strategy, units/groups, seed, metric, dataset identity; cite approval source>
 ACCEPTANCE: <objective behavior, tests or invariant; attach approved UI/behavior reference when present>
 RUNTIME CHECK (when applicable): <actual user journey/API/CLI/inference scenario, safe environment and observable PASS/FAIL evidence; NOT APPLICABLE otherwise>
@@ -28,8 +28,8 @@ VERIFY: <project check + task-specific check; baseline status if known; browser/
 GIT / PRE-EXISTING CHANGES: <approved branch/checkpoint; preserve user edits>
 GITHUB BRIDGE: <push/PR policy explicitly approved for exact branch or NO PUSH; verified Web access unknown until tested>
 MEMORY: <update only verified facts; propose unverified records>
-STOP / ESCALATE WHEN: <new auth/data/API/prod risk, out-of-scope diff, new dependency, no-progress failures; no next independent goal>
-IN-TASK REPAIR: <small safe scope-preserving fixes and reruns allowed; stop if no progress / critical decision needed>
+STOP / ESCALATE WHEN: <new critical decision, another feature, auth/data/API/production effect, CI/tests weakening, dependency/lockfile, no progress; no next independent goal>
+IN-TASK REPAIR: <Codex may locate/edit necessary adjacent code and direct tests within approved component, fix safe failures and rerun; STOP on critical boundary>
 PLAN FIRST: <mandatory for CONTROLLED; get approval before high-risk effects>
 EVIDENCE HANDOFF: <exact existing source paths/ref and destination Web chat; if files genuinely needed, approved local .ai-handoff/<TASK_ID>/ or explicitly approved shared evidence path; no implicit write scope>
 REPORT: <Lite for low-risk FAST; Full for high-impact tasks; show actual Git and verification artifacts>
@@ -39,12 +39,12 @@ REPORT: <Lite for low-risk FAST; Full for high-impact tasks; show actual Git and
 
 For an **experiment with side effects**, before any writes/installations verify actual working directory, branch, HEAD and dirty state. If not in the approved isolated `experiment/<slug>` worktree/repo, STOP as BLOCKED. Never switch into or modify `main` to run a trial, auto-merge, push, globally install/uninstall models or delete failed trial data without separately approved scoped instructions. A successful trial needs a later explicit integration task; a failed one stays isolated, with safe cleanup proposed rather than executed automatically.
 
-Never interpret 'necessary for the task' as authorization to write outside WRITE ALLOWLIST. If additional files, tests, dependency/lockfile edits, memory updates or new directories are needed, **STOP and ask for an updated ChatGPT Web task/user approval before modifying them**. If required paths are unknown, perform a separate read-only reconnaissance task first. The write allowlist is a behavioral contract, NOT an OS-enforced filesystem permission; use verified isolation/sandbox and human diff review for stronger controls.
+For FAST/STANDARD, **the approved feature/component is the boundary**: Codex may discover and change necessary implementation files and directly related tests without another approval, even if their paths were not known upfront. A separate read-only reconnaissance task is optional, not automatic. For CONTROLLED, an explicit file/operation allowlist may be required. **STOP before** leaving that feature, changing public contracts, dependencies/lockfiles, CI checks, protected config, auth, private data, migrations, critical ML/business decisions or production operations. Do not weaken tests or falsify a PASS. These are behavioral boundaries, NOT OS-enforced filesystem restrictions.
 
-At completion compare **committed, staged, unstaged and untracked** paths against EXPECTED_DIFF_PATHS, distinguishing pre-existing user edits. Report MATCH / MISMATCH / NOT SCOPED, with exceptions explicitly approved. A path mismatch is not solved by claiming it was necessary.
+At completion inspect **committed, staged, unstaged and untracked** changes, distinguishing pre-existing user edits. Report whether each task-introduced change belongs to the approved feature/component and whether protected boundaries were respected. For CONTROLLED, also check exact approved paths. Never label an unrelated file as in scope merely because it was convenient.
 
-**In-task bounded repair:** within THIS approved result, diagnose failed checks, edit only allowlisted files and rerun as needed. This does not authorize new dependencies, altered acceptance/decision lock, weakened tests, unapproved push/merge, production data or a second task. Escalate before any such change; after repeated unproductive attempts preserve evidence and STOP. Report actual tries/checks, runtime acceptance and model eval where relevant. `DONE` alone is not the product goal's `ACCEPTED`.
+**In-task bounded repair:** within THIS approved result, fix implementation and related tests within the component, rerun checks and report attempts. No new dependencies, changed acceptance/DECISION LOCK, weakened assertions, unauthorized push/merge, production effects or second task. Escalate at these boundaries or repeated no-progress failures. `DONE` is not product acceptance.
 
-**One-task boundary:** execute only this explicitly authorized outcome and necessary substeps. Return a concise task result and actual checks; explicitly state **NEW CHAT: YES/NO + reason** (default YES after DONE for a separate next task); ask which task to do next and STOP. Do not auto-execute a roadmap/TODO item or trigger autonomous Goal continuation without explicit approval. If the next task is independent and the chat is cluttered, recommend a fresh thread after updating essential verified existing project memory; native compaction is for continuing the SAME unfinished task and does not erase history.
+**One-task boundary:** complete only this approved outcome and its technical substeps; report actual diff/checks and STOP before starting another task. Continue the current Codex chat by default. Recommend a fresh chat only if context is unusable, an independent review is needed, or the user chooses; never auto-reset or delete history.
 
 For a true FAST task, use a few sentences rather than pasting this template wholesale. On escalation, stop new risky operations, preserve state and request an updated task contract; on de-escalation, don't bypass already necessary checks.
