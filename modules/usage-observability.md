@@ -22,7 +22,7 @@ Do not collect full messages, code, prompts, secret keys, file bodies, private c
 
 ## Optional bundled offline script (Python standard library only)
 
-`tools/usage_report.py` does **not** tap Codex/ChatGPT APIs, read sessions, monitor tokens in the background, install plugins or access the network. It simply accepts supplied measurements and creates a short non-sensitive report:
+`tools/usage_report.py` does **not** tap Codex/ChatGPT APIs, read sessions, monitor tokens in the background, install plugins or access the network. It validates a documented metadata schema (rejecting non-finite numbers, malformed rows and unexpected fields), preserves JSONL record boundaries on append and refuses to overwrite its input through hardlinks/symlinks. It accepts supplied measurements and creates a short non-sensitive report:
 
 ```sh
 python tools/usage_report.py add --file /path/to/private/usage.jsonl --id obs-001 --surface codex --scope task --task-id T-42 --source ui-chat --result ACCEPTED --credits 1.3 --minutes 8 --retries 1 --handoffs 1
