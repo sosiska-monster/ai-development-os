@@ -10,11 +10,11 @@ This library supports **both** new-project design and **an ongoing existing prod
 
 ## Workflow
 
-ChatGPT Web is the analyst/architect, Codex Desktop executes and tests inside each real product repository, and the user approves significant decisions. The process is **dynamic**: FAST for safe local changes, STANDARD for ordinary implementation, CONTROLLED for architecture, sensitive data, production, security or other high risks. It must **switch during a task** when facts change; see `modules/delivery.md`.
+ChatGPT Web is the analyst/architect, Codex Desktop executes and tests inside each real product repository, and the user approves significant decisions. The process is **dynamic**: FAST for safe local changes, STANDARD for ordinary implementation, CONTROLLED for risky architecture, production operations, sensitive data, security or other high-consequence work. It must **switch during a task** when facts change; see `modules/delivery.md`.
 
-## Named Web chats and isolated experiments
+## Chat continuity and isolated experiments
 
-ChatGPT Web routes every prompt to the **exact named** ChatGPT Web or Codex Desktop chat (not just "new/current") and maintains a short history of chat responsibilities/status in the product's existing PROJECT.md or up-to-date ChatGPT Project source. A write-capable model experiment uses an **approved separate branch/worktree or disposable repo**, never `main`. After a failed trial, archive the experiment and resume in the named development chat; do not automatically merge, reset, delete branches, uninstall models or disturb user work. See `modules/delivery.md` and [USER_GUIDE.md](USER_GUIDE.md). These are untested rules, not verified sandbox enforcement.
+Continue in the same chat by default; create a new one only for a genuinely different track, independent review or unusable context. Keep a chat register only for actual parallel tracks. Experiments with side effects use an **approved isolated branch/worktree or disposable repo**, never `main`; read-only analysis needs neither a new chat nor a branch. Never auto-merge, reset or delete user work. See `modules/delivery.md` and [USER_GUIDE.md](USER_GUIDE.md). Textual rules are not verified sandbox enforcement.
 
 ## Single file handoff Codex → Web
 
@@ -24,7 +24,7 @@ Codex final response is the **evidence index**: real changed paths, tests/exit a
 
 New task-specific rules are documented in the existing `modules/delivery.md`, `modules/requirements.md` and `modules/environment.md`:
 - **Accept user-visible outcomes**, not a green compilation alone: browser/mobile journey when UI work warrants it, or real API/CLI/ML inference/behavior for other products. Give exact `PASS / FAIL / NOT RUN / NOT APPLICABLE` with real evidence.
-- **Allow limited safe in-task self-correction**: Codex can repair errors and rerun already authorized checks within approved WRITE ALLOWLIST, but must STOP for new critical decisions, risk, dependencies, weakened tests, new goals or failed progress.
+- **Allow bounded in-task autonomy**: for FAST/STANDARD, Codex may adjust related implementation files and direct tests within the approved feature, run checks and repair ordinary failures without new permission per file. STOP for critical decisions, protected data/CI/deps, weakened tests or another goal.
 - **Use versioned reproducible model comparisons** for ML/LLM experiments: approved data/task set, leakage/split policy, baseline and metrics, reproducibility, critical slices and signoff before promotion.
 - **Set up actual project-specific GitHub PR/CI/permission controls** in the PRODUCT repo only with user approval and safe tests; verify branch/PR/CI readability from Web before claiming independent review. A methodology instruction cannot install GitHub branch protection or Codex sandbox enforcement.
 - **Turn failures into regression experiments** in existing `TEST_CASES.md`; don't count new wording as a passed test. Keep the context minimal; compare shortened CORE against the baseline before discarding crucial safety rules.
