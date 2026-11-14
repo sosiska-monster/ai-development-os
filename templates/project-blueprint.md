@@ -49,6 +49,14 @@ For a vague UI requirement, Web first proposes a small, testable design/content 
 - **Model Evaluation Contract (ML/LLM only):** approved dataset/task/cases version, split/group/time/seed or rubric, baseline/model/prompt/code version, metrics/thresholds and critical slices, privacy and final holdout policy; require comparable verified evidence before promotion. Record in existing project decision/config, not mandatory separate document.
 - **Feedback:** when a real failure occurs, create a minimal reproducible regression case tied to the goal node and observed environment; compare before/after verified results and manual effort. Don't mark a rule effective from text alone.
 
+## Existing repository AS-IS / TO-BE (only for active products)
+
+- Do **not** initialize a new repository or overwrite previously accepted requirements, project memory, worktrees and running services. Scope audit to whole architecture only when justified; otherwise to the affected subsystem.
+- **AS-IS:** actual repo branch/HEAD/dirty/untracked, observed working journeys and known defects, module/dependency/contract map, current safety/test baseline (including UNKNOWN/NOT RUN), historical design constraints.
+- **Confirmed debt:** code paths/symbols and verified effect, relevant user/goal impact, severity, why "keep as is" is inadequate. Separate hypotheses from evidence and cosmetic tastes.
+- **Minimal TO-BE:** keep/reuse vs eliminate/replace; one scoped fix candidate, affected contracts/data/consumers, acceptance before/after and rollback needs; update existing goal graph without rewriting it.
+- **Approval gate:** no refactor, tests that mutate state, dependency install, graph rewrites or Git publish during read-only discovery. Bootstrap/reconfiguration only if observed need and separately approved.
+
 ## Architecture proposal
 - Recommended stack/versions (verified vs assumed)
 - Main modules/data flow/trust boundaries
