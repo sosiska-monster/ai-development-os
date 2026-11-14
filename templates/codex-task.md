@@ -3,6 +3,10 @@
 The task mode is a **current assessment, not a permanent label**. Codex may recommend mode changes on new evidence but cannot unilaterally grant permissions.
 
 ```text
+PROJECT INTAKE: <NEW / EXISTING, real repo and task-scoped AS-IS facts; for EXISTING do not initialize or rebuild>
+AUDIT/REMEDIATION MODE: <READ-ONLY INVENTORY with WRITE ALLOWLIST NONE and no mutating tests / APPROVED SAFE CHANGE with baseline and rollback; choose one>
+EXISTING BEHAVIOR TO PRESERVE: <validated user journeys, interfaces, data/checkpoint formats, existing dirty worktree; UNKNOWN explicitly where not verified>
+REFACTOR JUSTIFICATION (if applicable): <confirmed issue + code/runtime evidence + goal impact + smallest adequate fix + before/after check>
 TASK ID / GOAL: <ONE atomic, verifiable result; no second task in the same prompt>
 GOAL GRAPH TRACE: <G0 customer outcome → parent outcome → THIS task ID; linked requirement IDs, prerequisite IDs and acceptance; omit speculative file mapping>
 APPROVED EXPERIENCE (when UI/UX is consequential): <approved design/wireframe/version + confirmed content, responsive behavior, interactions and user approval source; if still PROPOSED/DESIGN_REVIEW, do not implement>
