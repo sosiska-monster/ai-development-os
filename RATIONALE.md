@@ -185,7 +185,8 @@
 
 ## RAD-019 — One authorized task, concise report, human gate and context rotation (0.2.0-draft)
 
-**Status:** IMPLEMENTED AS DRAFT INSTRUCTIONS; REAL CODEX PILOT NOT RUN.
+**Status:** HISTORICAL; chat-rotation details SUPERSEDED BY PR #3, main merge ef63d9ce. REAL CODEX PILOT NOT RUN.
+**Current rule:** one approved outcome and STOP still apply; **same chat by default**. No mandatory NEW CHAT field or fresh chat after DONE. The original decision below is retained as historical context, not current instruction.
 **Observation:** user wants full control over which task Codex performs next and wants to prevent long tool-log and failed-attempt context from contaminating subsequent tasks.
 **Decision:** default to exactly **one authorized outcome** with necessary internal implementation steps, verified change evidence, short Russian status and **STOP pending the next explicit user instruction**. Every final task report MUST state **NEW CHAT: YES/NO with reason**; after DONE default to YES for a distinct next task. This is a visible recommendation and human boundary, not automatic UI control or forced restart. At natural boundaries update only durable verified facts in existing PROJECT/TODO as necessary; for a separate next task suggest a **user-opened new Codex chat** by default, especially if the current thread is noisy. For continuation of the SAME unfinished task, prefer supported native compaction rather than forced restart. No new per-task handoff files, Skills or context routers.
 **Why:** retain human control and context relevance without overloading small tasks with giant evidence reports. A chat reset is not a filesystem cleanup, and a textual instruction does not control the Codex app's chat UI.
@@ -196,7 +197,8 @@
 
 ## RAD-020 — Web architect authors one write-scoped Codex task at a time (0.2.0-draft)
 
-**Status:** IMPLEMENTED AS DRAFT INSTRUCTIONS; LIVE TASK PILOT NOT RUN.
+**Status:** HISTORICAL; exact-file-scope details SUPERSEDED BY PR #3, main merge ef63d9ce. LIVE TASK PILOT NOT RUN.
+**Current rule:** FAST/STANDARD can edit implementation files and direct tests **within the approved feature/component**; exact path restrictions apply to CONTROLLED when risk warrants. Critical decisions, dependencies, security, data, production operations and CI policy still require authorization. The original decision below is historical.
 **Observation:** user wants ChatGPT Web to plan/curate the project and issue tightly bounded single-result prompts to Codex, instead of letting Codex pick later roadmap steps or expand code unpredictably.
 **Decision:** ChatGPT Web owns task selection and approved architecture. Every Codex implementation prompt authorizes **one verifiable outcome** and declares READ CONTEXT separately from a narrow WRITE ALLOWLIST and DO NOT MODIFY. Unknown paths require read-only recon first. Codex stops for approval before any extra paths, tests, dependencies, memory writes or new components, then returns a short report and STOPS.
 **Why:** preserves human direction and limits task drift with a minimal contract rather than additional tools, agents or per-task files.
@@ -228,7 +230,8 @@
 
 ## RAD-023 — Named Web chat ownership and sandboxed experiments (0.2.0-draft)
 
-**Status:** IMPLEMENTED AS GUIDANCE; LIVE CHAT/CODEX ISOLATION TEST NOT RUN.
+**Status:** HISTORICAL; mandatory chat routing/register SUPERSEDED BY PR #3, main merge ef63d9ce. LIVE CHAT/CODEX ISOLATION TEST NOT RUN.
+**Current rule:** continue the same chat; an optional register is useful only for real parallel work. Name a confirmed/proposed recipient only on an actual handoff, archive separate experiment chats only if created, and isolate experiments with side effects. Original chat requirements below are historical.
 **Observation:** a Web task dispatcher saying only "new/current chat" or YES/NO leaves the human unsure where to paste a prompt. Worse, a disposable model experiment could accidentally mutate the mainline product branch or global environment.
 **Decision:** Web explicitly routes each prompt to a named, user-confirmed ChatGPT Web or Codex Desktop chat with its responsibility and actual branch/worktree; proposals remain PROPOSED until created. Record a concise Chat Register in the product's existing PROJECT.md or maintained ChatGPT Project source, accessible to future Web chats; it stores names, purpose, status and verified Git context, **not** complete transcripts. For write-capable experiments, require a separately approved disposable worktree/branch or isolated repo, plus dependency/data isolation where necessary. Codex must check actual cwd/branch/dirty state and stop on mainline mismatch before side effects. Failed trials are archived without mainline merge; promote or clean up only with explicit scoped approval and actual diff/data checks.
 **Why:** human can route tasks reliably, recover cross-chat ownership without fictitious memory, and experiment safely without contaminating the working product.

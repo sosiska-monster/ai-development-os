@@ -2,6 +2,7 @@
 
 ## 0.2.0-draft — UNRELEASED / NOT PILOT-VALIDATED (2026-11-01)
 
+- 2026-11-14 post-audit consolidation: strict usage JSONL schema/non-finite validation, newline-safe append, protection from report overwrite through same path or aliases; refine new/brownfield onboarding and optional chat routing; mark legacy RAD-019/RAD-020/RAD-023 instructions as superseded. Helper checked on synthetic local fixtures, full Web + Codex pilot still NOT RUN. No new agents, modules, dependencies or methodology test scenarios.
 - 2026-11-14: simplify Codex task authority (approved component + related tests for FAST/STANDARD; strict path control by risk), remove default new-chat routine, align production/experiment rules and shorten AGENTS; usage report now includes model/effort/source/measurement. Existing T34–T37/T47–T50 scenarios updated, still NOT RUN. No new framework or mandatory files.
 - Existing-project / BROWNFIELD first-class intake: preserve live repo/Git/data and active work; read-only AS-IS inventory, evidence-based architecture debt ranking, targeted TO-BE fixes with characterization/rollback and existing Product Goal Graph integration. No default new project/bootstrap or big-bang refactor; T98–T107 NOT RUN.
 - Optional privacy-minimal usage observability: manual sourced tokens/credits/task quality in private JSONL, offline standard-library reporter, separate estimates and period snapshots, no transcript scanning, background monitor or automatic upload. Live trial NOT RUN; T90–T97 NOT RUN.
