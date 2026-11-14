@@ -309,3 +309,12 @@
 **Rejected:** indiscriminate whole-repository refactoring, assuming every abstraction is bad, equating old code with bad code, making full audits compulsory for small fixes, automatically deleting artifacts/old branches or restarting the application as a new project.
 **Testing:** T98–T107 added; all NOT RUN. No real product has been audited or refactored by this methodology change.
 **Revisit when:** real brownfield pilots reveal unsafe commands, significant audit cost, regressions or poor prioritization.
+
+## RAD-031 — Product Git history and post-completion methodology learning (0.2.0-draft)
+
+**Status:** IMPLEMENTED AS GUIDANCE, NOT PILOT-VALIDATED.
+**Problem:** the owner wants to use AI Development OS to finish a test product and only then send its GitHub repository for retrospective improvement of the reusable methodology. Without version pinning and task-level Git checkpoints, a retrospective cannot reliably identify the tested rules or inspect the actual delivery; changing the method during the pilot contaminates attribution.
+**Decision:** at approved new-product Bootstrap reuse Git if present, else initialize local Git; create/publish a GitHub remote only with owner, client/IP, visibility and push consent. Pin method SHA, commit meaningful verified changes, record significant reversals with existing project notes/Issues, protect secrets and unrelated user work. Keep the central method unchanged while the test runs; after accepted or explicitly closed pilot and owner-provided product repository link, review actually reachable evidence, distinguish generalizable vs local mistakes and propose an approved minimal method change plus regression scenario. NO CHANGE is valid.
+**Rejected:** recreating existing product repos, publishing private code by default, per-command commits and transcripts, auto-patching central methodology mid-test, pretending Git shows all agent attempts or costs.
+**Testing:** T108–T112 added; all NOT RUN. No end-to-end retrospective performed.
+**Revisit when:** completed pilots demonstrate insufficient history, needless Git overhead or repeatable failures despite the rule.

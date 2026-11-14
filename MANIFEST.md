@@ -32,6 +32,8 @@
 | Secrets, irreversible operations, DB, deployment | `modules/security-release.md` | Risk/Release checklist |
 | Create/update project AGENTS | `modules/environment.md` | `templates/agents.md` |
 | Token/credit usage analysis and per-task resource optimization | `modules/usage-observability.md` | Optional `tools/usage_report.py`, synthetic JSONL example; no background agent or API connection |
+| NEW product: Git repository absent | `modules/environment.md` + `modules/delivery.md` | Authorized Bootstrap: check/reuse existing Git or initialize locally; GitHub remote/private/public/push require separate authorization; pin method SHA |
+| Finished pilot: analyze product repository to improve AI Development OS | `modules/delivery.md` + `modules/environment.md` | Only after user-confirmed completion and product repository handoff; retrospective and approved regression-backed method changes, never while pilot runs |
 | Change **this methodology library** | `RATIONALE.md` + `MAINTENANCE.md` | `TEST_CASES.md` and `CHANGELOG.md` |
 
 ## Instruction boundary

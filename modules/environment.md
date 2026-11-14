@@ -24,6 +24,16 @@ When the user already has an ongoing product, **adopt that repository in place**
 
 For an active project with an urgent feature request, audit **just the affected slice plus neighboring contracts** first; schedule broader architecture inspection when real evidence justifies its cost. Existing `PROJECT.md` and `TODO.md` remain the canonical project sources when available; don't require a new process file to enter BROWNFIELD.
 
+## New product Git bootstrap and traceability
+
+During **separately approved Bootstrap for a NEW product**, inspect cwd, existing Git, branch/HEAD, remotes, status, dirty/untracked user files and permissions before initializing anything. **Reuse an existing repository**; never silently reinitialize it, overwrite its remote or lose history. If no Git exists, initialize local Git only as authorized, with minimal appropriate ignore rules covering credentials, private data and generated files. No automatic GitHub publication.
+
+For a **new GitHub repository**, first agree on owner, repository name, client/IP permission, intended visibility (**private** is the default proposal), authentication and permitted remote/push policy. The ability to create a local repo does not grant permission to create a remote or push. Report actual `LOCAL ONLY / GITHUB ACCESSIBLE / BLOCKED`; a URL or unpushed commit is not evidence of Web access.
+
+Record the **exact immutable AI Development OS commit SHA** used by the pilot, the approved product acceptance criteria and product origin in existing PROJECT/Environment Profile. Once approved, Codex makes scoped checkpoint commits after **meaningful verified tasks** with task ID/goal, reason, actual checks and SHA/push status — not a commit after every action or file. Preserve pre-existing changes; don't `git add -A` blindly. Record important failed decisions/rework in current Bugs/Decision/TODO or Issues/PR as appropriate; no transcript harvesting or mandatory action-by-action logger.
+
+A final GitHub link supports retrospective auditing only if relevant approved history reached an accessible remote. Verify that Web can inspect relevant commits/PR/CI, or report missing sources/targeted attachments. Git cannot reveal all failed attempts, uncommitted changes, prompts, decisions or token costs; mark unknowns UNKNOWN. Keep **central methodology unchanged throughout the active test**; see `modules/delivery.md`.
+
 ## Environment Profile (proposed → implemented → verified)
 
 Document project-specific: language/versions and deployment; Codex Desktop/CLI/Cloud actual interaction mode; git/worktree strategy; instruction paths; user approvals; dependency policy; quick `verify` + optional `verify-full`, baseline HEAD and last verified result; memory paths/permissions; scopes, privacy/secret boundaries and production isolation; session handoff; optional Skills/MCP/subagents and why needed. State deliberately omitted mechanisms.

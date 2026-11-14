@@ -13,6 +13,15 @@ CURRENT REPO FACTS (if discovered): <branch/base SHA, dirty worktree, tests and 
 1. Perform read-only inventory of repository, git status, existing AGENTS and nested rules,
    actual stack/versions, installed checks, CI, sensitive files, branch/worktree mode.
    Respect any pre-existing user changes. Report conflicts before modifying anything.
+1a. For NEW product check existing Git before doing anything: reuse the repo
+    if present; else initialize local Git only inside approved Bootstrap.
+    New GitHub repo/remote needs approved owner/name, client permission,
+    visibility (private by default proposal), credentials and push policy.
+    Pin this pilot's immutable AI Development OS SHA in existing project memory.
+1b. Use meaningful verified task-end commits, not per-command commits;
+    preserve original dirty/untracked work, give task/check/SHA/push status.
+    Central methodology stays frozen throughout the test product; its review
+    follows only after completion and user-provided product repo URL.
 2. Propose the MINIMAL project setup; include planned paths, test baseline, git policy,
    memory names/authority, requirement ledger need, security boundary, and costs.
 3. Configure ONLY approved setup. No business features, no unapproved dependencies,

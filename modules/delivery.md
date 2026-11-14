@@ -142,6 +142,16 @@ For comparing models, task modes or prompt lengths, use metadata only: task/goal
 
 At task/pilot checkpoints: `OBSERVATION → failure class/hypothesis → reproducible fixture (version/baseline) → minimal fix → same regression check → observed outcome`. A missed scope change, unapproved ML split, fabricated green test or lost chat route becomes a **reproducible regression test**, not just another warning in CORE. Do not claim the issue fixed until actual disposable-project checks pass. Record manual handoffs, verified success, rework and actual usage/time where observable; optimize **quality per verified task**, not document or token counts. Revisit and remove policies that add friction without demonstrated benefit.
 
+## Completed test project → retrospective → next methodology version
+
+**Freeze during pilot:** pin AI Development OS to its actual commit SHA before a test product starts. Continue to fix the **product** and update its project requirements/notes during implementation, but **do not modify the central AI Development OS library** in reaction to interim issues. Contain critical product security problems immediately or pause the pilot; do not misrepresent the test as complete.
+
+**Completion trigger:** the product meets agreed customer/user acceptance (or the user expressly closes a failed/partial test with its real outcome), and the user hands Web the **product repository link** for review. Build success alone does not count as accepted delivery.
+
+**Retrospective evidence:** inspect accessible commits/diffs/branches, PRs, CI checks, Issues, task/decision notes, requirements and actual runtime acceptance, against the **original pinned methodology**, not today's moving main. For each candidate failure report `observed proof/ref → impact/rework → plausible cause/confidence → local or generalizable → smallest fix → regression scenario`. Missing uncommitted attempts, private chats or usage logs stay UNKNOWN; Git alone is not a complete record. Never copy client secrets or raw customer data into this public library.
+
+**Only afterward**, present `KEEP / FIX / NEEDS EVIDENCE` and request authorization for specific methodology changes. Patch only needed existing instructions/tests, verify what can actually be tested and preserve draft/NOT RUN status where applicable. No auto-upgrade of products midstream; the **next** pilot may adopt the newly pinned version. If evidence is weak or improvement unproven, choose **NO CHANGE**. No background agents, new logging service or continuous methodology edits.
+
 ## One task at a time — explicit human gate, small reports
 
 Codex may implement necessary internal steps of **one user-authorized task**, then verify the task-scoped diff and checks, produce a short Russian report and **stop**. A task can include multiple files but must have a single approved outcome. Do not silently proceed to the next task, roadmap step, deferred cleanup or suggested next item even if its work looks obvious. User authorization is required for the next independent task; a NEXT suggestion in the report is not approval. For several unrelated requested tasks without a clear first task, request a choice.
