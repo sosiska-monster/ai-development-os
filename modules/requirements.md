@@ -10,6 +10,12 @@ Use for a new specification, substantial requirement ambiguity or change request
 - Ask the few questions that affect critical user journeys, acceptance, architecture, security, deadlines and cost. Offer reversible assumptions for nonblocking unknowns.
 - Use Given/When/Then, examples or typed contracts only when they make behavior verifiable. Never mandate a schema tool merely because a methodology recommends one.
 
+## Existing product: recover requirements without inventing a new specification
+
+For an ongoing customer product, preserve **approved requirements and observed working behavior**, even when the original brief is incomplete. Compare customer messages/active requirements, current repository/design artifacts and live behavior; label `CONFIRMED / OBSERVED / MISSING / CONFLICTING`. **OBSERVED behavior is not automatically approved requirement**, and an old requirement is not automatically obsolete because the code differs. Document only material mismatches or unknowns affecting repair/new delivery, seek customer/user decision when semantics change, and avoid a fresh full-spec ceremony for a local fix.
+
+A safe refactor keeps existing observable contracts by default; deviations require an explicit approved change request and targeted regression acceptance. Maintain existing requirement IDs and project memory where feasible; add references to repairs instead of reassigning all task IDs. For new features in a legacy project, use the current product's design patterns by default unless those patterns have demonstrated defects.
+
 ## Progressive specification: Web proposes the experience before Codex builds it
 
 A customer's **outcome request** (e.g. "make a pricing page") may intentionally leave the appearance and interactions unspecified. **Do not force the customer to pre-design it and do not delegate vague product/design choices to Codex.** ChatGPT Web first retrieves confirmed brand/product facts and applicable existing design conventions, then proactively produces **one recommended concrete proposal** (and up to two alternatives only if a real trade-off exists): content hierarchy, pricing-plan cards, CTA/target actions, desktop/mobile layout, empty/error/loading states if applicable, accessibility considerations and a concise textual wireframe or visual mockup where useful. State *why* this proposal fits the customer's goal. Do not insist on a visual asset for a trivial UI change.
