@@ -24,11 +24,11 @@ This profile informs the architecture and project environment; it does **not** r
 
 **Composable MVP path (when relevant):** prefer proven ready-made modules/services to custom-built subsystems for early demand validation. List only major external dependencies and constraints, the smallest real-user launch checks (data, security, deployment/recovery), and the observed signal that would justify replacing or strengthening each component. Evolve one bounded module at a time; do not build speculative plugin architecture.
 
-## Chat Register (short optional section in the PRODUCT PROJECT.md)
+## Chat Register (only when multiple chats exist)
 
-Keep only the named Web/Codex chats actually used or explicitly planned:
-`EXACT CHAT NAME | ChatGPT Web / Codex Desktop | responsibility/boundary | PROPOSED / ACTIVE / PAUSED / ARCHIVED | approved Git branch/worktree or N/A | last verified checkpoint`.
-ChatGPT Web routes every handoff to the **exact registered/proposed chat name** and can propose a new chat with starter context; it must not claim to create the chat or remember unshared other chats. A failed experiment is ARCHIVED, not merged into main. Store this map in existing PROJECT.md or its maintained ChatGPT Project source; do not change main merely to track a running experiment. No separate registry file required.
+For one sequential Web/Codex workstream, continue current chats without a register. If real parallel chats, experiments or independent reviews need coordination, keep a brief optional entry in existing PROJECT.md or accessible project source:
+`CONFIRMED/PROPOSED CHAT NAME | SURFACE | PURPOSE | STATUS | VERIFIED BRANCH/WORKTREE`.
+For an actual cross-chat handoff, name a confirmed destination or mark it PROPOSED. Do not invent chats or infer Git state from names. Archive a failed experimental **chat only when a separate chat was actually created**; never merge unapproved experimental changes into main. No separate registry file or compulsory updates after each task.
 
 ## Product Goal Graph (minimal single source of truth)
 
