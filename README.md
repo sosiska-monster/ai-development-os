@@ -4,6 +4,10 @@ Version: **0.2.0-draft (unreleased, not pilot-validated)**. This repository is t
 
 **Русская инструкция для пользователя:** [USER_GUIDE.md](USER_GUIDE.md) — весь маршрут **ТЗ → MVP → Codex → проверки → staging → production**, выбор уровня ChatGPT/Codex и готовые сообщения. Это руководство для человека: не добавляйте его целиком в Project Instructions и не загружайте на каждую задачу.
 
+## Existing project adoption — preserve and improve
+
+This library supports **both** new-project design and **an ongoing existing product**. An existing codebase must **not** be recreated, reinitialized, rewritten wholesale or given a fresh generic bootstrap merely because architecture/overengineering problems are suspected. First run scoped **Codex read-only AS-IS reconnaissance** in the real repository, preserving dirty/untracked work, history and live behavior; tests that may mutate data need explicit safe authorization. Web compares observed behavior and evidence with customer-approved requirements, prioritizes `KEEP / FIX NOW / IMPROVE LATER / NEEDS DECISION`, and approves **one** evidence-backed remediation slice with baseline, regression/compatibility proof and safe rollback. Reuse existing PROJECT/TODO and goal graph; no new project scaffolding by default. Detailed workflow in [modules/environment.md](modules/environment.md), [modules/architecture.md](modules/architecture.md), [modules/delivery.md](modules/delivery.md) and the Russian [USER_GUIDE.md](USER_GUIDE.md). This is methodology guidance, not an audit run on the user's product.
+
 ## Workflow
 
 ChatGPT Web is the analyst/architect, Codex Desktop executes and tests inside each real product repository, and the user approves significant decisions. The process is **dynamic**: FAST for safe local changes, STANDARD for ordinary implementation, CONTROLLED for architecture, sensitive data, production, security or other high risks. It must **switch during a task** when facts change; see `modules/delivery.md`.
