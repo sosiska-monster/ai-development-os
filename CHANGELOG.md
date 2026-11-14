@@ -2,6 +2,7 @@
 
 ## 0.2.0-draft — UNRELEASED / NOT PILOT-VALIDATED (2026-11-01)
 
+- Existing-project / BROWNFIELD first-class intake: preserve live repo/Git/data and active work; read-only AS-IS inventory, evidence-based architecture debt ranking, targeted TO-BE fixes with characterization/rollback and existing Product Goal Graph integration. No default new project/bootstrap or big-bang refactor; T98–T107 NOT RUN.
 - Optional privacy-minimal usage observability: manual sourced tokens/credits/task quality in private JSONL, offline standard-library reporter, separate estimates and period snapshots, no transcript scanning, background monitor or automatic upload. Live trial NOT RUN; T90–T97 NOT RUN.
 - Engineering-practice adoption (documentation/templates, not product installation): runtime journey acceptance for UI/API/CLI/ML, scoped self-repair, versioned ML/LLM evaluation contracts, project-specific verified GitHub PR/CI/permission bootstrap, failure-to-regression feedback; new cases T73–T89 NOT RUN. CORE shortened ~14%, quality A/B not yet tested. No automatic product branch protection, CI deployment, push or model training claimed.
 - Progressive specification before Codex: Web proposes a concrete UI/behavior preview for underspecified goals (e.g. pricing page), separates approved business values from suggested layout and unknown prices, obtains user approval and only then dispatches one scoped implementation task. No unnecessary design gate for trivial changes; T69–T72 NOT RUN.
