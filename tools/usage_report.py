@@ -6,6 +6,7 @@ Writes ONLY explicit --file / --out paths; no background monitoring.
 """
 import argparse
 import json
+import math
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -15,42 +16,58 @@ SOURCES = ("ui-chat", "ui-period", "codex-status", "api-usage", "other")
 RESULTS = ("ACCEPTED", "REWORK", "BLOCKED", "NOT_VERIFIED", "NA")
 NUMERIC = ("input_tokens", "cached_input_tokens", "output_tokens",
            "credits", "minutes", "retries", "handoffs")
+FIELDS = {"id", "date", "scope", "surface", "source", "measurement",
+          "task_id", "period", "result", "model", "effort", *NUMERIC}
 
 
 def check(record):
+    if not isinstance(record, dict):
+        raise ValueError("usage record must be a JSON object")
+    unknown = set(record) - FIELDS
+    if unknown:
+        raise ValueError("unrecognized usage fields: " + ", ".join(sorted(unknown)))
     for key in ("id", "date", "scope", "surface", "source", "measurement"):
         if not isinstance(record.get(key), str) or not record[key].strip():
-            raise ValueError("missing required field: " + key)
-    if record["scope"] not in ("task", "period"):
+            raise ValueError("missing or invalid required field: " + key)
+    for key in ("task_id", "period", "model", "effort"):
+        value = record.get(key)
+        if value is not None and (not isinstance(value, str) or not value.strip()):
+            raise ValueError("invalid optional field: " + key)
+    if record["scope"] == "task":
+        if not record.get("task_id") or record.get("period") is not None:
+            raise ValueError("task scope needs task_id, not period")
+    elif record["scope"] == "period":
+        if not record.get("period") or record.get("task_id") is not None:
+            raise ValueError("period scope needs period, not task_id")
+    else:
         raise ValueError("scope must be task/period")
-    if record["scope"] == "task" and not record.get("task_id"):
-        raise ValueError("task record requires task_id")
-    if record["scope"] == "period" and not record.get("period"):
-        raise ValueError("period record requires period")
     if record["surface"] not in SURFACES or record["source"] not in SOURCES:
         raise ValueError("invalid surface/source")
     if record["measurement"] not in ("observed", "estimate"):
         raise ValueError("measurement must be observed/estimate")
     if record.get("result", "NA") not in RESULTS:
         raise ValueError("invalid result")
-    datetime.fromisoformat(record["date"].replace("Z", "+00:00"))
+    try:
+        datetime.fromisoformat(record["date"].replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ValueError("invalid ISO date") from exc
     for key in NUMERIC:
         v = record.get(key)
-        if v is not None:
-            if isinstance(v, bool) or not isinstance(v, (int, float)) or v < 0:
-                raise ValueError(key + " must be a nonnegative number")
-            if key not in ("credits", "minutes") and int(v) != v:
-                raise ValueError(key + " must be an integer")
+        if v is None:
+            continue
+        if isinstance(v, bool) or not isinstance(v, (int, float)):
+            raise ValueError(key + " must be a nonnegative number")
+        if isinstance(v, float) and not math.isfinite(v):
+            raise ValueError(key + " must be finite")
+        if v < 0:
+            raise ValueError(key + " must be nonnegative")
+        if key not in ("credits", "minutes") and not isinstance(v, int):
+            raise ValueError(key + " must be an integer")
     if (record.get("cached_input_tokens") is not None
         and record.get("input_tokens") is not None
         and record["cached_input_tokens"] > record["input_tokens"]):
         raise ValueError("cached_input_tokens is included in input_tokens")
-    forbidden = {"prompt", "message", "transcript", "text", "raw_log",
-                 "api_key", "conversation", "source_code"}
-    if forbidden.intersection(record):
-        raise ValueError("raw content or credentials are forbidden")
     return record
-
 
 def read(path):
     records, ids, pairs = [], set(), set()
@@ -58,7 +75,7 @@ def read(path):
         if not line.strip():
             continue
         try:
-            r = check(json.loads(line))
+            r = check(json.loads(line, parse_constant=lambda value: (_ for _ in ()).throw(ValueError("non-finite JSON number: " + value))))
             if r["id"] in ids:
                 raise ValueError("duplicate record id")
             ids.add(r["id"])
@@ -196,13 +213,25 @@ def main():
                         and r["surface"] == d["surface"]) for r in existing):
                     raise ValueError("duplicate id or task/surface")
             dest.parent.mkdir(parents=True, exist_ok=True)
-            with dest.open("a", encoding="utf-8") as out:
-                out.write(json.dumps(d, ensure_ascii=False, sort_keys=True) + "\n")
+            # A valid last JSONL record may lack a final newline; protect it before appending.
+            newline_needed = False
+            if dest.exists() and dest.stat().st_size:
+                with dest.open("rb") as source:
+                    source.seek(-1, 2)
+                    newline_needed = source.read(1) != b"\n"
+            with dest.open("ab") as out:
+                if newline_needed:
+                    out.write(b"\n")
+                out.write((json.dumps(d, ensure_ascii=False, sort_keys=True, allow_nan=False) + "\n").encode("utf-8"))
             print("Added record {}".format(d["id"]))
         else:
             result = report(read(args.file))
             if args.out:
-                Path(args.out).write_text(result, encoding="utf-8")
+                source, target = Path(args.file), Path(args.out)
+                if (source.resolve() == target.resolve()
+                    or (target.exists() and source.samefile(target))):
+                    raise ValueError("report output must not overwrite the input journal")
+                target.write_text(result, encoding="utf-8")
                 print("Created {}".format(args.out))
             else:
                 print(result)
