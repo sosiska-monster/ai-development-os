@@ -39,6 +39,20 @@ When a prototype becomes an externally used product, or a demo starts processing
 
 This is execution resource routing, **not** authorization. A low-effort model in a CONTROLLED task must still satisfy strict review/testing/approvals; if capability is insufficient, pause instead of relaxing controls.
 
+## Brownfield work intake: repair the existing goal graph, not the repository from scratch
+
+At task intake distinguish `NEW PRODUCT / EXISTING PRODUCT / UNKNOWN` from actual user context. **EXISTING PRODUCT** retains its live repo, data, Git, active branches, approved requirements, working journeys and unfinished work. Ask for missing evidence only when material; do not automatically run a greenfield bootstrap or create a duplicate backlog. Start with `modules/environment.md` preservation-first, read-only audit; for broad structural criticism see `modules/architecture.md`.
+
+After audit, Web maps the **current as-is** against customer-approved requirements and existing Product Goal Graph:
+- `WORKS / BROKEN / UNKNOWN` for affected customer journeys and current technical baseline.
+- Each candidate debt item: `CONFIRMED / LIKELY / UNKNOWN`, concrete code/runtime evidence, impacted goal/contract, risk and estimated repair effort; recommend `KEEP` when the code is adequate. Do not equate age, file count, style or number of classes with a defect.
+- Prioritize `fix actual broken or risky behavior → unblock approved feature → simplify documented costly coupling → defer cosmetic cleanup`. Real data/privacy/security issues may supersede feature throughput. If the only need is one feature, audit its dependency neighborhood instead of forcing a full architecture review.
+- Add approved cleanup/refactor leaves **beneath the existing goals** in PRODUCT `TODO.md` (or equivalent). Never overwrite the whole graph, discard history, silently change a confirmed customer requirement or mark old incomplete work done. A remediation leaf has its own measurable `BEFORE → AFTER` outcome and prerequisites.
+- Prior to structural edits capture safety baseline (existing checks or approved characterization/smoke tests); if absent mark unknown and propose the smallest safe fixture. Map affected interfaces, users and data, and explain fallback/rollback. Changes involving persistent data, deployment, ML metrics or production require their normal separate gates.
+- One user-approved remediation leaf per Codex task. After scope-safe correction, run checks, inspect diff/CI and compare same real behavior before/after; Web accepts only with actual evidence. A result of `KEEP / DEFER / NO CHANGE` is valid when improvement would cost more than its demonstrated benefit.
+
+For architectural restructuring, Codex first proposes an evidence-grounded plan from the real repository **without writing**. Web/user decide WHETHER the change is worth doing and what outcome must remain intact; Codex chooses HOW within the approved contract. An entirely new implementation/repository is only an exceptional **explicitly approved replacement/migration proposal** with demonstrated necessity, data compatibility and measured acceptance—not the default fix for tech debt.
+
 ## Web-owned decomposition into small, meaningful slices
 
 Before dispatch, ChatGPT Web breaks the approved MVP/feature into **small, independently reviewable outcomes**: minimal user-visible or technically verifiable vertical slices with objective acceptance, relevant dependency order and known risk. Prefer first working path over speculative shared infrastructure. Keep a lightweight ordered backlog in the existing project TODO or chat; do not create a separate planning artifact by default. User decides the next authorized slice.
