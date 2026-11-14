@@ -77,6 +77,13 @@ def display(value, digits=0):
     return "UNKNOWN" if value is None else format(value, ",.{}f".format(digits)).replace(",", " ")
 
 
+def cell(value):
+    """Render an untrusted optional metadata value as one safe Markdown cell."""
+    if value is None or value == "":
+        return "UNKNOWN"
+    return str(value).replace("\\", "\\\\").replace("|", "\\|").replace("\n", " ").replace("\r", " ")
+
+
 def report(records):
     task = [r for r in records if r["scope"] == "task"]
     period = [r for r in records if r["scope"] == "period"]
@@ -109,16 +116,18 @@ def report(records):
     if not task:
         lines.append("| None | 0 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |")
     lines.extend(["", "## Task observations", "",
-        "| Task | Surface | Result | Input+output* | Credits | Retries | Handoffs | Minutes |",
-        "|---|---|---|---:|---:|---:|---:|---:|"])
+        "| Task | Surface | Model | Effort | Source | Measurement | Result | Input+output* | Credits | Retries | Handoffs | Minutes |",
+        "|---|---|---|---|---|---|---|---:|---:|---:|---:|---:|"])
     for r in sorted(task, key=lambda x: (x["task_id"], x["surface"])):
         a, b = r.get("input_tokens"), r.get("output_tokens")
         count = a+b if r["measurement"] == "observed" and a is not None and b is not None else None
         credit = r.get("credits") if r["measurement"] == "observed" else None
-        lines.append("| {} | {} | {} | {} | {} | {} | {} | {} |".format(
-            r["task_id"], r["surface"], r.get("result", "NA"),
-            display(count), display(credit, 3), display(r.get("retries")),
-            display(r.get("handoffs")), display(r.get("minutes"), 1)))
+        lines.append("| {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} |".format(
+            cell(r["task_id"]), r["surface"], cell(r.get("model")),
+            cell(r.get("effort")), r["source"], r["measurement"],
+            r.get("result", "NA"), display(count), display(credit, 3),
+            display(r.get("retries")), display(r.get("handoffs")),
+            display(r.get("minutes"), 1)))
     statuses = defaultdict(set)
     for r in task:
         if r.get("result", "NA") != "NA":
