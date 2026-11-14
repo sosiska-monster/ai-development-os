@@ -4,7 +4,7 @@ The task mode is a **current assessment, not a permanent label**. Codex may reco
 
 ```text
 PROJECT INTAKE: <NEW / EXISTING, real repo and task-scoped AS-IS facts; for EXISTING do not initialize or rebuild>
-AUDIT/REMEDIATION MODE: <READ-ONLY INVENTORY with WRITE ALLOWLIST NONE and no mutating tests / APPROVED SAFE CHANGE with baseline and rollback; choose one>
+AUDIT/REMEDIATION MODE: <READ-ONLY INVENTORY with no writes and no mutating tests / APPROVED SAFE CHANGE with baseline and rollback; choose one>
 EXISTING BEHAVIOR TO PRESERVE: <validated user journeys, interfaces, data/checkpoint formats, existing dirty worktree; UNKNOWN explicitly where not verified>
 REFACTOR JUSTIFICATION (if applicable): <confirmed issue + code/runtime evidence + goal impact + smallest adequate fix + before/after check>
 TASK ID / GOAL: <ONE atomic, verifiable result; no second task in the same prompt>
@@ -31,7 +31,7 @@ MEMORY: <update only verified facts; propose unverified records>
 STOP / ESCALATE WHEN: <new critical decision, another feature, auth/data/API/production effect, CI/tests weakening, dependency/lockfile, no progress; no next independent goal>
 IN-TASK REPAIR: <Codex may locate/edit necessary adjacent code and direct tests within approved component, fix safe failures and rerun; STOP on critical boundary>
 PLAN FIRST: <mandatory for CONTROLLED; get approval before high-risk effects>
-EVIDENCE HANDOFF: <exact existing source paths/ref and destination Web chat; if files genuinely needed, approved local .ai-handoff/<TASK_ID>/ or explicitly approved shared evidence path; no implicit write scope>
+EVIDENCE HANDOFF: <exact existing source paths/ref; if cross-chat transfer is needed, confirmed destination or PROPOSED; local .ai-handoff/<TASK_ID>/ only when explicitly approved>
 REPORT: <Lite for low-risk FAST; Full for high-impact tasks; show actual Git and verification artifacts>
 ```
 
