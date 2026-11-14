@@ -1,6 +1,6 @@
 # Security, irreversible changes and release
 
-**Route to CONTROLLED** when a task touches production, private customer data, authorization boundaries, payment, external resources, irreversible migrations or destructive effects. Treat high-risk changes as high risk even if only one line changes.
+**Route to CONTROLLED** for production *operations* or changes that materially affect live data, authorization, payment, external systems, irreversible migrations, destructive effects or high-risk public contracts. A small reversible edit to code in a production product can remain FAST/STANDARD with its required baseline checks; deployment to production remains separately authorized. Treat high-consequence changes as high risk even if one line changes.
 
 ## Confidentiality and agent authority
 
