@@ -10,7 +10,7 @@ This library supports **both** new-project design and **an ongoing existing prod
 
 ## Workflow
 
-ChatGPT Web is the analyst/architect, Codex Desktop executes and tests inside each real product repository, and the user approves significant decisions. The process is **dynamic**: FAST for safe local changes, STANDARD for ordinary implementation, CONTROLLED for risky architecture, production operations, sensitive data, security or other high-consequence work. It must **switch during a task** when facts change; see `modules/delivery.md`.
+ChatGPT Web is the analyst/architect, Codex Desktop executes and tests inside each real product repository, and the user approves significant decisions. **Reuse First:** before building a substantial new subsystem, Web checks current public GitHub/ecosystem sources for suitable existing products, libraries or APIs; verifies fit, licensing, maintenance and integration risk; then recommends USE / ADAPT / BUILD. For existing projects, inspect their own modules and installed dependencies first. No obligatory web research for trivial fixes; inaccessible sources are NOT VERIFIED. The process is **dynamic**: FAST for safe local changes, STANDARD for ordinary implementation, CONTROLLED for risky architecture, production operations, sensitive data, security or other high-consequence work. It must **switch during a task** when facts change; see `modules/delivery.md`.
 
 ## Chat continuity and isolated experiments
 

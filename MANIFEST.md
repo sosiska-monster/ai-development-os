@@ -22,7 +22,7 @@
 | Situation | Modules | Optional template / outcome |
 |---|---|---|
 | New brief, unclear client request, changed specification | `modules/requirements.md` | `templates/requirements-ledger.md`, questions or ledger |
-| Architecture, high-impact design trade-off | `modules/architecture.md` | `templates/project-blueprint.md` |
+| Architecture, substantial new feature or open-source alternative search | `modules/architecture.md` | Verify existing projects/libraries against requirements before choosing USE / ADAPT / BUILD; `templates/project-blueprint.md` only if needed |
 | Ongoing product, architecture debt, duplicated modules or suspected overengineering | `modules/environment.md` + `modules/architecture.md` + `modules/delivery.md` | Read-only AS-IS audit → Web-ranked KEEP/FIX/LATER → separately approved targeted remediation in the same product repo |
 | Discover existing repo or configure Codex | `modules/environment.md` | `templates/codex-bootstrap.md` (only after approval) |
 | FAST / STANDARD / CONTROLLED implementation, review | `modules/delivery.md` | `templates/codex-task.md`, `templates/codex-report.md` |
