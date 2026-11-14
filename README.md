@@ -37,7 +37,7 @@ To analyze token/credit consumption across Web, Codex and API tasks, see [module
 
 ## Daily loop — one useful result, minimal ceremony
 
-For an ordinary task: **user goal → ChatGPT Web scopes a verifiable slice when needed → one approved Codex task → actual diff/checks → user acceptance → STOP**. Truly safe, local FAST edits may go straight to Codex under the project's existing AGENTS. Do not fill every template or open every module for every task. A fresh Codex chat is a recommendation for an independent next task, **not a forced reset**.
+For an ordinary task: **user goal → ChatGPT Web scopes a verifiable slice when needed → one approved Codex task → actual diff/checks → user acceptance → STOP**. Truly safe, local FAST edits may go straight to Codex under the project's existing AGENTS. Do not fill every template or open every module for every task. Keep the current Codex chat by default; a new chat is optional only when context is no longer useful, for independent review or at the user's request.
 
 ### Practical Git evidence in a PRODUCT repository
 
@@ -52,7 +52,7 @@ git ls-files --others --exclude-standard
 git diff --check
 ```
 
-Replace `<TASK_BASE_SHA>` with the captured starting commit. The committed diff command assumes that task baseline is an ancestor of HEAD; use an appropriate comparison if history was rewritten. Separate pre-existing user changes from task changes; compare all task-edited paths with the approved WRITE ALLOWLIST. Run the project's actual verification command independently when warranted, checking its exit status. Git path checks **detect changes; they do not enforce per-file permissions or prove behavior correct**. Never auto-reset, clean, or delete a dirty worktree.
+Replace `<TASK_BASE_SHA>` with the captured starting commit. The committed diff command assumes that task baseline is an ancestor of HEAD; use an appropriate comparison if history was rewritten. Separate pre-existing user changes from task changes; compare the task diff with the approved feature/component boundary, and also with exact permitted paths for CONTROLLED tasks when specified. Run the project's actual verification command independently when warranted, checking its exit status. Git path checks **detect changes; they do not enforce per-file permissions or prove behavior correct**. Never auto-reset, clean, or delete a dirty worktree.
 
 ### Pilot priority — NOT RUN
 
@@ -64,7 +64,7 @@ Before declaring a stable release, use a disposable product repository and real 
 2. Provide a link to https://github.com/sosiska-monster/ai-development-os and ask ChatGPT to read `MANIFEST.md` plus a relevant module. Confirm GitHub access or attach the specific files; **public or private** visibility alone does not guarantee the selected ChatGPT mode can read them.
 3. When the assistant uses an external module, it should identify what it actually read and which commit/ref it could verify. No invented version, link, full-read claim or deterministic access guarantee.
 4. Submit the customer's raw specification. ChatGPT works from customer intent toward a small approved Blueprint and project Environment Profile. Existing codebases can start with a read-only Codex audit.
-5. Only after the approved architecture/environment **and a separate request**, ChatGPT creates a project-specific Codex Bootstrap. Codex creates/updates only the approved setup in the **product** repo; never apply a generic bootstrap blindly.
+5. For a new project, after approved requirements/architecture and a separate request, ChatGPT prepares a minimal project-specific Codex Bootstrap. For an existing product, start from its actual code and working setup: only propose necessary adaptations, never run a generic reinitialization.
 6. Small reversible tasks can run directly in Codex under project `AGENTS.md`; promote to more controlled review when risk/scope grows. Keep evidence and a resynchronization checkpoint for ChatGPT.
 
 Sample launch message:
