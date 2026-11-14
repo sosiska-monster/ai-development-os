@@ -57,7 +57,7 @@ GIT:
   committed delta vs task base (correct comparison for history):
   staged / unstaged / untracked (separately):
   pre-existing changes (if any):
-CHANGED PATHS: <added, modified, removed, renamed; actual diff vs approved EXPECTED_DIFF_PATHS>
+CHANGED PATHS: <added, modified, removed, renamed; actual changes within the approved feature/component; for CONTROLLED also check specified paths>
 SCOPE MATCH: MATCH | MISMATCH | NOT SCOPED (actual diff within approved feature/component; CONTROLLED also compare exact paths; mention exceptions)
 CHECKS: <command | exit code | PASS/FAIL/NOT RUN; relevant verbatim excerpt; baseline if applicable>
 TEST / QUALITY CONFIG CHANGES: <diff summary, test-weakening risk and approval>
